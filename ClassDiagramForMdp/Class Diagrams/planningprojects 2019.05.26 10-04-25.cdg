@@ -1,0 +1,2314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="planningprojects">
+  <ClassDiagramComponents>
+    <Class name="AreaFacade" package="facade" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="em" type="EntityManager" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getEntityManager" returnType="EntityManager" visibility="protected"/>
+      </Methods>
+    </Class>
+    <Class name="ItemFacade" package="facade" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields>
+        <Field name="em" type="EntityManager" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getEntityManager" returnType="EntityManager" visibility="protected"/>
+      </Methods>
+    </Class>
+    <Class name="PersonFacade" package="facade" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Fields>
+        <Field name="em" type="EntityManager" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getEntityManager" returnType="EntityManager" visibility="protected"/>
+      </Methods>
+    </Class>
+    <Class name="ProjectFacade" package="facade" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Fields>
+        <Field name="em" type="EntityManager" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getEntityManager" returnType="EntityManager" visibility="protected"/>
+      </Methods>
+    </Class>
+    <Class name="ProjectAreaFacade" package="facade" visibility="public" xPosition="1220.0" yPosition="20.0">
+      <Fields>
+        <Field name="em" type="EntityManager" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getEntityManager" returnType="EntityManager" visibility="protected"/>
+      </Methods>
+    </Class>
+    <Class name="JsfUtil" package="facade.util" visibility="public" xPosition="1520.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="getSelectItems" returnType="SelectItem[]" visibility="public" isStatic="true">
+          <Argument type="List&lt;?&gt;" name="entities"/>
+          <Argument type="boolean" name="selectOne"/>
+        </Method>
+        <Method name="addErrorMessage" returnType="void" visibility="public" isStatic="true">
+          <Argument type="Exception" name="ex"/>
+          <Argument type="String" name="defaultMsg"/>
+        </Method>
+        <Method name="addErrorMessages" returnType="void" visibility="public" isStatic="true">
+          <Argument type="List&lt;String&gt;" name="messages"/>
+        </Method>
+        <Method name="addErrorMessage" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="addSuccessMessage" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="getRequestParameter" returnType="String" visibility="public" isStatic="true">
+          <Argument type="String" name="key"/>
+        </Method>
+        <Method name="getObjectFromRequestParameter" returnType="Object" visibility="public" isStatic="true">
+          <Argument type="String" name="requestParameterName"/>
+          <Argument type="Converter" name="converter"/>
+          <Argument type="UIComponent" name="component"/>
+        </Method>
+        <Method name="isValidationFailed" returnType="boolean" visibility="public" isStatic="true"/>
+      </Methods>
+    </Class>
+    <Class name="WebUserFacade" package="facade" visibility="public" xPosition="1820.0" yPosition="20.0">
+      <Fields>
+        <Field name="em" type="EntityManager" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getEntityManager" returnType="EntityManager" visibility="protected"/>
+      </Methods>
+    </Class>
+    <Class name="UploadFacade" package="facade" visibility="public" xPosition="2120.0" yPosition="20.0">
+      <Fields>
+        <Field name="em" type="EntityManager" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getEntityManager" returnType="EntityManager" visibility="protected"/>
+      </Methods>
+    </Class>
+    <Class name="CoordinateFacade" package="facade" visibility="public" xPosition="20.0" yPosition="420.0">
+      <Fields>
+        <Field name="em" type="EntityManager" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getEntityManager" returnType="EntityManager" visibility="protected"/>
+      </Methods>
+    </Class>
+    <Class name="AbstractFacade" package="facade" visibility="public" isAbstract="true" xPosition="320.0" yPosition="420.0">
+      <Fields>
+        <Field name="entityClass" type="Class&lt;T&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Class&lt;T&gt;" name="entityClass"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="flush" returnType="void" visibility="public"/>
+        <Method name="findObjects" returnType="List&lt;Object&gt;" visibility="public">
+          <Argument type="String" name="temSQL"/>
+          <Argument type="Map&lt;String, Object&gt;" name="parameters"/>
+        </Method>
+        <Method name="findObjects" returnType="List&lt;Object&gt;" visibility="public">
+          <Argument type="String" name="temSQL"/>
+          <Argument type="Map&lt;String, Object&gt;" name="parameters"/>
+          <Argument type="TemporalType" name="tt"/>
+        </Method>
+        <Method name="findLongList" returnType="List&lt;Long&gt;" visibility="public">
+          <Argument type="String" name="temSQL"/>
+          <Argument type="Map&lt;String, Object&gt;" name="parameters"/>
+        </Method>
+        <Method name="findLongList" returnType="List&lt;Long&gt;" visibility="public">
+          <Argument type="String" name="temSQL"/>
+          <Argument type="Map&lt;String, Object&gt;" name="parameters"/>
+          <Argument type="TemporalType" name="tt"/>
+        </Method>
+        <Method name="findRange" returnType="List&lt;T&gt;" visibility="public">
+          <Argument type="int[]" name="range"/>
+        </Method>
+        <Method name="findFirstBySQL" returnType="T" visibility="public">
+          <Argument type="String" name="temSQL"/>
+          <Argument type="Map&lt;String, Object&gt;" name="parameters"/>
+        </Method>
+        <Method name="getEntityManager" returnType="EntityManager" visibility="protected" isAbstract="true"/>
+        <Method name="create" returnType="void" visibility="public">
+          <Argument type="T" name="entity"/>
+        </Method>
+        <Method name="refresh" returnType="void" visibility="public">
+          <Argument type="T" name="entity"/>
+        </Method>
+        <Method name="edit" returnType="void" visibility="public">
+          <Argument type="T" name="entity"/>
+        </Method>
+        <Method name="editAndCommit" returnType="void" visibility="public">
+          <Argument type="T" name="entity"/>
+        </Method>
+        <Method name="remove" returnType="void" visibility="public">
+          <Argument type="T" name="entity"/>
+        </Method>
+        <Method name="find" returnType="T" visibility="public">
+          <Argument type="Object" name="id"/>
+        </Method>
+        <Method name="findAll" returnType="List&lt;T&gt;" visibility="public">
+          <Argument type="boolean" name="withoutRetired"/>
+        </Method>
+        <Method name="findAll" returnType="List&lt;T&gt;" visibility="public"/>
+        <Method name="findAll" returnType="List&lt;T&gt;" visibility="public">
+          <Argument type="String" name="fieldName"/>
+        </Method>
+        <Method name="findAll" returnType="List&lt;T&gt;" visibility="public">
+          <Argument type="String" name="fieldName"/>
+          <Argument type="boolean" name="withoutRetired"/>
+        </Method>
+        <Method name="findAll" returnType="List&lt;T&gt;" visibility="public">
+          <Argument type="String" name="fieldName"/>
+          <Argument type="String" name="fieldValue"/>
+        </Method>
+        <Method name="findBySQL" returnType="List&lt;T&gt;" visibility="public">
+          <Argument type="String" name="temSQL"/>
+        </Method>
+        <Method name="findBySQL" returnType="List&lt;T&gt;" visibility="public">
+          <Argument type="String" name="temSQL"/>
+          <Argument type="int" name="maxResults"/>
+        </Method>
+        <Method name="findBySQL" returnType="List&lt;T&gt;" visibility="public">
+          <Argument type="String" name="temSQL"/>
+          <Argument type="Map&lt;String, Object&gt;" name="parameters"/>
+        </Method>
+        <Method name="findBySQL" returnType="List&lt;T&gt;" visibility="public">
+          <Argument type="String" name="temSQL"/>
+          <Argument type="Map&lt;String, Object&gt;" name="parameters"/>
+          <Argument type="TemporalType" name="tt"/>
+        </Method>
+        <Method name="findObjectsArrayBySQL" returnType="List&lt;Object[]&gt;" visibility="public">
+          <Argument type="String" name="temSQL"/>
+          <Argument type="Map&lt;String, Object&gt;" name="parameters"/>
+          <Argument type="TemporalType" name="tt"/>
+        </Method>
+        <Method name="findObjectBySQL" returnType="List&lt;Object&gt;" visibility="public">
+          <Argument type="String" name="temSQL"/>
+          <Argument type="Map&lt;String, Object&gt;" name="parameters"/>
+          <Argument type="TemporalType" name="tt"/>
+        </Method>
+        <Method name="findFirstObjectBySQL" returnType="Object" visibility="public">
+          <Argument type="String" name="temSQL"/>
+          <Argument type="Map&lt;String, Object&gt;" name="parameters"/>
+          <Argument type="TemporalType" name="tt"/>
+        </Method>
+        <Method name="findObjectListBySQL" returnType="Object[]" visibility="public">
+          <Argument type="String" name="temSQL"/>
+          <Argument type="Map&lt;String, Object&gt;" name="parameters"/>
+          <Argument type="TemporalType" name="tt"/>
+        </Method>
+        <Method name="findDateListBySQL" returnType="List&lt;Date&gt;" visibility="public">
+          <Argument type="String" name="temSQL"/>
+          <Argument type="Map&lt;String, Object&gt;" name="parameters"/>
+        </Method>
+        <Method name="findDateListBySQL" returnType="List&lt;Date&gt;" visibility="public">
+          <Argument type="String" name="temSQL"/>
+          <Argument type="Map&lt;String, Object&gt;" name="parameters"/>
+          <Argument type="TemporalType" name="tt"/>
+        </Method>
+        <Method name="findObjectBySQL" returnType="List&lt;Object&gt;" visibility="public">
+          <Argument type="String" name="temSQL"/>
+        </Method>
+        <Method name="findAggregateModified" returnType="Object[]" visibility="public">
+          <Argument type="String" name="temSQL"/>
+          <Argument type="Map&lt;String, Object&gt;" name="parameters"/>
+          <Argument type="TemporalType" name="tt"/>
+        </Method>
+        <Method name="findDoubleByJpql" returnType="double" visibility="public">
+          <Argument type="String" name="temSQL"/>
+          <Argument type="Map&lt;String, Object&gt;" name="parameters"/>
+          <Argument type="TemporalType" name="tt"/>
+        </Method>
+        <Method name="findDoubleByJpql" returnType="double" visibility="public">
+          <Argument type="String" name="temSQL"/>
+        </Method>
+        <Method name="findDateByJpql" returnType="Date" visibility="public">
+          <Argument type="String" name="temSQL"/>
+          <Argument type="Map&lt;String, Object&gt;" name="parameters"/>
+          <Argument type="TemporalType" name="tt"/>
+        </Method>
+        <Method name="findLongByJpql" returnType="long" visibility="public">
+          <Argument type="String" name="temSQL"/>
+          <Argument type="Map&lt;String, Object&gt;" name="parameters"/>
+        </Method>
+        <Method name="findLongByJpql" returnType="long" visibility="public">
+          <Argument type="String" name="temSQL"/>
+          <Argument type="Map&lt;String, Object&gt;" name="parameters"/>
+          <Argument type="TemporalType" name="tt"/>
+        </Method>
+        <Method name="findDoubleByJpql" returnType="double" visibility="public">
+          <Argument type="String" name="temSQL"/>
+          <Argument type="Map&lt;String, Object&gt;" name="parameters"/>
+        </Method>
+        <Method name="findDateByJpql" returnType="Date" visibility="public">
+          <Argument type="String" name="temSQL"/>
+          <Argument type="Map&lt;String, Object&gt;" name="parameters"/>
+        </Method>
+        <Method name="findBySQL" returnType="List&lt;T&gt;" visibility="public">
+          <Argument type="String" name="temSQL"/>
+          <Argument type="Map&lt;String, Object&gt;" name="parameters"/>
+          <Argument type="TemporalType" name="tt"/>
+          <Argument type="int" name="maxRecords"/>
+        </Method>
+        <Method name="findBySQLWithoutCache" returnType="List&lt;T&gt;" visibility="public">
+          <Argument type="String" name="temSQL"/>
+          <Argument type="Map&lt;String, Object&gt;" name="parameters"/>
+          <Argument type="TemporalType" name="tt"/>
+          <Argument type="int" name="maxRecords"/>
+        </Method>
+        <Method name="findBySQLWithoutCache" returnType="List&lt;T&gt;" visibility="public">
+          <Argument type="String" name="temSQL"/>
+          <Argument type="Map&lt;String, Object&gt;" name="parameters"/>
+          <Argument type="TemporalType" name="tt"/>
+        </Method>
+        <Method name="findBySQLWithoutCache" returnType="List&lt;T&gt;" visibility="public">
+          <Argument type="String" name="temSQL"/>
+          <Argument type="Map&lt;String, Object&gt;" name="parameters"/>
+        </Method>
+        <Method name="findBySQL" returnType="List&lt;T&gt;" visibility="public">
+          <Argument type="String" name="temSQL"/>
+          <Argument type="Map&lt;String, Object&gt;" name="parameters"/>
+          <Argument type="int" name="maxRecords"/>
+        </Method>
+        <Method name="test" returnType="void" visibility="private">
+          <Argument type="Class" name="myClass"/>
+          <Argument type="Object" name="ob"/>
+        </Method>
+        <Method name="countBySql" returnType="Long" visibility="public">
+          <Argument type="String" name="sql"/>
+        </Method>
+        <Method name="countBySql" returnType="Long" visibility="public">
+          <Argument type="String" name="sql"/>
+          <Argument type="Map" name="parameters"/>
+        </Method>
+        <Method name="countBySql" returnType="Long" visibility="public">
+          <Argument type="String" name="sql"/>
+          <Argument type="Map" name="parameters"/>
+          <Argument type="TemporalType" name="tt"/>
+        </Method>
+        <Method name="sumBySql" returnType="double" visibility="public">
+          <Argument type="String" name="sql"/>
+          <Argument type="Map" name="parameters"/>
+          <Argument type="TemporalType" name="tt"/>
+        </Method>
+        <Method name="sumBySql" returnType="Double" visibility="public">
+          <Argument type="String" name="sql"/>
+        </Method>
+        <Method name="findAll" returnType="List&lt;T&gt;" visibility="public">
+          <Argument type="String" name="fieldName"/>
+          <Argument type="String" name="fieldValue"/>
+          <Argument type="boolean" name="withoutRetired"/>
+        </Method>
+        <Method name="findExact" returnType="List&lt;T&gt;" visibility="public">
+          <Argument type="String" name="fieldName"/>
+          <Argument type="String" name="fieldValue"/>
+          <Argument type="boolean" name="withoutRetired"/>
+        </Method>
+        <Method name="findContains" returnType="List&lt;T&gt;" visibility="public">
+          <Argument type="String" name="fieldName"/>
+          <Argument type="String" name="fieldValue"/>
+        </Method>
+        <Method name="findByField" returnType="T" visibility="public">
+          <Argument type="String" name="fieldName"/>
+          <Argument type="String" name="fieldValue"/>
+          <Argument type="boolean" name="withoutRetired"/>
+        </Method>
+        <Method name="findByFieldContains" returnType="String" visibility="public">
+          <Argument type="String" name="fieldName"/>
+          <Argument type="String" name="fieldValue"/>
+        </Method>
+        <Method name="findFirstBySQL" returnType="T" visibility="public">
+          <Argument type="String" name="temSQL"/>
+        </Method>
+        <Method name="findFirstBySQL" returnType="T" visibility="public">
+          <Argument type="String" name="temSQL"/>
+          <Argument type="Map&lt;String, Object&gt;" name="parameters"/>
+          <Argument type="TemporalType" name="tt"/>
+        </Method>
+        <Method name="testMethod" returnType="List&lt;T&gt;" visibility="public">
+          <Argument type="U[]" name="a"/>
+          <Argument type="Collection&lt;U&gt;" name="all"/>
+        </Method>
+        <Method name="findAll" returnType="List&lt;T&gt;" visibility="public">
+          <Argument type="String" name="fieldName"/>
+          <Argument type="int" name="searchID"/>
+          <Argument type="boolean" name="withoutRetired"/>
+        </Method>
+        <Method name="count" returnType="int" visibility="public"/>
+        <Method name="findAggregateDbl" returnType="Double" visibility="public">
+          <Argument type="String" name="strJQL"/>
+        </Method>
+        <Method name="findAggregateLong" returnType="Long" visibility="public">
+          <Argument type="String" name="strJQL"/>
+        </Method>
+        <Method name="findLongByJpql" returnType="Long" visibility="public">
+          <Argument type="String" name="strJQL"/>
+        </Method>
+        <Method name="findString" returnType="List&lt;String&gt;" visibility="public">
+          <Argument type="String" name="strJQL"/>
+        </Method>
+        <Method name="findString" returnType="List&lt;String&gt;" visibility="public">
+          <Argument type="String" name="strJQL"/>
+          <Argument type="Map" name="map"/>
+        </Method>
+        <Method name="findString" returnType="List&lt;String&gt;" visibility="public">
+          <Argument type="String" name="strJQL"/>
+          <Argument type="Map" name="map"/>
+          <Argument type="TemporalType" name="tt"/>
+          <Argument type="int" name="noOfRows"/>
+        </Method>
+        <Method name="findString" returnType="List&lt;String&gt;" visibility="public">
+          <Argument type="String" name="strJQL"/>
+          <Argument type="Map" name="map"/>
+          <Argument type="TemporalType" name="tt"/>
+        </Method>
+        <Method name="findAggregates" returnType="List&lt;Object[]&gt;" visibility="public">
+          <Argument type="String" name="temSQL"/>
+          <Argument type="Map&lt;String, Object&gt;" name="parameters"/>
+        </Method>
+        <Method name="findAggregates" returnType="List&lt;Object[]&gt;" visibility="public">
+          <Argument type="String" name="temSQL"/>
+        </Method>
+        <Method name="findAggregates" returnType="List&lt;Object[]&gt;" visibility="public">
+          <Argument type="String" name="temSQL"/>
+          <Argument type="Map&lt;String, Object&gt;" name="parameters"/>
+          <Argument type="TemporalType" name="tt"/>
+        </Method>
+        <Method name="setParameterObjectList" returnType="void" visibility="private">
+          <Argument type="TypedQuery&lt;Object[]&gt;" name="qry"/>
+          <Argument type="Map&lt;String, Object&gt;" name="parameters"/>
+          <Argument type="TemporalType" name="temporalType"/>
+        </Method>
+        <Method name="findAggregat" returnType="Object[]" visibility="public">
+          <Argument type="String" name="temSQL"/>
+          <Argument type="Map&lt;String, Object&gt;" name="parameters"/>
+          <Argument type="TemporalType" name="tt"/>
+        </Method>
+        <Method name="findAggregate" returnType="Object[]" visibility="public">
+          <Argument type="String" name="temSQL"/>
+          <Argument type="Map&lt;String, Object&gt;" name="parameters"/>
+          <Argument type="TemporalType" name="tt"/>
+        </Method>
+        <Method name="findSingleAggregate" returnType="Object[]" visibility="public">
+          <Argument type="String" name="temSQL"/>
+          <Argument type="Map&lt;String, Object&gt;" name="parameters"/>
+        </Method>
+        <Method name="findSingleAggregate" returnType="Object[]" visibility="public">
+          <Argument type="String" name="temSQL"/>
+          <Argument type="Map&lt;String, Object&gt;" name="parameters"/>
+          <Argument type="TemporalType" name="tt"/>
+        </Method>
+        <Method name="findAggregateDbl" returnType="Double" visibility="public">
+          <Argument type="String" name="temSQL"/>
+          <Argument type="Map&lt;String, Date&gt;" name="parameters"/>
+        </Method>
+        <Method name="findAggregateLong" returnType="Long" visibility="public">
+          <Argument type="String" name="temSQL"/>
+          <Argument type="Map&lt;String, Object&gt;" name="parameters"/>
+          <Argument type="TemporalType" name="tt"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="InstitutionFacade" package="facade" visibility="public" xPosition="620.0" yPosition="420.0">
+      <Fields>
+        <Field name="em" type="EntityManager" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getEntityManager" returnType="EntityManager" visibility="protected"/>
+      </Methods>
+    </Class>
+    <Class name="CommonController" package="bean" visibility="public" xPosition="920.0" yPosition="420.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="encrypt" returnType="String" visibility="public">
+          <Argument type="String" name="word"/>
+        </Method>
+        <Method name="hash" returnType="String" visibility="public">
+          <Argument type="String" name="word"/>
+        </Method>
+        <Method name="matchPassword" returnType="boolean" visibility="public">
+          <Argument type="String" name="planePassword"/>
+          <Argument type="String" name="encryptedPassword"/>
+        </Method>
+        <Method name="decrypt" returnType="String" visibility="public">
+          <Argument type="String" name="word"/>
+        </Method>
+        <Method name="getWebUserRoles" returnType="WebUserRole[]" visibility="public"/>
+        <Method name="getInstitutionTypes" returnType="InstitutionType[]" visibility="public"/>
+        <Method name="getAreaTypes" returnType="AreaType[]" visibility="public"/>
+        <Method name="getItemTypes" returnType="ItemType[]" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="WebUserController" package="bean" visibility="public" xPosition="1220.0" yPosition="420.0">
+      <Fields>
+        <Field name="ejbFacade" type="facade.WebUserFacade" visibility="private"/>
+        <Field name="institutionFacade" type="InstitutionFacade" visibility="private"/>
+        <Field name="projectFacade" type="ProjectFacade" visibility="private"/>
+        <Field name="uploadFacade" type="UploadFacade" visibility="private"/>
+        <Field name="projectAreaFacade" type="ProjectAreaFacade" visibility="private"/>
+        <Field name="commonController" type="CommonController" visibility="private"/>
+        <Field name="items" type="List&lt;WebUser&gt;" visibility="private"/>
+        <Field name="currentProjectUploads" type="List&lt;Upload&gt;" visibility="private"/>
+        <Field name="clientUploads" type="List&lt;Upload&gt;" visibility="private"/>
+        <Field name="companyUploads" type="List&lt;Upload&gt;" visibility="private"/>
+        <Field name="listOfProjects" type="List&lt;Project&gt;" visibility="private"/>
+        <Field name="selectedProvinces" type="Area[]" visibility="private"/>
+        <Field name="selectedDistricts" type="List&lt;Area&gt;" visibility="private"/>
+        <Field name="selectedDsAreas" type="List&lt;Area&gt;" visibility="private"/>
+        <Field name="selectedGnAreas" type="List&lt;Area&gt;" visibility="private"/>
+        <Field name="selectedProjectArea" type="ProjectArea" visibility="private"/>
+        <Field name="current" type="WebUser" visibility="private"/>
+        <Field name="currentProject" type="Project" visibility="private"/>
+        <Field name="currentUpload" type="Upload" visibility="private"/>
+        <Field name="institution" type="Institution" visibility="private"/>
+        <Field name="loggedUser" type="WebUser" visibility="private"/>
+        <Field name="userName" type="String" visibility="private"/>
+        <Field name="password" type="String" visibility="private"/>
+        <Field name="emptyModel" type="MapModel" visibility="private"/>
+        <Field name="file" type="UploadedFile" visibility="private"/>
+        <Field name="comments" type="String" visibility="private"/>
+        <Field name="downloadingFile" type="StreamedContent" visibility="private"/>
+        <Field name="fromDate" type="Date" visibility="private"/>
+        <Field name="toDate" type="Date" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="init" returnType="void" visibility="public"/>
+        <Method name="removeSelectedProvince" returnType="void" visibility="public"/>
+        <Method name="addSelectedProvincesToProject" returnType="void" visibility="public"/>
+        <Method name="removeSelectedDistrict" returnType="void" visibility="public"/>
+        <Method name="addSelectedDistrictToProject" returnType="void" visibility="public"/>
+        <Method name="removeSelectedDsArea" returnType="void" visibility="public"/>
+        <Method name="addSelectedDsDivisionToProject" returnType="void" visibility="public"/>
+        <Method name="removeSelectedGn" returnType="void" visibility="public"/>
+        <Method name="addSelectedGnAreasToProject" returnType="void" visibility="public"/>
+        <Method name="listProjectsToSubmitBids" returnType="String" visibility="public"/>
+        <Method name="listProjectsToSubmitBids" returnType="void" visibility="public">
+          <Argument type="Institution" name="provider"/>
+        </Method>
+        <Method name="listProjectsToSubmitProposals" returnType="String" visibility="public"/>
+        <Method name="listProjectsAwaitingCustomerApproval" returnType="String" visibility="public"/>
+        <Method name="listProjectsAwaitingBidding" returnType="String" visibility="public"/>
+        <Method name="listProjectsAwaitingBidSelection" returnType="String" visibility="public"/>
+        <Method name="listProjectsBidSelected" returnType="String" visibility="public"/>
+        <Method name="listProjects" returnType="List&lt;Project&gt;" visibility="public">
+          <Argument type="ProjectStageType" name="type"/>
+        </Method>
+        <Method name="viewProject" returnType="String" visibility="public"/>
+        <Method name="viewMyProject" returnType="String" visibility="public"/>
+        <Method name="markLocationOnMap" returnType="void" visibility="public"/>
+        <Method name="markLocationOnMapForBidders" returnType="void" visibility="public"/>
+        <Method name="viewMedia" returnType="String" visibility="public"/>
+        <Method name="getLastProject" returnType="Project" visibility="public">
+          <Argument type="WebUser" name="webUser"/>
+        </Method>
+        <Method name="toSubmitClientRequest" returnType="String" visibility="public"/>
+        <Method name="submitClientRequest" returnType="String" visibility="public"/>
+        <Method name="sendSubmitClientRequestConfirmationEmail" returnType="void" visibility="public"/>
+        <Method name="downloadCurrentFile" returnType="void" visibility="public"/>
+        <Method name="getDownloadingFile" returnType="StreamedContent" visibility="public"/>
+        <Method name="addMarker" returnType="String" visibility="public"/>
+        <Method name="addNewProject" returnType="String" visibility="public"/>
+        <Method name="updateProject" returnType="void" visibility="public"/>
+        <Method name="finalizeProposal" returnType="void" visibility="public"/>
+        <Method name="acceptProposal" returnType="void" visibility="public"/>
+        <Method name="uploadByCompanyAsProposal" returnType="void" visibility="public"/>
+        <Method name="uploadByCustomerBeforeTechnicalProposal" returnType="void" visibility="public"/>
+        <Method name="getCurrentProject" returnType="Project" visibility="public"/>
+        <Method name="setCurrentProject" returnType="void" visibility="public">
+          <Argument type="Project" name="currentProject"/>
+        </Method>
+        <Method name="prepareRegisterAsClient" returnType="String" visibility="public"/>
+        <Method name="updateWebUserAndToMarkLocation" returnType="String" visibility="public"/>
+        <Method name="registerUser" returnType="String" visibility="public"/>
+        <Method name="logOut" returnType="String" visibility="public"/>
+        <Method name="toLogin" returnType="String" visibility="public"/>
+        <Method name="login" returnType="String" visibility="public"/>
+        <Method name="checkLogin" returnType="boolean" visibility="private"/>
+        <Method name="isFirstVisit" returnType="boolean" visibility="private"/>
+        <Method name="getUploads" returnType="List&lt;Upload&gt;" visibility="public">
+          <Argument type="Project" name="p"/>
+        </Method>
+        <Method name="getUploads" returnType="List&lt;Upload&gt;" visibility="public">
+          <Argument type="Project" name="p"/>
+          <Argument type="UploadType" name="type"/>
+        </Method>
+        <Method name="getFile" returnType="UploadedFile" visibility="public"/>
+        <Method name="setFile" returnType="void" visibility="public">
+          <Argument type="UploadedFile" name="file"/>
+        </Method>
+        <Method name="getSelected" returnType="WebUser" visibility="public"/>
+        <Method name="getFacade" returnType="WebUserFacade" visibility="private"/>
+        <Method name="prepareList" returnType="String" visibility="public"/>
+        <Method name="prepareView" returnType="String" visibility="public"/>
+        <Method name="prepareCreate" returnType="String" visibility="public"/>
+        <Method name="create" returnType="String" visibility="public"/>
+        <Method name="prepareEdit" returnType="String" visibility="public"/>
+        <Method name="prepareEditPassword" returnType="String" visibility="public"/>
+        <Method name="update" returnType="String" visibility="public"/>
+        <Method name="updatePassword" returnType="String" visibility="public"/>
+        <Method name="destroy" returnType="String" visibility="public"/>
+        <Method name="performDestroy" returnType="void" visibility="private"/>
+        <Method name="getItems" returnType="List&lt;WebUser&gt;" visibility="public"/>
+        <Method name="recreateModel" returnType="void" visibility="private"/>
+        <Method name="getItemsAvailableSelectMany" returnType="SelectItem[]" visibility="public"/>
+        <Method name="getItemsAvailableSelectOne" returnType="SelectItem[]" visibility="public"/>
+        <Method name="getWebUser" returnType="WebUser" visibility="public">
+          <Argument type="java.lang.Long" name="id"/>
+        </Method>
+        <Method name="getInstitutionFacade" returnType="InstitutionFacade" visibility="public"/>
+        <Method name="setInstitutionFacade" returnType="void" visibility="public">
+          <Argument type="InstitutionFacade" name="institutionFacade"/>
+        </Method>
+        <Method name="getLoggedUser" returnType="WebUser" visibility="public"/>
+        <Method name="setLoggedUser" returnType="void" visibility="public">
+          <Argument type="WebUser" name="loggedUser"/>
+        </Method>
+        <Method name="getUserName" returnType="String" visibility="public"/>
+        <Method name="setUserName" returnType="void" visibility="public">
+          <Argument type="String" name="userName"/>
+        </Method>
+        <Method name="getPassword" returnType="String" visibility="public"/>
+        <Method name="setPassword" returnType="void" visibility="public">
+          <Argument type="String" name="password"/>
+        </Method>
+        <Method name="getEjbFacade" returnType="facade.WebUserFacade" visibility="public"/>
+        <Method name="setEjbFacade" returnType="void" visibility="public">
+          <Argument type="facade.WebUserFacade" name="ejbFacade"/>
+        </Method>
+        <Method name="getCurrent" returnType="WebUser" visibility="public"/>
+        <Method name="setCurrent" returnType="void" visibility="public">
+          <Argument type="WebUser" name="current"/>
+        </Method>
+        <Method name="getCommonController" returnType="CommonController" visibility="public"/>
+        <Method name="getEmptyModel" returnType="MapModel" visibility="public"/>
+        <Method name="setEmptyModel" returnType="void" visibility="public">
+          <Argument type="MapModel" name="emptyModel"/>
+        </Method>
+        <Method name="getProjectFacade" returnType="ProjectFacade" visibility="public"/>
+        <Method name="setProjectFacade" returnType="void" visibility="public">
+          <Argument type="ProjectFacade" name="projectFacade"/>
+        </Method>
+        <Method name="getUploadFacade" returnType="UploadFacade" visibility="public"/>
+        <Method name="setUploadFacade" returnType="void" visibility="public">
+          <Argument type="UploadFacade" name="uploadFacade"/>
+        </Method>
+        <Method name="getComments" returnType="String" visibility="public"/>
+        <Method name="setComments" returnType="void" visibility="public">
+          <Argument type="String" name="comments"/>
+        </Method>
+        <Method name="getCurrentUpload" returnType="Upload" visibility="public"/>
+        <Method name="setCurrentUpload" returnType="void" visibility="public">
+          <Argument type="Upload" name="currentUpload"/>
+        </Method>
+        <Method name="getCurrentProjectUploads" returnType="List&lt;Upload&gt;" visibility="public"/>
+        <Method name="setCurrentProjectUploads" returnType="void" visibility="public">
+          <Argument type="List&lt;Upload&gt;" name="currentProjectUploads"/>
+        </Method>
+        <Method name="getListOfProjects" returnType="List&lt;Project&gt;" visibility="public"/>
+        <Method name="setListOfProjects" returnType="void" visibility="public">
+          <Argument type="List&lt;Project&gt;" name="listOfProjects"/>
+        </Method>
+        <Method name="getFromDate" returnType="Date" visibility="public"/>
+        <Method name="setFromDate" returnType="void" visibility="public">
+          <Argument type="Date" name="fromDate"/>
+        </Method>
+        <Method name="getToDate" returnType="Date" visibility="public"/>
+        <Method name="setToDate" returnType="void" visibility="public">
+          <Argument type="Date" name="toDate"/>
+        </Method>
+        <Method name="getClientUploads" returnType="List&lt;Upload&gt;" visibility="public"/>
+        <Method name="setClientUploads" returnType="void" visibility="public">
+          <Argument type="List&lt;Upload&gt;" name="clientUploads"/>
+        </Method>
+        <Method name="getCompanyUploads" returnType="List&lt;Upload&gt;" visibility="public"/>
+        <Method name="setCompanyUploads" returnType="void" visibility="public">
+          <Argument type="List&lt;Upload&gt;" name="companyUploads"/>
+        </Method>
+        <Method name="getInstitution" returnType="Institution" visibility="public"/>
+        <Method name="setInstitution" returnType="void" visibility="public">
+          <Argument type="Institution" name="institution"/>
+        </Method>
+        <Method name="getSelectedProvinces" returnType="Area[]" visibility="public"/>
+        <Method name="setSelectedProvinces" returnType="void" visibility="public">
+          <Argument type="Area[]" name="selectedProvinces"/>
+        </Method>
+        <Method name="getSelectedProjectArea" returnType="ProjectArea" visibility="public"/>
+        <Method name="setSelectedProjectArea" returnType="void" visibility="public">
+          <Argument type="ProjectArea" name="selectedProjectArea"/>
+        </Method>
+        <Method name="getProjectAreaFacade" returnType="ProjectAreaFacade" visibility="public"/>
+        <Method name="getSelectedDistricts" returnType="List&lt;Area&gt;" visibility="public"/>
+        <Method name="setSelectedDistricts" returnType="void" visibility="public">
+          <Argument type="List&lt;Area&gt;" name="selectedDistricts"/>
+        </Method>
+        <Method name="getSelectedDsAreas" returnType="List&lt;Area&gt;" visibility="public"/>
+        <Method name="setSelectedDsAreas" returnType="void" visibility="public">
+          <Argument type="List&lt;Area&gt;" name="selectedDsAreas"/>
+        </Method>
+        <Method name="getSelectedGnAreas" returnType="List&lt;Area&gt;" visibility="public"/>
+        <Method name="setSelectedGnAreas" returnType="void" visibility="public">
+          <Argument type="List&lt;Area&gt;" name="selectedGnAreas"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ProjectController" package="bean" visibility="public" xPosition="1520.0" yPosition="420.0">
+      <Fields>
+        <Field name="current" type="Project" visibility="private"/>
+        <Field name="items" type="List&lt;Project&gt;" visibility="private"/>
+        <Field name="ejbFacade" type="facade.ProjectFacade" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getFacade" returnType="ProjectFacade" visibility="private"/>
+        <Method name="prepareList" returnType="String" visibility="public"/>
+        <Method name="prepareView" returnType="String" visibility="public"/>
+        <Method name="prepareCreate" returnType="String" visibility="public"/>
+        <Method name="create" returnType="String" visibility="public"/>
+        <Method name="prepareEdit" returnType="String" visibility="public"/>
+        <Method name="update" returnType="String" visibility="public"/>
+        <Method name="destroy" returnType="String" visibility="public"/>
+        <Method name="destroyAndView" returnType="String" visibility="public"/>
+        <Method name="performDestroy" returnType="void" visibility="private"/>
+        <Method name="updateCurrentItem" returnType="void" visibility="private"/>
+        <Method name="getItems" returnType="List&lt;Project&gt;" visibility="public"/>
+        <Method name="recreateModel" returnType="void" visibility="private"/>
+        <Method name="getProject" returnType="Project" visibility="public">
+          <Argument type="java.lang.Long" name="id"/>
+        </Method>
+        <Method name="getCurrent" returnType="Project" visibility="public"/>
+        <Method name="setCurrent" returnType="void" visibility="public">
+          <Argument type="Project" name="current"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="PersonController" package="bean" visibility="public" xPosition="1820.0" yPosition="420.0">
+      <Fields>
+        <Field name="current" type="Person" visibility="private"/>
+        <Field name="items" type="List&lt;Person&gt;" visibility="private"/>
+        <Field name="ejbFacade" type="facade.PersonFacade" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getFacade" returnType="PersonFacade" visibility="private"/>
+        <Method name="prepareList" returnType="String" visibility="public"/>
+        <Method name="prepareView" returnType="String" visibility="public"/>
+        <Method name="prepareCreate" returnType="String" visibility="public"/>
+        <Method name="create" returnType="String" visibility="public"/>
+        <Method name="prepareEdit" returnType="String" visibility="public"/>
+        <Method name="update" returnType="String" visibility="public"/>
+        <Method name="destroy" returnType="String" visibility="public"/>
+        <Method name="destroyAndView" returnType="String" visibility="public"/>
+        <Method name="performDestroy" returnType="void" visibility="private"/>
+        <Method name="getItems" returnType="List&lt;Person&gt;" visibility="public"/>
+        <Method name="recreateModel" returnType="void" visibility="private"/>
+        <Method name="getPerson" returnType="Person" visibility="public">
+          <Argument type="java.lang.Long" name="id"/>
+        </Method>
+        <Method name="getCurrent" returnType="Person" visibility="public"/>
+        <Method name="setCurrent" returnType="void" visibility="public">
+          <Argument type="Person" name="current"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="InstitutionController" package="bean" visibility="public" xPosition="2120.0" yPosition="420.0">
+      <Fields>
+        <Field name="ejbFacade" type="facade.InstitutionFacade" visibility="private"/>
+        <Field name="current" type="Institution" visibility="private"/>
+        <Field name="items" type="List&lt;Institution&gt;" visibility="private"/>
+        <Field name="providers" type="List&lt;Institution&gt;" visibility="private"/>
+        <Field name="clients" type="List&lt;Institution&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getInstitutions" returnType="List&lt;Institution&gt;" visibility="public">
+          <Argument type="InstitutionType" name="type"/>
+        </Method>
+        <Method name="completeInstitutions" returnType="List&lt;Institution&gt;" visibility="public">
+          <Argument type="String" name="qry"/>
+        </Method>
+        <Method name="getFacade" returnType="InstitutionFacade" visibility="private"/>
+        <Method name="prepareListOfProviders" returnType="String" visibility="public"/>
+        <Method name="prepareListOfClients" returnType="String" visibility="public"/>
+        <Method name="prepareView" returnType="String" visibility="public"/>
+        <Method name="prepareCreate" returnType="String" visibility="public"/>
+        <Method name="createProvider" returnType="String" visibility="public"/>
+        <Method name="createClient" returnType="String" visibility="public"/>
+        <Method name="prepareEdit" returnType="String" visibility="public"/>
+        <Method name="prepareEditCompany" returnType="String" visibility="public"/>
+        <Method name="update" returnType="String" visibility="public"/>
+        <Method name="updateCompany" returnType="String" visibility="public"/>
+        <Method name="destroy" returnType="String" visibility="public"/>
+        <Method name="performDestroy" returnType="void" visibility="private"/>
+        <Method name="getItems" returnType="List&lt;Institution&gt;" visibility="public"/>
+        <Method name="recreateModel" returnType="void" visibility="private"/>
+        <Method name="getItemsAvailableSelectMany" returnType="List&lt;Institution&gt;" visibility="public"/>
+        <Method name="getItemsAvailableSelectOne" returnType="List&lt;Institution&gt;" visibility="public"/>
+        <Method name="getInstitution" returnType="Institution" visibility="public">
+          <Argument type="java.lang.Long" name="id"/>
+        </Method>
+        <Method name="getCurrent" returnType="Institution" visibility="public"/>
+        <Method name="setCurrent" returnType="void" visibility="public">
+          <Argument type="Institution" name="current"/>
+        </Method>
+        <Method name="getProviders" returnType="List&lt;Institution&gt;" visibility="public"/>
+        <Method name="setProviders" returnType="void" visibility="public">
+          <Argument type="List&lt;Institution&gt;" name="providers"/>
+        </Method>
+        <Method name="getClients" returnType="List&lt;Institution&gt;" visibility="public"/>
+        <Method name="setClients" returnType="void" visibility="public">
+          <Argument type="List&lt;Institution&gt;" name="clients"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="AreaController" package="bean" visibility="public" xPosition="20.0" yPosition="820.0">
+      <Fields>
+        <Field name="ejbFacade" type="AreaFacade" visibility="private"/>
+        <Field name="coordinateFacade" type="CoordinateFacade" visibility="package"/>
+        <Field name="items" type="List&lt;Area&gt;" visibility="private"/>
+        <Field name="mohAreas" type="List&lt;Area&gt;" visibility="package"/>
+        <Field name="phiAreas" type="List&lt;Area&gt;" visibility="package"/>
+        <Field name="rdhsAreas" type="List&lt;Area&gt;" visibility="package"/>
+        <Field name="pdhsAreas" type="List&lt;Area&gt;" visibility="package"/>
+        <Field name="dsAreas" type="List&lt;Area&gt;" visibility="private"/>
+        <Field name="provinces" type="List&lt;Area&gt;" visibility="private"/>
+        <Field name="selected" type="Area" visibility="private"/>
+        <Field name="webUserController" type="WebUserController" visibility="package"/>
+        <Field name="polygonModel" type="MapModel" visibility="private"/>
+        <Field name="file" type="UploadedFile" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getMohAreas" returnType="List&lt;Area&gt;" visibility="public"/>
+        <Method name="setMohAreas" returnType="void" visibility="public">
+          <Argument type="List&lt;Area&gt;" name="mohAreas"/>
+        </Method>
+        <Method name="getPhiAreas" returnType="List&lt;Area&gt;" visibility="public"/>
+        <Method name="setPhiAreas" returnType="void" visibility="public">
+          <Argument type="List&lt;Area&gt;" name="phiAreas"/>
+        </Method>
+        <Method name="getRdhsAreas" returnType="List&lt;Area&gt;" visibility="public"/>
+        <Method name="setRdhsAreas" returnType="void" visibility="public">
+          <Argument type="List&lt;Area&gt;" name="rdhsAreas"/>
+        </Method>
+        <Method name="getPdhsAreas" returnType="List&lt;Area&gt;" visibility="public"/>
+        <Method name="setPdhsAreas" returnType="void" visibility="public">
+          <Argument type="List&lt;Area&gt;" name="pdhsAreas"/>
+        </Method>
+        <Method name="getAreaById" returnType="Area" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="getGnAreasOfMoh" returnType="List&lt;Area&gt;" visibility="public">
+          <Argument type="Area" name="mohArea"/>
+        </Method>
+        <Method name="drawArea" returnType="String" visibility="public"/>
+        <Method name="getFile" returnType="UploadedFile" visibility="public"/>
+        <Method name="setFile" returnType="void" visibility="public">
+          <Argument type="UploadedFile" name="file"/>
+        </Method>
+        <Method name="saveMohCoordinates" returnType="String" visibility="public"/>
+        <Method name="saveGnCoordinates" returnType="String" visibility="public"/>
+        <Method name="addCoordinates" returnType="void" visibility="public">
+          <Argument type="Area" name="area"/>
+          <Argument type="String" name="s"/>
+        </Method>
+        <Method name="saveCoordinates" returnType="String" visibility="public"/>
+        <Method name="saveCentreCoordinates" returnType="String" visibility="public"/>
+        <Method name="toAddProvince" returnType="String" visibility="public"/>
+        <Method name="toAddDistrict" returnType="String" visibility="public"/>
+        <Method name="toAddMhoArea" returnType="String" visibility="public"/>
+        <Method name="toEducationalZones" returnType="String" visibility="public"/>
+        <Method name="toAddPhiArea" returnType="String" visibility="public"/>
+        <Method name="toAddGnArea" returnType="String" visibility="public"/>
+        <Method name="saveNewProvince" returnType="String" visibility="public"/>
+        <Method name="saveNewDistrict" returnType="String" visibility="public"/>
+        <Method name="saveNewMoh" returnType="String" visibility="public"/>
+        <Method name="saveNewEducationalZone" returnType="String" visibility="public"/>
+        <Method name="saveNewPhi" returnType="String" visibility="public"/>
+        <Method name="saveNewGn" returnType="String" visibility="public"/>
+        <Method name="getAreas" returnType="List&lt;Area&gt;" visibility="public">
+          <Argument type="AreaType" name="areaType"/>
+          <Argument type="Area" name="superArea"/>
+        </Method>
+        <Method name="completeProvinces" returnType="List&lt;Area&gt;" visibility="public">
+          <Argument type="String" name="qry"/>
+        </Method>
+        <Method name="completeDistricts" returnType="List&lt;Area&gt;" visibility="public">
+          <Argument type="String" name="qry"/>
+        </Method>
+        <Method name="completeDsAreas" returnType="List&lt;Area&gt;" visibility="public">
+          <Argument type="String" name="qry"/>
+        </Method>
+        <Method name="completeGnAreas" returnType="List&lt;Area&gt;" visibility="public">
+          <Argument type="String" name="qry"/>
+        </Method>
+        <Method name="getAreas" returnType="List&lt;Area&gt;" visibility="public">
+          <Argument type="String" name="qry"/>
+          <Argument type="AreaType" name="areaType"/>
+        </Method>
+        <Method name="getArea" returnType="Area" visibility="public">
+          <Argument type="String" name="nameOrCode"/>
+          <Argument type="AreaType" name="areaType"/>
+        </Method>
+        <Method name="getSelected" returnType="Area" visibility="public"/>
+        <Method name="setSelected" returnType="void" visibility="public">
+          <Argument type="Area" name="selected"/>
+        </Method>
+        <Method name="setEmbeddableKeys" returnType="void" visibility="protected"/>
+        <Method name="initializeEmbeddableKey" returnType="void" visibility="protected"/>
+        <Method name="getFacade" returnType="AreaFacade" visibility="private"/>
+        <Method name="prepareCreate" returnType="Area" visibility="public"/>
+        <Method name="create" returnType="void" visibility="public"/>
+        <Method name="update" returnType="void" visibility="public"/>
+        <Method name="destroy" returnType="void" visibility="public"/>
+        <Method name="getItems" returnType="List&lt;Area&gt;" visibility="public"/>
+        <Method name="persist" returnType="void" visibility="private">
+          <Argument type="PersistAction" name="persistAction"/>
+          <Argument type="String" name="successMessage"/>
+        </Method>
+        <Method name="getItemsAvailableSelectMany" returnType="List&lt;Area&gt;" visibility="public"/>
+        <Method name="getItemsAvailableSelectOne" returnType="List&lt;Area&gt;" visibility="public"/>
+        <Method name="getPolygonModel" returnType="MapModel" visibility="public"/>
+        <Method name="onPolygonSelect" returnType="void" visibility="public">
+          <Argument type="OverlaySelectEvent" name="event"/>
+        </Method>
+        <Method name="getProvinces" returnType="List&lt;Area&gt;" visibility="public"/>
+        <Method name="setProvinces" returnType="void" visibility="public">
+          <Argument type="List&lt;Area&gt;" name="provinces"/>
+        </Method>
+        <Method name="getDsAreas" returnType="List&lt;Area&gt;" visibility="public"/>
+        <Method name="setDsAreas" returnType="void" visibility="public">
+          <Argument type="List&lt;Area&gt;" name="dsAreas"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="CoordinateController" package="bean" visibility="public" xPosition="320.0" yPosition="820.0">
+      <Fields>
+        <Field name="current" type="Coordinate" visibility="private"/>
+        <Field name="items" type="List&lt;Coordinate&gt;" visibility="private"/>
+        <Field name="ejbFacade" type="facade.CoordinateFacade" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getFacade" returnType="CoordinateFacade" visibility="private"/>
+        <Method name="prepareList" returnType="String" visibility="public"/>
+        <Method name="prepareView" returnType="String" visibility="public"/>
+        <Method name="prepareCreate" returnType="String" visibility="public"/>
+        <Method name="create" returnType="String" visibility="public"/>
+        <Method name="prepareEdit" returnType="String" visibility="public"/>
+        <Method name="update" returnType="String" visibility="public"/>
+        <Method name="destroy" returnType="String" visibility="public"/>
+        <Method name="destroyAndView" returnType="String" visibility="public"/>
+        <Method name="performDestroy" returnType="void" visibility="private"/>
+        <Method name="updateCurrentItem" returnType="void" visibility="private"/>
+        <Method name="getItems" returnType="List&lt;Coordinate&gt;" visibility="public"/>
+        <Method name="recreateModel" returnType="void" visibility="private"/>
+        <Method name="getItemsAvailableSelectMany" returnType="List&lt;Coordinate&gt;" visibility="public"/>
+        <Method name="getItemsAvailableSelectOne" returnType="List&lt;Coordinate&gt;" visibility="public"/>
+        <Method name="getCoordinate" returnType="Coordinate" visibility="public">
+          <Argument type="java.lang.Long" name="id"/>
+        </Method>
+        <Method name="getCurrent" returnType="Coordinate" visibility="public"/>
+        <Method name="setCurrent" returnType="void" visibility="public">
+          <Argument type="Coordinate" name="current"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ItemController" package="bean" visibility="public" xPosition="620.0" yPosition="820.0">
+      <Fields>
+        <Field name="ejbFacade" type="ItemFacade" visibility="private"/>
+        <Field name="items" type="List&lt;Item&gt;" visibility="private"/>
+        <Field name="selected" type="Item" visibility="private"/>
+        <Field name="sectors" type="List&lt;Item&gt;" visibility="private"/>
+        <Field name="costUnits" type="List&lt;Item&gt;" visibility="private"/>
+        <Field name="sourcesOfFunds" type="List&lt;Item&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getSelected" returnType="Item" visibility="public"/>
+        <Method name="setSelected" returnType="void" visibility="public">
+          <Argument type="Item" name="selected"/>
+        </Method>
+        <Method name="setEmbeddableKeys" returnType="void" visibility="protected"/>
+        <Method name="initializeEmbeddableKey" returnType="void" visibility="protected"/>
+        <Method name="getFacade" returnType="ItemFacade" visibility="private"/>
+        <Method name="prepareCreate" returnType="Item" visibility="public"/>
+        <Method name="create" returnType="void" visibility="public"/>
+        <Method name="update" returnType="void" visibility="public"/>
+        <Method name="destroy" returnType="void" visibility="public"/>
+        <Method name="getItems" returnType="List&lt;Item&gt;" visibility="public">
+          <Argument type="ItemType" name="type"/>
+        </Method>
+        <Method name="getItems" returnType="List&lt;Item&gt;" visibility="public"/>
+        <Method name="persist" returnType="void" visibility="private">
+          <Argument type="JsfUtil.PersistAction" name="persistAction"/>
+          <Argument type="String" name="successMessage"/>
+        </Method>
+        <Method name="getItem" returnType="Item" visibility="public">
+          <Argument type="java.lang.Long" name="id"/>
+        </Method>
+        <Method name="getItemsAvailableSelectMany" returnType="List&lt;Item&gt;" visibility="public"/>
+        <Method name="getItemsAvailableSelectOne" returnType="List&lt;Item&gt;" visibility="public"/>
+        <Method name="getSectors" returnType="List&lt;Item&gt;" visibility="public"/>
+        <Method name="setSectors" returnType="void" visibility="public">
+          <Argument type="List&lt;Item&gt;" name="sectors"/>
+        </Method>
+        <Method name="getCostUnits" returnType="List&lt;Item&gt;" visibility="public"/>
+        <Method name="setCostUnits" returnType="void" visibility="public">
+          <Argument type="List&lt;Item&gt;" name="costUnits"/>
+        </Method>
+        <Method name="getSourcesOfFunds" returnType="List&lt;Item&gt;" visibility="public"/>
+        <Method name="setSourcesOfFunds" returnType="void" visibility="public">
+          <Argument type="List&lt;Item&gt;" name="sourcesOfFunds"/>
+        </Method>
+        <Method name="getEjbFacade" returnType="ItemFacade" visibility="public"/>
+        <Method name="setEjbFacade" returnType="void" visibility="public">
+          <Argument type="ItemFacade" name="ejbFacade"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="UploadController" package="bean" visibility="public" xPosition="920.0" yPosition="820.0">
+      <Fields>
+        <Field name="current" type="Upload" visibility="private"/>
+        <Field name="items" type="List&lt;Upload&gt;" visibility="private"/>
+        <Field name="ejbFacade" type="facade.UploadFacade" visibility="private"/>
+        <Field name="webUserController" type="WebUserController" visibility="private"/>
+        <Field name="downloadingFile" type="StreamedContent" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="downloadCurrentFile" returnType="void" visibility="public"/>
+        <Method name="getDownloadingFile" returnType="StreamedContent" visibility="public"/>
+        <Method name="getFacade" returnType="UploadFacade" visibility="private"/>
+        <Method name="getUpload" returnType="Upload" visibility="public">
+          <Argument type="java.lang.Long" name="id"/>
+        </Method>
+        <Method name="getCurrent" returnType="Upload" visibility="public"/>
+        <Method name="setCurrent" returnType="void" visibility="public">
+          <Argument type="Upload" name="current"/>
+        </Method>
+        <Method name="getItems" returnType="List&lt;Upload&gt;" visibility="public"/>
+        <Method name="setItems" returnType="void" visibility="public">
+          <Argument type="List&lt;Upload&gt;" name="items"/>
+        </Method>
+        <Method name="getWebUserController" returnType="WebUserController" visibility="public"/>
+        <Method name="setWebUserController" returnType="void" visibility="public">
+          <Argument type="WebUserController" name="webUserController"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Enum name="UploadType" package="entity" visibility="public" xPosition="1220.0" yPosition="820.0">
+      <Literals>
+        <Literal name="Client_Upload_Prior_To_Proposal"/>
+        <Literal name="Company_Design_Upload"/>
+      </Literals>
+    </Enum>
+    <Class name="ProjectArea" package="entity" visibility="public" xPosition="1520.0" yPosition="820.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="id" type="Long" visibility="private"/>
+        <Field name="project" type="Project" visibility="private"/>
+        <Field name="area" type="Area" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getId" returnType="Long" visibility="public"/>
+        <Method name="setId" returnType="void" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="object"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="getProject" returnType="Project" visibility="public"/>
+        <Method name="setProject" returnType="void" visibility="public">
+          <Argument type="Project" name="project"/>
+        </Method>
+        <Method name="getArea" returnType="Area" visibility="public"/>
+        <Method name="setArea" returnType="void" visibility="public">
+          <Argument type="Area" name="area"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Enum name="Title" package="entity" visibility="public" xPosition="1820.0" yPosition="820.0">
+      <Literals>
+        <Literal name="Mr"/>
+        <Literal name="Mrs"/>
+        <Literal name="Miss"/>
+        <Literal name="Ms"/>
+        <Literal name="Master"/>
+        <Literal name="Baby"/>
+        <Literal name="Rev"/>
+        <Literal name="RtRev"/>
+        <Literal name="Hon"/>
+        <Literal name="RtHon"/>
+        <Literal name="Dr"/>
+        <Literal name="DrMrs"/>
+        <Literal name="DrMs"/>
+        <Literal name="DrMiss"/>
+        <Literal name="Prof"/>
+        <Literal name="ProfMrs"/>
+        <Literal name="Other"/>
+        <Literal name="Baby_Of"/>
+      </Literals>
+    </Enum>
+    <Class name="Area" package="entity" visibility="public" xPosition="2120.0" yPosition="820.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="id" type="Long" visibility="private"/>
+        <Field name="type" type="AreaType" visibility="package"/>
+        <Field name="name" type="String" visibility="package"/>
+        <Field name="code" type="String" visibility="package"/>
+        <Field name="parentArea" type="Area" visibility="package"/>
+        <Field name="creater" type="WebUser" visibility="package"/>
+        <Field name="createAt" type="Date" visibility="package"/>
+        <Field name="centreLongitude" type="double" visibility="package"/>
+        <Field name="centreLatitude" type="double" visibility="package"/>
+        <Field name="zoomLavel" type="double" visibility="package"/>
+        <Field name="officialPhone" type="String" visibility="package"/>
+        <Field name="officeFax" type="String" visibility="package"/>
+        <Field name="mobilePhone" type="String" visibility="package"/>
+        <Field name="personalAddress" type="String" visibility="package"/>
+        <Field name="officialAddress" type="String" visibility="package"/>
+        <Field name="officialEmail" type="String" visibility="package"/>
+        <Field name="personalEmail" type="String" visibility="package"/>
+        <Field name="pdhsArea" type="Area" visibility="package"/>
+        <Field name="rdhsArea" type="Area" visibility="package"/>
+        <Field name="mohArea" type="Area" visibility="package"/>
+        <Field name="phiArea" type="Area" visibility="package"/>
+        <Field name="population" type="Long" visibility="package"/>
+        <Field name="areaSqKm" type="Double" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getPopulation" returnType="Long" visibility="public"/>
+        <Method name="setPopulation" returnType="void" visibility="public">
+          <Argument type="Long" name="population"/>
+        </Method>
+        <Method name="getAreaSqKm" returnType="Double" visibility="public"/>
+        <Method name="setAreaSqKm" returnType="void" visibility="public">
+          <Argument type="Double" name="areaSqKm"/>
+        </Method>
+        <Method name="getOfficialPhone" returnType="String" visibility="public"/>
+        <Method name="setOfficialPhone" returnType="void" visibility="public">
+          <Argument type="String" name="officialPhone"/>
+        </Method>
+        <Method name="getOfficeFax" returnType="String" visibility="public"/>
+        <Method name="setOfficeFax" returnType="void" visibility="public">
+          <Argument type="String" name="officeFax"/>
+        </Method>
+        <Method name="getMobilePhone" returnType="String" visibility="public"/>
+        <Method name="setMobilePhone" returnType="void" visibility="public">
+          <Argument type="String" name="mobilePhone"/>
+        </Method>
+        <Method name="getPersonalAddress" returnType="String" visibility="public"/>
+        <Method name="setPersonalAddress" returnType="void" visibility="public">
+          <Argument type="String" name="personalAddress"/>
+        </Method>
+        <Method name="getOfficialAddress" returnType="String" visibility="public"/>
+        <Method name="setOfficialAddress" returnType="void" visibility="public">
+          <Argument type="String" name="officialAddress"/>
+        </Method>
+        <Method name="getOfficialEmail" returnType="String" visibility="public"/>
+        <Method name="setOfficialEmail" returnType="void" visibility="public">
+          <Argument type="String" name="officialEmail"/>
+        </Method>
+        <Method name="getPersonalEmail" returnType="String" visibility="public"/>
+        <Method name="setPersonalEmail" returnType="void" visibility="public">
+          <Argument type="String" name="personalEmail"/>
+        </Method>
+        <Method name="getCentreLongitude" returnType="double" visibility="public"/>
+        <Method name="setCentreLongitude" returnType="void" visibility="public">
+          <Argument type="double" name="centreLongitude"/>
+        </Method>
+        <Method name="getCentreLatitude" returnType="double" visibility="public"/>
+        <Method name="setCentreLatitude" returnType="void" visibility="public">
+          <Argument type="double" name="centreLatitude"/>
+        </Method>
+        <Method name="getZoomLavel" returnType="double" visibility="public"/>
+        <Method name="setZoomLavel" returnType="void" visibility="public">
+          <Argument type="double" name="zoomLavel"/>
+        </Method>
+        <Method name="getId" returnType="Long" visibility="public"/>
+        <Method name="setId" returnType="void" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="getType" returnType="AreaType" visibility="public"/>
+        <Method name="setType" returnType="void" visibility="public">
+          <Argument type="AreaType" name="type"/>
+        </Method>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="setName" returnType="void" visibility="public">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="getCode" returnType="String" visibility="public"/>
+        <Method name="setCode" returnType="void" visibility="public">
+          <Argument type="String" name="code"/>
+        </Method>
+        <Method name="getParentArea" returnType="Area" visibility="public"/>
+        <Method name="setParentArea" returnType="void" visibility="public">
+          <Argument type="Area" name="parentArea"/>
+        </Method>
+        <Method name="getCreater" returnType="WebUser" visibility="public"/>
+        <Method name="setCreater" returnType="void" visibility="public">
+          <Argument type="WebUser" name="creater"/>
+        </Method>
+        <Method name="getCreateAt" returnType="Date" visibility="public"/>
+        <Method name="setCreateAt" returnType="void" visibility="public">
+          <Argument type="Date" name="createAt"/>
+        </Method>
+        <Method name="getPdhsArea" returnType="Area" visibility="public"/>
+        <Method name="setPdhsArea" returnType="void" visibility="public">
+          <Argument type="Area" name="pdhsArea"/>
+        </Method>
+        <Method name="getRdhsArea" returnType="Area" visibility="public"/>
+        <Method name="setRdhsArea" returnType="void" visibility="public">
+          <Argument type="Area" name="rdhsArea"/>
+        </Method>
+        <Method name="getMohArea" returnType="Area" visibility="public"/>
+        <Method name="setMohArea" returnType="void" visibility="public">
+          <Argument type="Area" name="mohArea"/>
+        </Method>
+        <Method name="getPhiArea" returnType="Area" visibility="public"/>
+        <Method name="setPhiArea" returnType="void" visibility="public">
+          <Argument type="Area" name="phiArea"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="object"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Enum name="AreaType" package="entity" visibility="public" xPosition="20.0" yPosition="1220.0">
+      <Literals>
+        <Literal name="GN"/>
+        <Literal name="PHM"/>
+        <Literal name="PHI"/>
+        <Literal name="MOH"/>
+        <Literal name="DsArea"/>
+        <Literal name="District"/>
+        <Literal name="Province"/>
+        <Literal name="National"/>
+      </Literals>
+    </Enum>
+    <Enum name="ItemType" package="entity" visibility="public" xPosition="320.0" yPosition="1220.0">
+      <Literals>
+        <Literal name="Sector"/>
+        <Literal name="Cost_Unit"/>
+        <Literal name="Source_of_Funds"/>
+      </Literals>
+    </Enum>
+    <Class name="WebUser" package="entity" visibility="public" xPosition="620.0" yPosition="1220.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="id" type="Long" visibility="package"/>
+        <Field name="webUserPassword" type="String" visibility="package"/>
+        <Field name="webUserPerson" type="Person" visibility="package"/>
+        <Field name="name" type="String" visibility="package"/>
+        <Field name="description" type="String" visibility="package"/>
+        <Field name="creater" type="WebUser" visibility="package"/>
+        <Field name="createdAt" type="Date" visibility="package"/>
+        <Field name="retired" type="boolean" visibility="package"/>
+        <Field name="retirer" type="WebUser" visibility="package"/>
+        <Field name="retiredAt" type="Date" visibility="package"/>
+        <Field name="retireComments" type="String" visibility="package"/>
+        <Field name="activated" type="boolean" visibility="package"/>
+        <Field name="activator" type="WebUser" visibility="package"/>
+        <Field name="activatedAt" type="Date" visibility="package"/>
+        <Field name="activateComments" type="String" visibility="package"/>
+        <Field name="webUserRole" type="WebUserRole" visibility="package"/>
+        <Field name="primeTheme" type="String" visibility="package"/>
+        <Field name="defLocale" type="String" visibility="package"/>
+        <Field name="email" type="String" visibility="package"/>
+        <Field name="telNo" type="String" visibility="package"/>
+        <Field name="institution" type="Institution" visibility="package"/>
+        <Field name="code" type="String" visibility="package"/>
+        <Field name="systemAdministrator" type="boolean" visibility="private"/>
+        <Field name="superUser" type="boolean" visibility="private"/>
+        <Field name="user" type="boolean" visibility="private"/>
+        <Field name="institutionUser" type="boolean" visibility="private"/>
+        <Field name="institutionAdministrator" type="boolean" visibility="private"/>
+        <Field name="authorityUser" type="boolean" visibility="private"/>
+        <Field name="authorityAdministrator" type="boolean" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getSerialVersionUID" returnType="long" visibility="public" isStatic="true"/>
+        <Method name="getInstitution" returnType="Institution" visibility="public"/>
+        <Method name="setInstitution" returnType="void" visibility="public">
+          <Argument type="Institution" name="institution"/>
+        </Method>
+        <Method name="getEmail" returnType="String" visibility="public"/>
+        <Method name="setEmail" returnType="void" visibility="public">
+          <Argument type="String" name="email"/>
+        </Method>
+        <Method name="getTelNo" returnType="String" visibility="public"/>
+        <Method name="setTelNo" returnType="void" visibility="public">
+          <Argument type="String" name="telNo"/>
+        </Method>
+        <Method name="getDefLocale" returnType="String" visibility="public"/>
+        <Method name="setDefLocale" returnType="void" visibility="public">
+          <Argument type="String" name="defLocale"/>
+        </Method>
+        <Method name="getPrimeTheme" returnType="String" visibility="public"/>
+        <Method name="setPrimeTheme" returnType="void" visibility="public">
+          <Argument type="String" name="primeTheme"/>
+        </Method>
+        <Method name="getCreatedAt" returnType="Date" visibility="public"/>
+        <Method name="setCreatedAt" returnType="void" visibility="public">
+          <Argument type="Date" name="createdAt"/>
+        </Method>
+        <Method name="getCreater" returnType="WebUser" visibility="public"/>
+        <Method name="setCreater" returnType="void" visibility="public">
+          <Argument type="WebUser" name="creater"/>
+        </Method>
+        <Method name="getDescription" returnType="String" visibility="public"/>
+        <Method name="setDescription" returnType="void" visibility="public">
+          <Argument type="String" name="description"/>
+        </Method>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="setName" returnType="void" visibility="public">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="getRetireComments" returnType="String" visibility="public"/>
+        <Method name="setRetireComments" returnType="void" visibility="public">
+          <Argument type="String" name="retireComments"/>
+        </Method>
+        <Method name="isRetired" returnType="boolean" visibility="public"/>
+        <Method name="setRetired" returnType="void" visibility="public">
+          <Argument type="boolean" name="retired"/>
+        </Method>
+        <Method name="getRetiredAt" returnType="Date" visibility="public"/>
+        <Method name="setRetiredAt" returnType="void" visibility="public">
+          <Argument type="Date" name="retiredAt"/>
+        </Method>
+        <Method name="getRetirer" returnType="WebUser" visibility="public"/>
+        <Method name="setRetirer" returnType="void" visibility="public">
+          <Argument type="WebUser" name="retirer"/>
+        </Method>
+        <Method name="getId" returnType="Long" visibility="public"/>
+        <Method name="setId" returnType="void" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="getWebUserPassword" returnType="String" visibility="public"/>
+        <Method name="setWebUserPassword" returnType="void" visibility="public">
+          <Argument type="String" name="webUserPassword"/>
+        </Method>
+        <Method name="getWebUserPerson" returnType="Person" visibility="public"/>
+        <Method name="setWebUserPerson" returnType="void" visibility="public">
+          <Argument type="Person" name="webUserPerson"/>
+        </Method>
+        <Method name="getActivateComments" returnType="String" visibility="public"/>
+        <Method name="setActivateComments" returnType="void" visibility="public">
+          <Argument type="String" name="activateComments"/>
+        </Method>
+        <Method name="isActivated" returnType="boolean" visibility="public"/>
+        <Method name="setActivated" returnType="void" visibility="public">
+          <Argument type="boolean" name="activated"/>
+        </Method>
+        <Method name="getActivatedAt" returnType="Date" visibility="public"/>
+        <Method name="setActivatedAt" returnType="void" visibility="public">
+          <Argument type="Date" name="activatedAt"/>
+        </Method>
+        <Method name="getActivator" returnType="WebUser" visibility="public"/>
+        <Method name="setActivator" returnType="void" visibility="public">
+          <Argument type="WebUser" name="activator"/>
+        </Method>
+        <Method name="getWebUserRole" returnType="WebUserRole" visibility="public"/>
+        <Method name="setWebUserRole" returnType="void" visibility="public">
+          <Argument type="WebUserRole" name="webUserRole"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="object"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="getCode" returnType="String" visibility="public"/>
+        <Method name="setCode" returnType="void" visibility="public">
+          <Argument type="String" name="code"/>
+        </Method>
+        <Method name="isSystemAdministrator" returnType="boolean" visibility="public"/>
+        <Method name="isSuperUser" returnType="boolean" visibility="public"/>
+        <Method name="isUser" returnType="boolean" visibility="public"/>
+        <Method name="isInstitutionUser" returnType="boolean" visibility="public"/>
+        <Method name="isInstitutionAdministrator" returnType="boolean" visibility="public"/>
+        <Method name="isAuthorityUser" returnType="boolean" visibility="public"/>
+        <Method name="isAuthorityAdministrator" returnType="boolean" visibility="public"/>
+      </Methods>
+    </Class>
+    <Enum name="InstitutionType" package="entity" visibility="public" xPosition="920.0" yPosition="1220.0">
+      <Literals>
+        <Literal name="Ministry_of_Health"/>
+        <Literal name="Apporving_Authority"/>
+        <Literal name="Provincial_Department_of_Health_Services"/>
+        <Literal name="Regional_Department_of_Health_Department"/>
+        <Literal name="National_Hospital"/>
+        <Literal name="Teaching_Hospital"/>
+        <Literal name="District_General_Hospital"/>
+        <Literal name="Base_Hospital"/>
+        <Literal name="Divisional_Hospital"/>
+        <Literal name="Primary_Medical_Care_Unit"/>
+        <Literal name="MOH_Office"/>
+        <Literal name="Stake_Holder"/>
+        <Literal name="Partner"/>
+        <Literal name="Private_Sector_Institute"/>
+        <Literal name="Other"/>
+      </Literals>
+    </Enum>
+    <Class name="Project" package="entity" visibility="public" xPosition="1220.0" yPosition="1220.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="package" isStatic="true" isFinal="true"/>
+        <Field name="id" type="Long" visibility="private"/>
+        <Field name="projectTitle" type="String" visibility="private"/>
+        <Field name="sector" type="Item" visibility="private"/>
+        <Field name="allIsland" type="Boolean" visibility="private"/>
+        <Field name="province" type="Area" visibility="private"/>
+        <Field name="district" type="Area" visibility="private"/>
+        <Field name="dsArea" type="Area" visibility="private"/>
+        <Field name="gnArea" type="Area" visibility="private"/>
+        <Field name="provinces" type="List&lt;ProjectArea&gt;" visibility="private"/>
+        <Field name="districts" type="List&lt;ProjectArea&gt;" visibility="private"/>
+        <Field name="dsDivisions" type="List&lt;ProjectArea&gt;" visibility="private"/>
+        <Field name="gnDivisions" type="List&lt;ProjectArea&gt;" visibility="private"/>
+        <Field name="projectDescription" type="String" visibility="private"/>
+        <Field name="currentStageType" type="ProjectStageType" visibility="private"/>
+        <Field name="originatingInstitution" type="Institution" visibility="private"/>
+        <Field name="fileNumber" type="String" visibility="private"/>
+        <Field name="projectCost" type="Double" visibility="private"/>
+        <Field name="projectCostUnit" type="Item" visibility="private"/>
+        <Field name="sourceOfFunds" type="Item" visibility="private"/>
+        <Field name="requestSubmittedAt" type="Date" visibility="private"/>
+        <Field name="cancelled" type="boolean" visibility="private"/>
+        <Field name="rejected" type="boolean" visibility="private"/>
+        <Field name="reactivated" type="boolean" visibility="private"/>
+        <Field name="creater" type="WebUser" visibility="private"/>
+        <Field name="createdAt" type="Date" visibility="private"/>
+        <Field name="proposalSubmittedAt" type="Date" visibility="private"/>
+        <Field name="proposalSubmittedBy" type="WebUser" visibility="private"/>
+        <Field name="proposalAcceptedAt" type="Date" visibility="private"/>
+        <Field name="editor" type="WebUser" visibility="private"/>
+        <Field name="editedAt" type="Date" visibility="private"/>
+        <Field name="checkedBy" type="WebUser" visibility="private"/>
+        <Field name="checkeAt" type="Date" visibility="private"/>
+        <Field name="proposalDate" type="Date" visibility="private"/>
+        <Field name="retired" type="boolean" visibility="private"/>
+        <Field name="retirer" type="WebUser" visibility="private"/>
+        <Field name="retiredAt" type="Date" visibility="private"/>
+        <Field name="retireComments" type="String" visibility="private"/>
+        <Field name="notes" type="String" visibility="private"/>
+        <Field name="specialNotes" type="String" visibility="private"/>
+        <Field name="proposal" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getProjectTitle" returnType="String" visibility="public"/>
+        <Method name="setProjectTitle" returnType="void" visibility="public">
+          <Argument type="String" name="projectTitle"/>
+        </Method>
+        <Method name="getSector" returnType="Item" visibility="public"/>
+        <Method name="setSector" returnType="void" visibility="public">
+          <Argument type="Item" name="sector"/>
+        </Method>
+        <Method name="getAllIsland" returnType="Boolean" visibility="public"/>
+        <Method name="setAllIsland" returnType="void" visibility="public">
+          <Argument type="Boolean" name="allIsland"/>
+        </Method>
+        <Method name="getProvinces" returnType="List&lt;ProjectArea&gt;" visibility="public"/>
+        <Method name="setProvinces" returnType="void" visibility="public">
+          <Argument type="List&lt;ProjectArea&gt;" name="provinces"/>
+        </Method>
+        <Method name="getDistricts" returnType="List&lt;ProjectArea&gt;" visibility="public"/>
+        <Method name="setDistricts" returnType="void" visibility="public">
+          <Argument type="List&lt;ProjectArea&gt;" name="districts"/>
+        </Method>
+        <Method name="getDsDivisions" returnType="List&lt;ProjectArea&gt;" visibility="public"/>
+        <Method name="setDsDivisions" returnType="void" visibility="public">
+          <Argument type="List&lt;ProjectArea&gt;" name="dsDivisions"/>
+        </Method>
+        <Method name="getGnDivisions" returnType="List&lt;ProjectArea&gt;" visibility="public"/>
+        <Method name="setGnDivisions" returnType="void" visibility="public">
+          <Argument type="List&lt;ProjectArea&gt;" name="gnDivisions"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="object"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="getId" returnType="Long" visibility="public"/>
+        <Method name="setId" returnType="void" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="getProjectDescription" returnType="String" visibility="public"/>
+        <Method name="setProjectDescription" returnType="void" visibility="public">
+          <Argument type="String" name="projectDescription"/>
+        </Method>
+        <Method name="getCurrentStageType" returnType="ProjectStageType" visibility="public"/>
+        <Method name="setCurrentStageType" returnType="void" visibility="public">
+          <Argument type="ProjectStageType" name="currentStageType"/>
+        </Method>
+        <Method name="getOriginatingInstitution" returnType="Institution" visibility="public"/>
+        <Method name="setOriginatingInstitution" returnType="void" visibility="public">
+          <Argument type="Institution" name="originatingInstitution"/>
+        </Method>
+        <Method name="getFileNumber" returnType="String" visibility="public"/>
+        <Method name="setFileNumber" returnType="void" visibility="public">
+          <Argument type="String" name="fileNumber"/>
+        </Method>
+        <Method name="isCancelled" returnType="boolean" visibility="public"/>
+        <Method name="setCancelled" returnType="void" visibility="public">
+          <Argument type="boolean" name="cancelled"/>
+        </Method>
+        <Method name="isRejected" returnType="boolean" visibility="public"/>
+        <Method name="setRejected" returnType="void" visibility="public">
+          <Argument type="boolean" name="rejected"/>
+        </Method>
+        <Method name="isReactivated" returnType="boolean" visibility="public"/>
+        <Method name="setReactivated" returnType="void" visibility="public">
+          <Argument type="boolean" name="reactivated"/>
+        </Method>
+        <Method name="getCreater" returnType="WebUser" visibility="public"/>
+        <Method name="setCreater" returnType="void" visibility="public">
+          <Argument type="WebUser" name="creater"/>
+        </Method>
+        <Method name="getCreatedAt" returnType="Date" visibility="public"/>
+        <Method name="setCreatedAt" returnType="void" visibility="public">
+          <Argument type="Date" name="createdAt"/>
+        </Method>
+        <Method name="isRetired" returnType="boolean" visibility="public"/>
+        <Method name="setRetired" returnType="void" visibility="public">
+          <Argument type="boolean" name="retired"/>
+        </Method>
+        <Method name="getRetirer" returnType="WebUser" visibility="public"/>
+        <Method name="setRetirer" returnType="void" visibility="public">
+          <Argument type="WebUser" name="retirer"/>
+        </Method>
+        <Method name="getRetiredAt" returnType="Date" visibility="public"/>
+        <Method name="setRetiredAt" returnType="void" visibility="public">
+          <Argument type="Date" name="retiredAt"/>
+        </Method>
+        <Method name="getRetireComments" returnType="String" visibility="public"/>
+        <Method name="setRetireComments" returnType="void" visibility="public">
+          <Argument type="String" name="retireComments"/>
+        </Method>
+        <Method name="getEditor" returnType="WebUser" visibility="public"/>
+        <Method name="setEditor" returnType="void" visibility="public">
+          <Argument type="WebUser" name="editor"/>
+        </Method>
+        <Method name="getEditedAt" returnType="Date" visibility="public"/>
+        <Method name="setEditedAt" returnType="void" visibility="public">
+          <Argument type="Date" name="editedAt"/>
+        </Method>
+        <Method name="getCheckedBy" returnType="WebUser" visibility="public"/>
+        <Method name="setCheckedBy" returnType="void" visibility="public">
+          <Argument type="WebUser" name="checkedBy"/>
+        </Method>
+        <Method name="getCheckeAt" returnType="Date" visibility="public"/>
+        <Method name="setCheckeAt" returnType="void" visibility="public">
+          <Argument type="Date" name="checkeAt"/>
+        </Method>
+        <Method name="getNotes" returnType="String" visibility="public"/>
+        <Method name="setNotes" returnType="void" visibility="public">
+          <Argument type="String" name="notes"/>
+        </Method>
+        <Method name="getSpecialNotes" returnType="String" visibility="public"/>
+        <Method name="setSpecialNotes" returnType="void" visibility="public">
+          <Argument type="String" name="specialNotes"/>
+        </Method>
+        <Method name="getRequestSubmittedAt" returnType="Date" visibility="public"/>
+        <Method name="setRequestSubmittedAt" returnType="void" visibility="public">
+          <Argument type="Date" name="requestSubmittedAt"/>
+        </Method>
+        <Method name="getProposal" returnType="String" visibility="public"/>
+        <Method name="setProposal" returnType="void" visibility="public">
+          <Argument type="String" name="proposal"/>
+        </Method>
+        <Method name="getProposalSubmittedAt" returnType="Date" visibility="public"/>
+        <Method name="setProposalSubmittedAt" returnType="void" visibility="public">
+          <Argument type="Date" name="proposalSubmittedAt"/>
+        </Method>
+        <Method name="getProposalSubmittedBy" returnType="WebUser" visibility="public"/>
+        <Method name="setProposalSubmittedBy" returnType="void" visibility="public">
+          <Argument type="WebUser" name="proposalSubmittedBy"/>
+        </Method>
+        <Method name="getProposalAcceptedAt" returnType="Date" visibility="public"/>
+        <Method name="setProposalAcceptedAt" returnType="void" visibility="public">
+          <Argument type="Date" name="proposalAcceptedAt"/>
+        </Method>
+        <Method name="getProjectCost" returnType="Double" visibility="public"/>
+        <Method name="setProjectCost" returnType="void" visibility="public">
+          <Argument type="Double" name="projectCost"/>
+        </Method>
+        <Method name="getProjectCostUnit" returnType="Item" visibility="public"/>
+        <Method name="setProjectCostUnit" returnType="void" visibility="public">
+          <Argument type="Item" name="projectCostUnit"/>
+        </Method>
+        <Method name="getSourceOfFunds" returnType="Item" visibility="public"/>
+        <Method name="setSourceOfFunds" returnType="void" visibility="public">
+          <Argument type="Item" name="sourceOfFunds"/>
+        </Method>
+        <Method name="getProposalDate" returnType="Date" visibility="public"/>
+        <Method name="setProposalDate" returnType="void" visibility="public">
+          <Argument type="Date" name="proposalDate"/>
+        </Method>
+        <Method name="getProvince" returnType="Area" visibility="public"/>
+        <Method name="setProvince" returnType="void" visibility="public">
+          <Argument type="Area" name="province"/>
+        </Method>
+        <Method name="getDistrict" returnType="Area" visibility="public"/>
+        <Method name="setDistrict" returnType="void" visibility="public">
+          <Argument type="Area" name="district"/>
+        </Method>
+        <Method name="getDsArea" returnType="Area" visibility="public"/>
+        <Method name="setDsArea" returnType="void" visibility="public">
+          <Argument type="Area" name="dsArea"/>
+        </Method>
+        <Method name="getGnArea" returnType="Area" visibility="public"/>
+        <Method name="setGnArea" returnType="void" visibility="public">
+          <Argument type="Area" name="gnArea"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Person" package="entity" visibility="public" xPosition="1520.0" yPosition="1220.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="package" isStatic="true" isFinal="true"/>
+        <Field name="id" type="Long" visibility="package"/>
+        <Field name="name" type="String" visibility="package"/>
+        <Field name="description" type="String" visibility="package"/>
+        <Field name="nic" type="String" visibility="package"/>
+        <Field name="address" type="String" visibility="package"/>
+        <Field name="fax" type="String" visibility="package"/>
+        <Field name="email" type="String" visibility="package"/>
+        <Field name="website" type="String" visibility="package"/>
+        <Field name="mobile" type="String" visibility="package"/>
+        <Field name="fullName" type="String" visibility="package"/>
+        <Field name="nameWithInitials" type="String" visibility="package"/>
+        <Field name="phone" type="String" visibility="package"/>
+        <Field name="initials" type="String" visibility="package"/>
+        <Field name="surName" type="String" visibility="package"/>
+        <Field name="lastName" type="String" visibility="package"/>
+        <Field name="zoneCode" type="String" visibility="package"/>
+        <Field name="dob" type="Date" visibility="package"/>
+        <Field name="creater" type="WebUser" visibility="package"/>
+        <Field name="createdAt" type="Date" visibility="package"/>
+        <Field name="editer" type="WebUser" visibility="package"/>
+        <Field name="editedAt" type="Date" visibility="package"/>
+        <Field name="retired" type="boolean" visibility="package"/>
+        <Field name="retirer" type="WebUser" visibility="package"/>
+        <Field name="retiredAt" type="Date" visibility="package"/>
+        <Field name="retireComments" type="String" visibility="package"/>
+        <Field name="institution" type="Institution" visibility="package"/>
+        <Field name="title" type="Title" visibility="package"/>
+        <Field name="sex" type="Sex" visibility="package"/>
+        <Field name="nameWithTitle" type="String" visibility="package"/>
+        <Field name="ageMonths" type="int" visibility="package"/>
+        <Field name="ageDays" type="int" visibility="package"/>
+        <Field name="ageYears" type="int" visibility="package"/>
+        <Field name="age" type="String" visibility="package"/>
+        <Field name="ageInDays" type="long" visibility="package"/>
+        <Field name="serealNumber" type="int" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="calAgeFromDob" returnType="void" visibility="public"/>
+        <Method name="getAge" returnType="String" visibility="public"/>
+        <Method name="getAgeInDays" returnType="Long" visibility="public"/>
+        <Method name="getAgeMonths" returnType="int" visibility="public"/>
+        <Method name="getAgeDays" returnType="int" visibility="public"/>
+        <Method name="getAgeYears" returnType="int" visibility="public"/>
+        <Method name="getNameWithTitle" returnType="String" visibility="public"/>
+        <Method name="setNameWithTitle" returnType="void" visibility="public">
+          <Argument type="String" name="nameWithTitle"/>
+        </Method>
+        <Method name="getSex" returnType="Sex" visibility="public"/>
+        <Method name="setSex" returnType="void" visibility="public">
+          <Argument type="Sex" name="sex"/>
+        </Method>
+        <Method name="getRetireComments" returnType="String" visibility="public"/>
+        <Method name="setRetireComments" returnType="void" visibility="public">
+          <Argument type="String" name="retireComments"/>
+        </Method>
+        <Method name="getId" returnType="Long" visibility="public"/>
+        <Method name="setId" returnType="void" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="getCreatedAt" returnType="Date" visibility="public"/>
+        <Method name="setCreatedAt" returnType="void" visibility="public">
+          <Argument type="Date" name="createdAt"/>
+        </Method>
+        <Method name="getEditer" returnType="WebUser" visibility="public"/>
+        <Method name="setEditer" returnType="void" visibility="public">
+          <Argument type="WebUser" name="editer"/>
+        </Method>
+        <Method name="getEditedAt" returnType="Date" visibility="public"/>
+        <Method name="setEditedAt" returnType="void" visibility="public">
+          <Argument type="Date" name="editedAt"/>
+        </Method>
+        <Method name="getCreater" returnType="WebUser" visibility="public"/>
+        <Method name="setCreater" returnType="void" visibility="public">
+          <Argument type="WebUser" name="creater"/>
+        </Method>
+        <Method name="getDescription" returnType="String" visibility="public"/>
+        <Method name="setDescription" returnType="void" visibility="public">
+          <Argument type="String" name="description"/>
+        </Method>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="setName" returnType="void" visibility="public">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="getInitials" returnType="String" visibility="public"/>
+        <Method name="setInitials" returnType="void" visibility="public">
+          <Argument type="String" name="initials"/>
+        </Method>
+        <Method name="getSurName" returnType="String" visibility="public"/>
+        <Method name="setSurName" returnType="void" visibility="public">
+          <Argument type="String" name="surName"/>
+        </Method>
+        <Method name="getZoneCode" returnType="String" visibility="public"/>
+        <Method name="setZoneCode" returnType="void" visibility="public">
+          <Argument type="String" name="zoneCode"/>
+        </Method>
+        <Method name="isRetired" returnType="boolean" visibility="public"/>
+        <Method name="setRetired" returnType="void" visibility="public">
+          <Argument type="boolean" name="retired"/>
+        </Method>
+        <Method name="getRetiredAt" returnType="Date" visibility="public"/>
+        <Method name="setRetiredAt" returnType="void" visibility="public">
+          <Argument type="Date" name="retiredAt"/>
+        </Method>
+        <Method name="getRetirer" returnType="WebUser" visibility="public"/>
+        <Method name="setRetirer" returnType="void" visibility="public">
+          <Argument type="WebUser" name="retirer"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="object"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="getAddress" returnType="String" visibility="public"/>
+        <Method name="setAddress" returnType="void" visibility="public">
+          <Argument type="String" name="address"/>
+        </Method>
+        <Method name="getFax" returnType="String" visibility="public"/>
+        <Method name="setFax" returnType="void" visibility="public">
+          <Argument type="String" name="fax"/>
+        </Method>
+        <Method name="getEmail" returnType="String" visibility="public"/>
+        <Method name="setEmail" returnType="void" visibility="public">
+          <Argument type="String" name="email"/>
+        </Method>
+        <Method name="getWebsite" returnType="String" visibility="public"/>
+        <Method name="setWebsite" returnType="void" visibility="public">
+          <Argument type="String" name="website"/>
+        </Method>
+        <Method name="getMobile" returnType="String" visibility="public"/>
+        <Method name="setMobile" returnType="void" visibility="public">
+          <Argument type="String" name="mobile"/>
+        </Method>
+        <Method name="getInstitution" returnType="Institution" visibility="public"/>
+        <Method name="setInstitution" returnType="void" visibility="public">
+          <Argument type="Institution" name="institution"/>
+        </Method>
+        <Method name="getTitle" returnType="Title" visibility="public"/>
+        <Method name="setTitle" returnType="void" visibility="public">
+          <Argument type="Title" name="title"/>
+        </Method>
+        <Method name="getDob" returnType="Date" visibility="public"/>
+        <Method name="setDob" returnType="void" visibility="public">
+          <Argument type="Date" name="dob"/>
+        </Method>
+        <Method name="getFullName" returnType="String" visibility="public"/>
+        <Method name="setFullName" returnType="void" visibility="public">
+          <Argument type="String" name="fullName"/>
+        </Method>
+        <Method name="getNameWithInitials" returnType="String" visibility="public"/>
+        <Method name="setNameWithInitials" returnType="void" visibility="public">
+          <Argument type="String" name="nameWithInitials"/>
+        </Method>
+        <Method name="getPhone" returnType="String" visibility="public"/>
+        <Method name="setPhone" returnType="void" visibility="public">
+          <Argument type="String" name="phone"/>
+        </Method>
+        <Method name="getNic" returnType="String" visibility="public"/>
+        <Method name="setNic" returnType="void" visibility="public">
+          <Argument type="String" name="nic"/>
+        </Method>
+        <Method name="getLastName" returnType="String" visibility="public"/>
+        <Method name="setLastName" returnType="void" visibility="public">
+          <Argument type="String" name="lastName"/>
+        </Method>
+        <Method name="getSerealNumber" returnType="int" visibility="public"/>
+        <Method name="setSerealNumber" returnType="void" visibility="public">
+          <Argument type="int" name="serealNumber"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Enum name="ProjectStageType" package="entity" visibility="public" xPosition="1820.0" yPosition="1220.0">
+      <Literals>
+        <Literal name="Adding_Details_To_Project"/>
+        <Literal name="Awaiting_Authority_Approval"/>
+        <Literal name="Awaiting_Resubmission"/>
+        <Literal name="Approved_Subjected_To_Changes"/>
+        <Literal name="Approved"/>
+        <Literal name="Rejected"/>
+        <Literal name="Project_Finalized"/>
+      </Literals>
+    </Enum>
+    <Class name="Institution" package="entity" visibility="public" xPosition="2120.0" yPosition="1220.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="id" type="Long" visibility="private"/>
+        <Field name="institutionType" type="InstitutionType" visibility="private"/>
+        <Field name="name" type="String" visibility="private"/>
+        <Field name="code" type="String" visibility="private"/>
+        <Field name="address" type="String" visibility="private"/>
+        <Field name="fax" type="String" visibility="private"/>
+        <Field name="email" type="String" visibility="private"/>
+        <Field name="phone" type="String" visibility="private"/>
+        <Field name="mobile" type="String" visibility="private"/>
+        <Field name="web" type="String" visibility="private"/>
+        <Field name="coordinate" type="Coordinate" visibility="private"/>
+        <Field name="creater" type="WebUser" visibility="private"/>
+        <Field name="createdAt" type="Date" visibility="private"/>
+        <Field name="editer" type="WebUser" visibility="private"/>
+        <Field name="editedAt" type="Date" visibility="private"/>
+        <Field name="retired" type="boolean" visibility="private"/>
+        <Field name="retirer" type="WebUser" visibility="private"/>
+        <Field name="retiredAt" type="Date" visibility="private"/>
+        <Field name="retireComments" type="String" visibility="private"/>
+        <Field name="lastPartOfAddress" type="String" visibility="private"/>
+        <Field name="lastPartOfName" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getLastPartOfAddress" returnType="String" visibility="public"/>
+        <Method name="getId" returnType="Long" visibility="public"/>
+        <Method name="setId" returnType="void" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="object"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="getInstitutionType" returnType="InstitutionType" visibility="public"/>
+        <Method name="setInstitutionType" returnType="void" visibility="public">
+          <Argument type="InstitutionType" name="institutionType"/>
+        </Method>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="setName" returnType="void" visibility="public">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="getAddress" returnType="String" visibility="public"/>
+        <Method name="setAddress" returnType="void" visibility="public">
+          <Argument type="String" name="address"/>
+        </Method>
+        <Method name="getFax" returnType="String" visibility="public"/>
+        <Method name="setFax" returnType="void" visibility="public">
+          <Argument type="String" name="fax"/>
+        </Method>
+        <Method name="getEmail" returnType="String" visibility="public"/>
+        <Method name="setEmail" returnType="void" visibility="public">
+          <Argument type="String" name="email"/>
+        </Method>
+        <Method name="getPhone" returnType="String" visibility="public"/>
+        <Method name="setPhone" returnType="void" visibility="public">
+          <Argument type="String" name="phone"/>
+        </Method>
+        <Method name="getMobile" returnType="String" visibility="public"/>
+        <Method name="setMobile" returnType="void" visibility="public">
+          <Argument type="String" name="mobile"/>
+        </Method>
+        <Method name="getWeb" returnType="String" visibility="public"/>
+        <Method name="setWeb" returnType="void" visibility="public">
+          <Argument type="String" name="web"/>
+        </Method>
+        <Method name="getCoordinate" returnType="Coordinate" visibility="public"/>
+        <Method name="setCoordinate" returnType="void" visibility="public">
+          <Argument type="Coordinate" name="coordinate"/>
+        </Method>
+        <Method name="getCode" returnType="String" visibility="public"/>
+        <Method name="setCode" returnType="void" visibility="public">
+          <Argument type="String" name="code"/>
+        </Method>
+        <Method name="getCreater" returnType="WebUser" visibility="public"/>
+        <Method name="setCreater" returnType="void" visibility="public">
+          <Argument type="WebUser" name="creater"/>
+        </Method>
+        <Method name="getCreatedAt" returnType="Date" visibility="public"/>
+        <Method name="setCreatedAt" returnType="void" visibility="public">
+          <Argument type="Date" name="createdAt"/>
+        </Method>
+        <Method name="getEditer" returnType="WebUser" visibility="public"/>
+        <Method name="setEditer" returnType="void" visibility="public">
+          <Argument type="WebUser" name="editer"/>
+        </Method>
+        <Method name="getEditedAt" returnType="Date" visibility="public"/>
+        <Method name="setEditedAt" returnType="void" visibility="public">
+          <Argument type="Date" name="editedAt"/>
+        </Method>
+        <Method name="isRetired" returnType="boolean" visibility="public"/>
+        <Method name="setRetired" returnType="void" visibility="public">
+          <Argument type="boolean" name="retired"/>
+        </Method>
+        <Method name="getRetirer" returnType="WebUser" visibility="public"/>
+        <Method name="setRetirer" returnType="void" visibility="public">
+          <Argument type="WebUser" name="retirer"/>
+        </Method>
+        <Method name="getRetiredAt" returnType="Date" visibility="public"/>
+        <Method name="setRetiredAt" returnType="void" visibility="public">
+          <Argument type="Date" name="retiredAt"/>
+        </Method>
+        <Method name="getRetireComments" returnType="String" visibility="public"/>
+        <Method name="setRetireComments" returnType="void" visibility="public">
+          <Argument type="String" name="retireComments"/>
+        </Method>
+        <Method name="getLastPartOfName" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="ProjectInstitution" package="entity" visibility="public" xPosition="20.0" yPosition="1620.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="id" type="Long" visibility="private"/>
+        <Field name="project" type="Project" visibility="private"/>
+        <Field name="institution" type="Institution" visibility="private"/>
+        <Field name="natureOfIntervention" type="String" visibility="private"/>
+        <Field name="currentStatusOfIntervention" type="String" visibility="private"/>
+        <Field name="isIncludeDevelopmentActivity" type="Boolean" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getId" returnType="Long" visibility="public"/>
+        <Method name="setId" returnType="void" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="object"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="getProject" returnType="Project" visibility="public"/>
+        <Method name="setProject" returnType="void" visibility="public">
+          <Argument type="Project" name="project"/>
+        </Method>
+        <Method name="getInstitution" returnType="Institution" visibility="public"/>
+        <Method name="setInstitution" returnType="void" visibility="public">
+          <Argument type="Institution" name="institution"/>
+        </Method>
+        <Method name="getNatureOfIntervention" returnType="String" visibility="public"/>
+        <Method name="setNatureOfIntervention" returnType="void" visibility="public">
+          <Argument type="String" name="natureOfIntervention"/>
+        </Method>
+        <Method name="getCurrentStatusOfIntervention" returnType="String" visibility="public"/>
+        <Method name="setCurrentStatusOfIntervention" returnType="void" visibility="public">
+          <Argument type="String" name="currentStatusOfIntervention"/>
+        </Method>
+        <Method name="getIsIncludeDevelopmentActivity" returnType="Boolean" visibility="public"/>
+        <Method name="setIsIncludeDevelopmentActivity" returnType="void" visibility="public">
+          <Argument type="Boolean" name="isIncludeDevelopmentActivity"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Coordinate" package="entity" visibility="public" xPosition="320.0" yPosition="1620.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="id" type="Long" visibility="private"/>
+        <Field name="institution" type="Institution" visibility="package"/>
+        <Field name="area" type="Area" visibility="private"/>
+        <Field name="longitude" type="double" visibility="package"/>
+        <Field name="latitude" type="double" visibility="package"/>
+        <Field name="elevation" type="double" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getInstitution" returnType="Institution" visibility="public"/>
+        <Method name="setInstitution" returnType="void" visibility="public">
+          <Argument type="Institution" name="institution"/>
+        </Method>
+        <Method name="getLongitude" returnType="double" visibility="public"/>
+        <Method name="setLongitude" returnType="void" visibility="public">
+          <Argument type="double" name="longitude"/>
+        </Method>
+        <Method name="getLatitude" returnType="double" visibility="public"/>
+        <Method name="setLatitude" returnType="void" visibility="public">
+          <Argument type="double" name="latitude"/>
+        </Method>
+        <Method name="getElevation" returnType="double" visibility="public"/>
+        <Method name="setElevation" returnType="void" visibility="public">
+          <Argument type="double" name="elevation"/>
+        </Method>
+        <Method name="getId" returnType="Long" visibility="public"/>
+        <Method name="setId" returnType="void" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="object"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="getArea" returnType="Area" visibility="public"/>
+        <Method name="setArea" returnType="void" visibility="public">
+          <Argument type="Area" name="area"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Upload" package="entity" visibility="public" xPosition="620.0" yPosition="1620.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="package" isStatic="true" isFinal="true"/>
+        <Field name="id" type="//Main Properties
+Long" visibility="package"/>
+        <Field name="institution" type="Institution" visibility="package"/>
+        <Field name="creater" type="WebUser" visibility="package"/>
+        <Field name="createdAt" type="Date" visibility="package"/>
+        <Field name="retired" type="boolean" visibility="package"/>
+        <Field name="retirer" type="WebUser" visibility="package"/>
+        <Field name="retiredAt" type="Date" visibility="package"/>
+        <Field name="retireComments" type="String" visibility="package"/>
+        <Field name="baImage" type="byte[]" visibility="package"/>
+        <Field name="fileName" type="String" visibility="package"/>
+        <Field name="fileType" type="String" visibility="package"/>
+        <Field name="comments" type="String" visibility="package"/>
+        <Field name="project" type="Project" visibility="private"/>
+        <Field name="uploadType" type="UploadType" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getInstitution" returnType="Institution" visibility="public"/>
+        <Method name="setInstitution" returnType="void" visibility="public">
+          <Argument type="Institution" name="institution"/>
+        </Method>
+        <Method name="getSerialVersionUID" returnType="long" visibility="public" isStatic="true"/>
+        <Method name="getId" returnType="Long" visibility="public"/>
+        <Method name="setId" returnType="void" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="object"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="getCreater" returnType="WebUser" visibility="public"/>
+        <Method name="setCreater" returnType="void" visibility="public">
+          <Argument type="WebUser" name="creater"/>
+        </Method>
+        <Method name="getCreatedAt" returnType="Date" visibility="public"/>
+        <Method name="setCreatedAt" returnType="void" visibility="public">
+          <Argument type="Date" name="createdAt"/>
+        </Method>
+        <Method name="isRetired" returnType="boolean" visibility="public"/>
+        <Method name="setRetired" returnType="void" visibility="public">
+          <Argument type="boolean" name="retired"/>
+        </Method>
+        <Method name="getRetirer" returnType="WebUser" visibility="public"/>
+        <Method name="setRetirer" returnType="void" visibility="public">
+          <Argument type="WebUser" name="retirer"/>
+        </Method>
+        <Method name="getRetiredAt" returnType="Date" visibility="public"/>
+        <Method name="setRetiredAt" returnType="void" visibility="public">
+          <Argument type="Date" name="retiredAt"/>
+        </Method>
+        <Method name="getRetireComments" returnType="String" visibility="public"/>
+        <Method name="setRetireComments" returnType="void" visibility="public">
+          <Argument type="String" name="retireComments"/>
+        </Method>
+        <Method name="getBaImage" returnType="byte[]" visibility="public"/>
+        <Method name="setBaImage" returnType="void" visibility="public">
+          <Argument type="byte[]" name="baImage"/>
+        </Method>
+        <Method name="getFileName" returnType="String" visibility="public"/>
+        <Method name="setFileName" returnType="void" visibility="public">
+          <Argument type="String" name="fileName"/>
+        </Method>
+        <Method name="getFileType" returnType="String" visibility="public"/>
+        <Method name="setFileType" returnType="void" visibility="public">
+          <Argument type="String" name="fileType"/>
+        </Method>
+        <Method name="getComments" returnType="String" visibility="public"/>
+        <Method name="setComments" returnType="void" visibility="public">
+          <Argument type="String" name="comments"/>
+        </Method>
+        <Method name="getProject" returnType="Project" visibility="public"/>
+        <Method name="setProject" returnType="void" visibility="public">
+          <Argument type="Project" name="project"/>
+        </Method>
+        <Method name="getUploadType" returnType="UploadType" visibility="public"/>
+        <Method name="setUploadType" returnType="void" visibility="public">
+          <Argument type="UploadType" name="uploadType"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Enum name="Sex" package="entity" visibility="public" xPosition="920.0" yPosition="1620.0">
+      <Literals>
+        <Literal name="Male"/>
+        <Literal name="Female"/>
+        <Literal name="Unknown"/>
+      </Literals>
+    </Enum>
+    <Class name="Item" package="entity" visibility="public" xPosition="1220.0" yPosition="1620.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="id" type="Long" visibility="private"/>
+        <Field name="type" type="ItemType" visibility="package"/>
+        <Field name="name" type="String" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getType" returnType="ItemType" visibility="public"/>
+        <Method name="setType" returnType="void" visibility="public">
+          <Argument type="ItemType" name="type"/>
+        </Method>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="setName" returnType="void" visibility="public">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="getId" returnType="Long" visibility="public"/>
+        <Method name="setId" returnType="void" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="object"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Enum name="WebUserRole" package="entity" visibility="public" xPosition="1520.0" yPosition="1620.0">
+      <Literals>
+        <Literal name="System_Administrator"/>
+        <Literal name="Super_User"/>
+        <Literal name="User"/>
+        <Literal name="Institution_User"/>
+        <Literal name="Institution_Administrator"/>
+        <Literal name="Authority_User"/>
+        <Literal name="Authority_Admin"/>
+      </Literals>
+    </Enum>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="institutionType" source="entity.Institution" target="entity.InstitutionType" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="institution" source="entity.Upload" target="entity.Institution" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="items" source="bean.AreaController" target="entity.Area" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Area&gt;"/>
+    <HasRelation name="institution" source="entity.WebUser" target="entity.Institution" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="activator" source="entity.WebUser" target="entity.WebUser" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="webUserController" source="bean.UploadController" target="bean.WebUserController" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="originatingInstitution" source="entity.Project" target="entity.Institution" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="bean.AreaController" target="entity.Upload" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="rdhsAreas" source="bean.AreaController" target="entity.Area" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Area&gt;"/>
+    <HasRelation name="uploadFacade" source="bean.WebUserController" target="facade.UploadFacade" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="institution" source="entity.Coordinate" target="entity.Institution" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="editer" source="entity.Person" target="entity.WebUser" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="entity.Project" target="entity.Area" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="pdhsArea" source="entity.Area" target="entity.Area" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="rdhsArea" source="entity.Area" target="entity.Area" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="institution" source="entity.ProjectInstitution" target="entity.Institution" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="entity.Upload" target="entity.Institution" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="items" source="bean.PersonController" target="entity.Person" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Person&gt;"/>
+    <HasRelation name="area" source="entity.ProjectArea" target="entity.Area" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="creater" source="entity.Area" target="entity.WebUser" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="clients" source="bean.InstitutionController" target="entity.Institution" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Institution&gt;"/>
+    <HasRelation name="dsDivisions" source="entity.Project" target="entity.ProjectArea" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;ProjectArea&gt;"/>
+    <HasRelation name="selectedGnAreas" source="bean.WebUserController" target="entity.Area" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Area&gt;"/>
+    <UseRelation source="entity.Project" target="entity.WebUser" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="project" source="entity.ProjectInstitution" target="entity.Project" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="provinces" source="bean.AreaController" target="entity.Area" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Area&gt;"/>
+    <UseRelation source="entity.Institution" target="entity.WebUser" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="entity.Coordinate" target="entity.Institution" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="districts" source="entity.Project" target="entity.ProjectArea" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;ProjectArea&gt;"/>
+    <UseRelation source="bean.WebUserController" target="entity.Institution" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="coordinate" source="entity.Institution" target="entity.Coordinate" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="retirer" source="entity.Person" target="entity.WebUser" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="bean.CommonController" target="entity.AreaType" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="ejbFacade" source="bean.AreaController" target="facade.AreaFacade" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="items" source="bean.UploadController" target="entity.Upload" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Upload&gt;"/>
+    <HasRelation name="parentArea" source="entity.Area" target="entity.Area" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="selected" source="bean.AreaController" target="entity.Area" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="entity.Institution" target="entity.Institution" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="phiAreas" source="bean.AreaController" target="entity.Area" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Area&gt;"/>
+    <HasRelation name="gnArea" source="entity.Project" target="entity.Area" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="projectFacade" source="bean.WebUserController" target="facade.ProjectFacade" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="facade.WebUserFacade" target="facade.AbstractFacade"/>
+    <HasRelation name="sourcesOfFunds" source="bean.ItemController" target="entity.Item" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Item&gt;"/>
+    <HasRelation name="project" source="entity.Upload" target="entity.Project" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="bean.ProjectController" target="entity.Project" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="bean.AreaController" target="entity.Area" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="entity.Person" target="entity.WebUser" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="provinces" source="entity.Project" target="entity.ProjectArea" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;ProjectArea&gt;"/>
+    <UseRelation source="entity.Upload" target="entity.Project" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="entity.WebUser" target="entity.Person" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="facade.InstitutionFacade" target="facade.AbstractFacade"/>
+    <HasRelation name="proposalSubmittedBy" source="entity.Project" target="entity.WebUser" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="selected" source="bean.ItemController" target="entity.Item" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="institutionFacade" source="bean.WebUserController" target="facade.InstitutionFacade" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="entity.Person" target="entity.Title" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="retirer" source="entity.Project" target="entity.WebUser" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="entity.ProjectInstitution" target="entity.Institution" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="items" source="bean.CoordinateController" target="entity.Coordinate" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Coordinate&gt;"/>
+    <UseRelation source="bean.UploadController" target="entity.Upload" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="project" source="entity.ProjectArea" target="entity.Project" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="retirer" source="entity.Institution" target="entity.WebUser" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="facade.ProjectAreaFacade" target="facade.AbstractFacade"/>
+    <HasRelation name="coordinateFacade" source="bean.AreaController" target="facade.CoordinateFacade" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="facade.AreaFacade" target="facade.AbstractFacade"/>
+    <UseRelation source="bean.CommonController" target="entity.Item" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="webUserRole" source="entity.WebUser" target="entity.WebUserRole" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="facade.UploadFacade" target="facade.AbstractFacade"/>
+    <HasRelation name="currentProject" source="bean.WebUserController" target="entity.Project" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="entity.Upload" target="entity.Upload" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="entity.WebUser" target="entity.Institution" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="webUserPerson" source="entity.WebUser" target="entity.Person" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="entity.WebUser" target="entity.WebUserRole" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="items" source="bean.ProjectController" target="entity.Project" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Project&gt;"/>
+    <HasRelation name="current" source="bean.WebUserController" target="entity.WebUser" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="bean.WebUserController" target="entity.Item" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="current" source="bean.PersonController" target="entity.Person" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="items" source="bean.InstitutionController" target="entity.Institution" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Institution&gt;"/>
+    <UseRelation source="entity.Item" target="entity.Item" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="facade.ItemFacade" target="facade.AbstractFacade"/>
+    <HasRelation name="district" source="entity.Project" target="entity.Area" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="entity.Project" target="entity.Institution" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="editer" source="entity.Institution" target="entity.WebUser" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="entity.Area" target="entity.WebUser" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="creater" source="entity.Institution" target="entity.WebUser" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="items" source="bean.ItemController" target="entity.Item" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Item&gt;"/>
+    <HasRelation name="type" source="entity.Area" target="entity.AreaType" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="creater" source="entity.Project" target="entity.WebUser" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="bean.ItemController" target="entity.Item" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="current" source="bean.InstitutionController" target="entity.Institution" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="uploadType" source="entity.Upload" target="entity.UploadType" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="current" source="bean.ProjectController" target="entity.Project" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="bean.PersonController" target="entity.Person" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="current" source="bean.CoordinateController" target="entity.Coordinate" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="bean.WebUserController" target="bean.CommonController" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="selectedProjectArea" source="bean.WebUserController" target="entity.ProjectArea" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="entity.Person" target="entity.Sex" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="facade.CoordinateFacade" target="facade.AbstractFacade"/>
+    <HasRelation name="dsAreas" source="bean.AreaController" target="entity.Area" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Area&gt;"/>
+    <HasRelation name="selectedDsAreas" source="bean.WebUserController" target="entity.Area" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Area&gt;"/>
+    <UseRelation source="entity.Area" target="entity.AreaType" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="type" source="entity.Item" target="entity.ItemType" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="sourceOfFunds" source="entity.Project" target="entity.Item" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="bean.WebUserController" target="entity.Area" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="checkedBy" source="entity.Project" target="entity.WebUser" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="sectors" source="bean.ItemController" target="entity.Item" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Item&gt;"/>
+    <HasRelation name="creater" source="entity.Person" target="entity.WebUser" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="commonController" source="bean.WebUserController" target="bean.CommonController" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="mohArea" source="entity.Area" target="entity.Area" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="dsArea" source="entity.Project" target="entity.Area" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="pdhsAreas" source="bean.AreaController" target="entity.Area" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Area&gt;"/>
+    <IsRelation name="is" source="facade.PersonFacade" target="facade.AbstractFacade"/>
+    <HasRelation name="title" source="entity.Person" target="entity.Title" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="bean.AreaController" target="entity.AreaType" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="bean.WebUserController" target="entity.WebUser" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="ejbFacade" source="bean.ItemController" target="facade.ItemFacade" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="bean.CommonController" target="entity.Institution" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="sector" source="entity.Project" target="entity.Item" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="bean.WebUserController" target="entity.ProjectStageType" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="entity.Project" target="entity.Item" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="bean.WebUserController" target="entity.Upload" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="providers" source="bean.InstitutionController" target="entity.Institution" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Institution&gt;"/>
+    <HasRelation name="companyUploads" source="bean.WebUserController" target="entity.Upload" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Upload&gt;"/>
+    <UseRelation source="bean.WebUserController" target="entity.Project" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="items" source="bean.WebUserController" target="entity.WebUser" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;WebUser&gt;"/>
+    <HasRelation name="phiArea" source="entity.Area" target="entity.Area" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="costUnits" source="bean.ItemController" target="entity.Item" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Item&gt;"/>
+    <HasRelation name="current" source="bean.UploadController" target="entity.Upload" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="entity.ProjectArea" target="entity.Project" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="area" source="entity.Coordinate" target="entity.Area" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="mohAreas" source="bean.AreaController" target="entity.Area" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Area&gt;"/>
+    <HasRelation name="loggedUser" source="bean.WebUserController" target="entity.WebUser" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="bean.ItemController" target="facade.util.JsfUtil" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="gnDivisions" source="entity.Project" target="entity.ProjectArea" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;ProjectArea&gt;"/>
+    <UseRelation source="entity.Coordinate" target="entity.Area" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="editor" source="entity.Project" target="entity.WebUser" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="facade.ProjectFacade" target="facade.AbstractFacade"/>
+    <UseRelation source="bean.CoordinateController" target="entity.Coordinate" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="creater" source="entity.Upload" target="entity.WebUser" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="creater" source="entity.WebUser" target="entity.WebUser" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="bean.CommonController" target="entity.WebUserRole" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="projectAreaFacade" source="bean.WebUserController" target="facade.ProjectAreaFacade" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="entity.Person" target="entity.Institution" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="institution" source="bean.WebUserController" target="entity.Institution" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="institution" source="entity.Person" target="entity.Institution" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="entity.Upload" target="entity.WebUser" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="projectCostUnit" source="entity.Project" target="entity.Item" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="entity.WebUser" target="entity.WebUser" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="listOfProjects" source="bean.WebUserController" target="entity.Project" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Project&gt;"/>
+    <HasRelation name="currentStageType" source="entity.Project" target="entity.ProjectStageType" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="bean.InstitutionController" target="entity.Institution" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="retirer" source="entity.WebUser" target="entity.WebUser" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="bean.UploadController" target="entity.WebUser" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="webUserController" source="bean.AreaController" target="bean.WebUserController" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="entity.Project" target="entity.ProjectStageType" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="currentProjectUploads" source="bean.WebUserController" target="entity.Upload" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Upload&gt;"/>
+    <HasRelation name="retirer" source="entity.Upload" target="entity.WebUser" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="currentUpload" source="bean.WebUserController" target="entity.Upload" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="province" source="entity.Project" target="entity.Area" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="entity.Project" target="entity.Project" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="selectedDistricts" source="bean.WebUserController" target="entity.Area" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Area&gt;"/>
+    <UseRelation source="facade.util.JsfUtil" target="entity.Item" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="entity.ProjectInstitution" target="entity.Project" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="clientUploads" source="bean.WebUserController" target="entity.Upload" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Upload&gt;"/>
+    <UseRelation source="entity.Area" target="entity.Area" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="entity.ProjectArea" target="entity.Area" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="sex" source="entity.Person" target="entity.Sex" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="entity.Institution" target="entity.Coordinate" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
