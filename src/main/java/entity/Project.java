@@ -47,7 +47,7 @@ public class Project implements Serializable {
     private ProjectType projectType;
 
     @ManyToOne
-    private Institution projectInstitution;
+    private Institution institution;
 
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<ProjectProvince> projectProvinces;
@@ -57,24 +57,19 @@ public class Project implements Serializable {
 
     private String fileNumber;
 
-    @ManyToOne
-    private Area district;
-
-    @ManyToOne
-    private Institution projectLocation;
-
-    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<ProjectInstitution> projectLocations;
-
-    private String projectTitle;
+    private String title;
 
     @Lob
-    private String projectDescription;
+    private String description;
 
-    private Double projectCost;
-
+    private Double allocation;
+    
     @ManyToOne
-    private Item projectCostUnit;
+    private Item allocationUnit;
+    
+    Double quantity;
+
+    
 
     @Lob
     private String remarks;
@@ -84,7 +79,9 @@ public class Project implements Serializable {
     
     
 
+    @OneToMany
     private List<Item> keywords;
+    
     
 
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
@@ -166,12 +163,12 @@ public class Project implements Serializable {
         this.projectType = projectType;
     }
 
-    public Institution getProjectInstitution() {
-        return projectInstitution;
+    public Institution getInstitution() {
+        return institution;
     }
 
-    public void setProjectInstitution(Institution projectInstitution) {
-        this.projectInstitution = projectInstitution;
+    public void setInstitution(Institution institution) {
+        this.institution = institution;
     }
 
     public List<Item> getKeywords() {
@@ -270,36 +267,36 @@ public class Project implements Serializable {
         this.projectLocations = projectLocations;
     }
 
-    public String getProjectTitle() {
-        return projectTitle;
+    public String getTitle() {
+        return title;
     }
 
-    public void setProjectTitle(String projectTitle) {
-        this.projectTitle = projectTitle;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getProjectDescription() {
-        return projectDescription;
+    public String getDescription() {
+        return description;
     }
 
-    public void setProjectDescription(String projectDescription) {
-        this.projectDescription = projectDescription;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public Double getProjectCost() {
-        return projectCost;
+    public Double getAllocation() {
+        return allocation;
     }
 
-    public void setProjectCost(Double projectCost) {
-        this.projectCost = projectCost;
+    public void setAllocation(Double allocation) {
+        this.allocation = allocation;
     }
 
-    public Item getProjectCostUnit() {
-        return projectCostUnit;
+    public Item getAllocationUnit() {
+        return allocationUnit;
     }
 
-    public void setProjectCostUnit(Item projectCostUnit) {
-        this.projectCostUnit = projectCostUnit;
+    public void setAllocationUnit(Item allocationUnit) {
+        this.allocationUnit = allocationUnit;
     }
 
     public String getRemarks() {

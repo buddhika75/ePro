@@ -16,28 +16,37 @@
     <h:body>
 
         <ui:composition template="./template.xhtml">
-
-            <ui:define name="addProject" >
-                <li>
-                    <h:commandLink value="#{bundle.AddProject}" action="#{webUserController.addNewProject()}"></h:commandLink>
-                </li>
-                <li>
-                    <h:commandLink class="w3-theme-d2" value="#{bundle.ProjectDetails}" action="#{webUserController.addNewProject()}"></h:commandLink>
-                </li>
-            </ui:define>
-
             <ui:define name="content">
-
-
-
-
                 <div class="w3-row" >
-
-
-
 
                     <h:form >
 
+                        <p:panel header="Bid Invitation" >
+                            <p:panelGrid  >
+                                <p:row >
+                                    
+                                    <p:column >
+                                        <h:outputLabel value="Category"  />
+                                    </p:column>
+                                    
+                                     <p:column >
+                                         <p:autoComplete value="#{webUserController.currentProject.ca}" >
+                                         
+                                         </p:autoComplete>
+                                         
+                                         
+                                    </p:column>
+                                    
+                                    
+                                    
+                                    
+                                </p:row>
+                                
+                            </p:panelGrid>
+                            
+                            
+                            
+                        </p:panel>
 
                         <p:panelGrid columns="2" styleClass="alignTop" style="vertical-align: top;">
 
@@ -66,7 +75,7 @@
                                 </h:panelGroup>
 
                                 <h:outputLabel value="Title" for="projectTitle" />
-                                <h:inputText style="width:95%;" id="projectTitle" value="#{webUserController.currentProject.projectTitle}" title="ProjectTitle" />
+                                <h:inputText style="width:95%;" id="projectTitle" value="#{webUserController.currentProject.title}" title="ProjectTitle" />
                                 <p:spacer></p:spacer>
 
 
@@ -161,18 +170,18 @@
 
                                 <h:outputLabel value="Project Description" for="pd"  />
                                 <h:inputTextarea  id="pd" 
-                                                  value="#{webUserController.currentProject.projectDescription}" 
+                                                  value="#{webUserController.currentProject.description}" 
                                                   title="Project Description" 
                                                   />
                                 <p:spacer></p:spacer>
 
                                 <h:outputLabel value="Project Cost" />
                                 <h:panelGrid columns="3">
-                                    <h:inputText value="#{webUserController.currentProject.projectCost}" 
+                                    <h:inputText value="#{webUserController.currentProject.allocation}" 
                                                  title="Project Cost" style="width: 60%;"
                                                  />
                                     <p:spacer height="1" width="15" ></p:spacer>
-                                    <h:selectOneMenu style="width: 30%;" value="#{webUserController.currentProject.projectCostUnit}" >
+                                    <h:selectOneMenu style="width: 30%;" value="#{webUserController.currentProject.allocationUnit}" >
                                         <f:selectItem itemLabel="Select Unit" ></f:selectItem>
                                         <f:selectItems value="#{itemController.costUnits}" ></f:selectItems>
                                     </h:selectOneMenu>
@@ -437,7 +446,7 @@
 
 
                                     <h:outputText value="Title:"/>
-                                    <h:outputText value="#{webUserController.currentProject.projectTitle}" title="ProjectTitle"/>
+                                    <h:outputText value="#{webUserController.currentProject.title}" title="ProjectTitle"/>
 
                                     <h:outputText value="Province:"/>
                                     <h:panelGroup >
@@ -463,15 +472,15 @@
 
 
                                     <h:outputText value="Description:"/>
-                                    <h:outputText value="#{webUserController.currentProject.projectDescription}" title="ProjectDescription"/>
+                                    <h:outputText value="#{webUserController.currentProject.description}" title="ProjectDescription"/>
 
                                     <h:outputText value="Project Cost:"/>
                                     <h:panelGroup>
-                                        <h:outputText value="#{webUserController.currentProject.projectCost}" title="ProjectCost">
+                                        <h:outputText value="#{webUserController.currentProject.allocation}" title="ProjectCost">
                                             <f:convertNumber pattern="#,##0.00" ></f:convertNumber>
                                         </h:outputText>
                                         <h:outputText value=" "/>
-                                        <h:outputText value="#{webUserController.currentProject.projectCostUnit.name}" title="ProjectCostUnit"/>
+                                        <h:outputText value="#{webUserController.currentProject.allocationUnit.name}" title="ProjectCostUnit"/>
                                     </h:panelGroup>
 
                                     <h:outputText value="Source Of Funds:"/>

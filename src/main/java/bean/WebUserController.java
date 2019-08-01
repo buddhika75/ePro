@@ -15,6 +15,7 @@ import entity.ProjectInstitution;
 import entity.ProjectProvince;
 import entity.ProjectSourceOfFund;
 import entity.ProjectStageType;
+import entity.ProjectType;
 import entity.Upload;
 import entity.UploadType;
 import entity.WebUserRole;
@@ -172,6 +173,23 @@ public class WebUserController implements Serializable {
     public void init() {
         emptyModel = new DefaultMapModel();
     }
+    
+    
+    public boolean canAddProcurement(){
+        if(loggedUser==null) return false;
+        if(loggedUser.isInstitutionUser()||loggedUser.isInstitutionAdministrator()){
+            return true;
+        }
+        return false;
+    }
+    
+    public boolean canApproveProcurement(){
+        if(loggedUser==null) return false;
+        if(loggedUser.isInstitutionAdministrator()){
+            return true;
+        }
+        return false;
+    }
 
     private void createProjectStageTitles() {
 
@@ -184,13 +202,13 @@ public class WebUserController implements Serializable {
         }
 
         switch (projectStageWorkingOn) {
-            case Awaiting_PEC_Approval:
+            case Awaiting_Bid_Invitation_Approval:
                 projectStageWorkingOnButtonTitle = "Mark as PEC Recommended";
                 projectStageWorkingOnDateTitle = "PEC Recommended Date";
                 projectStageWorkingOnCommentTitle = "PEC Recommendation";
                 projectStageWorkingOnPeriodTitle = null;
                 break;
-            case PEC_Rejected:
+            case Bid_Invitation_Rejected:
                 projectStageWorkingOnButtonTitle = "Mark as PEC Rejected";
                 projectStageWorkingOnDateTitle = "PEC Rejected Date";
                 projectStageWorkingOnCommentTitle = "PEC Rejection Comments";
@@ -272,7 +290,7 @@ public class WebUserController implements Serializable {
                 projectStageWorkingOnPeriodTitle = null;
                 break;
                 
-            case Incomplete_Pcp:
+            case Incomplete_Bid_Invitation:
                 
             case Ongoing:
                 projectStageWorkingOnButtonTitle = "Mark as Ongoing";
@@ -344,12 +362,12 @@ public class WebUserController implements Serializable {
     }
 
     public String listProjectsAwaitingPecApproval() {
-        listOfProjects = listProjects(ProjectStageType.Awaiting_PEC_Approval);
+        listOfProjects = listProjects(ProjectStageType.Awaiting_Bid_Invitation_Approval);
         return "/project_lists";
     }
 
     public String listProjectsPecRejected() {
-        listOfProjects = listProjects(ProjectStageType.PEC_Rejected);
+        listOfProjects = listProjects(ProjectStageType.Bid_Invitation_Rejected);
         return "/project_lists";
     }
 
@@ -639,7 +657,7 @@ public class WebUserController implements Serializable {
             return "";
         }
 //        currentProject.setRequestSubmittedAt(new Date());
-        currentProject.setCurrentStageType(ProjectStageType.Awaiting_PEC_Approval);
+        currentProject.setCurrentStageType(ProjectStageType.Awaiting_Bid_Invitation_Approval);
         getProjectFacade().edit(currentProject);
         sendSubmitClientRequestConfirmationEmail();
         JsfUtil.addSuccessMessage("Project Successfully Submitted");
@@ -669,18 +687,33 @@ public class WebUserController implements Serializable {
         emptyModel.addOverlay(marker);
         getInstitutionFacade().edit(getCurrent().getInstitution());
         JsfUtil.addSuccessMessage("Location Recorded");
-        return addNewProject();
+        return addNewBidInvitation();
     }
 
-    public String addNewProject() {
+    public String addNewBidInvitation() {
+        if(loggedUser==null){
+            JsfUtil.addErrorMessage("No Logged User");
+            return "";
+        }
+        if(!loggedUser.isInstitutionUser() && !loggedUser.isInstitutionAdministrator()){
+            JsfUtil.addErrorMessage("Your are NOT Authrerized");
+            return "";
+        }
+        if(loggedUser.getInstitution()==null){
+            JsfUtil.addErrorMessage("Your are NOT attached to any institution");
+            return "";
+        }
+        
         currentProject = new Project();
-        currentProject.setProjectTitle("");
+        currentProject.setInstitution(loggedUser.getInstitution());
+        currentProject.setProjectType(ProjectType.Bid_Invitation);
+        currentProject.setTitle("");
         Calendar c = Calendar.getInstance();
         currentProject.setProjectYear(c.get(Calendar.YEAR));
         currentProject.setCreater(loggedUser);
         currentProject.setCreatedAt(new Date());
-        currentProject.setCurrentStageType(ProjectStageType.Awaiting_PEC_Approval);
-        return "/project";
+        currentProject.setCurrentStageType(ProjectStageType.Awaiting_Bid_Invitation_Approval);
+        return "/bid_invitation";
     }
 
     public void updateProject() {
@@ -689,7 +722,7 @@ public class WebUserController implements Serializable {
             return;
         }
         if (currentProject.getId() == null) {
-            currentProject.setCurrentStageType(ProjectStageType.Awaiting_PEC_Approval);
+            currentProject.setCurrentStageType(ProjectStageType.Awaiting_Bid_Invitation_Approval);
             currentProject.setCreatedAt(new Date());
             currentProject.setCreater(loggedUser);
             getProjectFacade().create(currentProject);
@@ -742,7 +775,7 @@ public class WebUserController implements Serializable {
             JsfUtil.addErrorMessage("Nothing to update");
             return "";
         }
-        projectStageWorkingOn = ProjectStageType.Awaiting_PEC_Approval;
+        projectStageWorkingOn = ProjectStageType.Awaiting_Bid_Invitation_Approval;
         projectStageWorkingOnDate = new Date();
         projectStageWorkingOnComments = "";
         return "";
@@ -753,7 +786,7 @@ public class WebUserController implements Serializable {
             JsfUtil.addErrorMessage("Nothing to update");
             return "";
         }
-        projectStageWorkingOn = ProjectStageType.PEC_Rejected;
+        projectStageWorkingOn = ProjectStageType.Bid_Invitation_Rejected;
         projectStageWorkingOnDate = new Date();
         projectStageWorkingOnComments = "";
         return "";
@@ -1063,7 +1096,7 @@ public class WebUserController implements Serializable {
                 Project np = new Project();
                 np.setCreatedAt(new Date());
                 np.setCreater(loggedUser);
-                np.setCurrentStageType(ProjectStageType.Awaiting_PEC_Approval);
+                np.setCurrentStageType(ProjectStageType.Awaiting_Bid_Invitation_Approval);
 
                 Map m = new HashMap();
 
@@ -1101,17 +1134,17 @@ public class WebUserController implements Serializable {
 
                 cell = sheet.getCell(5, i);
                 strTile = cell.getContents();
-                np.setProjectTitle(strTile);
+                np.setTitle(strTile);
 
                 cell = sheet.getCell(6, i);
                 strDiscription = cell.getContents();
-                np.setProjectDescription(strDiscription);
+                np.setDescription(strDiscription);
 
                 cell = sheet.getCell(7, i);
                 strCost = cell.getContents();
                 try {
                     dblCost = Double.parseDouble(strCost);
-                    np.setProjectCost(dblCost);
+                    np.setAllocation(dblCost);
                 } catch (Exception e) {
                     System.out.println(i + ". e = " + e);
                 }
