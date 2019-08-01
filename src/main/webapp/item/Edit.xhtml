@@ -15,6 +15,12 @@
                         <p:outputLabel value="Name" for="name" />
                         <p:inputText id="name" value="#{itemController.selected.name}" title="Name" />
 
+                         <p:outputLabel value="Name in Sinhala" for="sname" />
+                        <p:inputText id="sname" value="#{itemController.selected.sname}" title="Name in Sinhala" />
+                        
+                        <p:outputLabel value="Name in Tamil" for="tname" />
+                        <p:inputText id="tname" value="#{itemController.selected.tname}" title="Name in Tamil" />F
+                        
                         <p:outputLabel value="Type" for="type" />
                         <h:selectOneMenu id="type" value="#{itemController.selected.type}" >
                             <f:selectItems value="#{commonController.itemTypes}" ></f:selectItems>

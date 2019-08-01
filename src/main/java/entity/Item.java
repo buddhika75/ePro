@@ -33,6 +33,8 @@ public class Item implements Serializable {
     @Enumerated(EnumType.STRING)
     ItemType type;
     String name;
+    private String sname;
+    private String tname;
     
     
      @ManyToOne
@@ -51,6 +53,9 @@ public class Item implements Serializable {
     private Date retiredAt;
     private String retireComments;
 
+    
+    
+    
     public ItemType getType() {
         return type;
     }
@@ -166,6 +171,22 @@ public class Item implements Serializable {
     @Override
     public String toString() {
         return name;
+    }
+
+    public String getSname() {
+        return sname;
+    }
+
+    public void setSname(String sname) {
+        this.sname = sname;
+    }
+
+    public String getTname() {
+        return tname;
+    }
+
+    public void setTname(String tname) {
+        this.tname = tname;
     }
 
 }

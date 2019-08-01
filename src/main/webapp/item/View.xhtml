@@ -14,6 +14,15 @@
                     <p:panelGrid columns="2" rendered="#{itemController.selected != null}">
                         <h:outputText value="#{bundleItems.ViewItemLabel_name}"/>
                         <h:outputText value="#{itemController.selected.name}" title="#{bundleItems.ViewItemTitle_name}"/>
+                        
+                        
+                        <h:outputText value="#{bundleItems.ViewItemLabel_name}"/>
+                        <h:outputText value="#{itemController.selected.sname}" title="#{bundleItems.ViewItemTitle_name}"/>
+                        
+                        <h:outputText value="#{bundleItems.ViewItemLabel_name}"/>
+                        <h:outputText value="#{itemController.selected.tname}" title="#{bundleItems.ViewItemTitle_name}"/>
+                        
+                        
                         <h:outputText value="#{bundleItems.ViewItemLabel_type}"/>
                         <h:outputText value="#{itemController.selected.type}" title="#{bundleItems.ViewItemTitle_type}"/>
                     </p:panelGrid>

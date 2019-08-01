@@ -79,8 +79,9 @@
                         <li>
                             <h:commandLink class="nonUnderline"  value="#{bundle.Home}" action="/index" ></h:commandLink>
                         </li>
+
                         <h:panelGroup rendered="#{webUserController.loggedUser.systemAdministrator or webUserController.loggedUser.superUser or webUserController.loggedUser.user}" >
-                            <ui:insert name="addProject">
+                            <ui:insert name="addAd">
                                 <li>
                                     <h:commandLink value="#{bundle.AddProject}" action="#{webUserController.addNewProject()}"></h:commandLink>
                                 </li>
@@ -94,6 +95,24 @@
                                 <h:commandLink value="#{bundle.SearchProjects}" action="#{webUserController.searchProjects()}"></h:commandLink>
                             </li>
                         </h:panelGroup>
+
+
+                        <h:panelGroup rendered="#{webUserController.loggedUser.systemAdministrator or webUserController.loggedUser.superUser or webUserController.loggedUser.user}" >
+                            <ui:insert name="addBid">
+                                <li>
+                                    <h:commandLink value="#{bundle.AddProject}" action="#{webUserController.addNewProject()}"></h:commandLink>
+                                </li>
+                            </ui:insert>
+
+                            <li>
+                                <h:commandLink value="#{bundle.ListProjects}" action="#{webUserController.tolistProjects()}"></h:commandLink>
+                            </li>
+
+                            <li>
+                                <h:commandLink value="#{bundle.SearchProjects}" action="#{webUserController.searchProjects()}"></h:commandLink>
+                            </li>
+                        </h:panelGroup>
+
 
 
                         <h:panelGroup rendered="#{webUserController.loggedUser.systemAdministrator}" >
