@@ -168,16 +168,7 @@ public class ItemController implements Serializable {
         return getFacade().findAll();
     }
 
-    public List<Item> getSectors() {
-        if(sectors==null){
-            sectors = getItems(ItemType.Sector);
-        }
-        return sectors;
-    }
-
-    public void setSectors(List<Item> sectors) {
-        this.sectors = sectors;
-    }
+    
 
     public List<Item> getCostUnits() {
         if(costUnits==null){
@@ -190,16 +181,7 @@ public class ItemController implements Serializable {
         this.costUnits = costUnits;
     }
 
-    public List<Item> getSourcesOfFunds() {
-        if(sourcesOfFunds==null){
-            sourcesOfFunds = getItems(ItemType.Source_of_Funds);
-        }
-        return sourcesOfFunds;
-    }
-
-    public void setSourcesOfFunds(List<Item> sourcesOfFunds) {
-        this.sourcesOfFunds = sourcesOfFunds;
-    }
+   
 
     public ItemFacade getEjbFacade() {
         return ejbFacade;

@@ -25,6 +25,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class Item implements Serializable {
 
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

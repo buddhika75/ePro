@@ -10,7 +10,9 @@ package entity;
  * @author User
  */
 public enum ItemType {
-    Sector,
+    AdvertisetmentCategory,
     Cost_Unit,
-    Source_of_Funds,
+    TenderCategory,
+    BiddingType,
+    Keyword,
 }
