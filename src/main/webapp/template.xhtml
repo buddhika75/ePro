@@ -22,37 +22,7 @@
         <h:outputStylesheet library="css" name="tem1.css"/>
         <title>Online e-Procurement System</title>
         <h:outputStylesheet library="css" name="tem1.css" ></h:outputStylesheet>
-        <style>
-            ul {
-                list-style-type: none;
-                margin: 0;
-                padding: 0;
-                overflow: hidden;
-                border: 1px solid #e7e7e7;
-                background-color: #f3f3f3;
-            }
 
-            li {
-                float: left;
-            }
-
-            li a {
-                display: block;
-                color: #666;
-                text-align: center;
-                padding: 14px 16px;
-                text-decoration: none;
-            }
-
-            li a:hover:not(.active) {
-                background-color: #ffbf00;
-            }
-
-            li a.active {
-                color: white;
-                background-color: #4CAF50;
-            }
-        </style>
     </h:head>
 
     <h:body class="w3-theme-l5">
@@ -75,76 +45,101 @@
 
             <div class="w3-row" >
                 <h:form>
-                    <ul>
-                        <li>
-                            <h:commandLink class="nonUnderline"  value="#{bundle.Home}" action="/index" ></h:commandLink>
-                        </li>
+
+                    <div class="w3-bar w3-light-grey">
+                        <h:commandLink  class="w3-bar-item w3-button"  value="#{bundle.Home}" action="/index" ></h:commandLink>
 
                         <h:panelGroup rendered="#{webUserController.loggedUser.systemAdministrator or webUserController.loggedUser.superUser or webUserController.loggedUser.user}" >
-                            <ui:insert name="addAd">
-                                <li>
-                                    <h:commandLink value="#{bundle.AddProject}" action="#{webUserController.addNewProject()}"></h:commandLink>
-                                </li>
-                            </ui:insert>
-
-                            <li>
-                                <h:commandLink value="#{bundle.ListProjects}" action="#{webUserController.tolistProjects()}"></h:commandLink>
-                            </li>
-
-                            <li>
-                                <h:commandLink value="#{bundle.SearchProjects}" action="#{webUserController.searchProjects()}"></h:commandLink>
-                            </li>
+                            <div class="w3-dropdown-hover">
+                                <button class="w3-button">#{bundle.InvitingBids}</button>
+                                <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                                    <ui:insert name="addAd">
+                                        <h:commandLink  class="w3-bar-item w3-button" value="#{bundle.AddProject}" action="#{webUserController.addNewProject()}"></h:commandLink>
+                                    </ui:insert>
+                                    <h:commandLink  class="w3-bar-item w3-button" value="#{bundle.ListProjects}" action="#{webUserController.tolistProjects()}"></h:commandLink>
+                                    <h:commandLink  class="w3-bar-item w3-button" value="#{bundle.SearchProjects}" action="#{webUserController.searchProjects()}"></h:commandLink>
+                                </div>
+                            </div>
                         </h:panelGroup>
 
+                        <h:panelGroup rendered="#{webUserController.loggedUser.systemAdministrator or webUserController.loggedUser.superUser or webUserController.loggedUser.user}" >
+                            <div class="w3-dropdown-hover">
+                                <button class="w3-button">#{bundle.SubmitingBids}</button>
+                                <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                                    <ui:insert name="addAd">
+                                        <h:commandLink  class="w3-bar-item w3-button" value="#{bundle.AddProject}" action="#{webUserController.addNewProject()}"></h:commandLink>
+                                    </ui:insert>
+                                    <h:commandLink  class="w3-bar-item w3-button" value="#{bundle.ListProjects}" action="#{webUserController.tolistProjects()}"></h:commandLink>
+                                    <h:commandLink  class="w3-bar-item w3-button" value="#{bundle.SearchProjects}" action="#{webUserController.searchProjects()}"></h:commandLink>
+                                </div>
+                            </div>
+                        </h:panelGroup>
 
                         <h:panelGroup rendered="#{webUserController.loggedUser.systemAdministrator or webUserController.loggedUser.superUser or webUserController.loggedUser.user}" >
-                            <ui:insert name="addBid">
-                                <li>
-                                    <h:commandLink value="#{bundle.AddProject}" action="#{webUserController.addNewProject()}"></h:commandLink>
-                                </li>
-                            </ui:insert>
+                            <div class="w3-dropdown-hover">
+                                <button class="w3-button">#{bundle.ReceivingBids}</button>
+                                <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                                    <ui:insert name="addAd">
+                                        <h:commandLink  class="w3-bar-item w3-button" value="#{bundle.AddProject}" action="#{webUserController.addNewProject()}"></h:commandLink>
+                                    </ui:insert>
+                                    <h:commandLink  class="w3-bar-item w3-button" value="#{bundle.ListProjects}" action="#{webUserController.tolistProjects()}"></h:commandLink>
+                                    <h:commandLink  class="w3-bar-item w3-button" value="#{bundle.SearchProjects}" action="#{webUserController.searchProjects()}"></h:commandLink>
+                                </div>
+                            </div>
+                        </h:panelGroup>
 
-                            <li>
-                                <h:commandLink value="#{bundle.ListProjects}" action="#{webUserController.tolistProjects()}"></h:commandLink>
-                            </li>
+                        <h:panelGroup rendered="#{webUserController.loggedUser.systemAdministrator or webUserController.loggedUser.superUser or webUserController.loggedUser.user}" >
+                            <div class="w3-dropdown-hover">
+                                <button class="w3-button">#{bundle.EvaluatingBids}</button>
+                                <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                                    <ui:insert name="addAd">
+                                        <h:commandLink  class="w3-bar-item w3-button" value="#{bundle.AddProject}" action="#{webUserController.addNewProject()}"></h:commandLink>
+                                    </ui:insert>
+                                    <h:commandLink  class="w3-bar-item w3-button" value="#{bundle.ListProjects}" action="#{webUserController.tolistProjects()}"></h:commandLink>
+                                    <h:commandLink  class="w3-bar-item w3-button" value="#{bundle.SearchProjects}" action="#{webUserController.searchProjects()}"></h:commandLink>
+                                </div>
+                            </div>
+                        </h:panelGroup>
 
-                            <li>
-                                <h:commandLink value="#{bundle.SearchProjects}" action="#{webUserController.searchProjects()}"></h:commandLink>
-                            </li>
+                        <h:panelGroup rendered="#{webUserController.loggedUser.systemAdministrator or webUserController.loggedUser.superUser or webUserController.loggedUser.user}" >
+                            <div class="w3-dropdown-hover">
+                                <button class="w3-button">#{bundle.AwardingBids}</button>
+                                <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                                    <ui:insert name="addAd">
+                                        <h:commandLink  class="w3-bar-item w3-button" value="#{bundle.AddProject}" action="#{webUserController.addNewProject()}"></h:commandLink>
+                                    </ui:insert>
+                                    <h:commandLink  class="w3-bar-item w3-button" value="#{bundle.ListProjects}" action="#{webUserController.tolistProjects()}"></h:commandLink>
+                                    <h:commandLink  class="w3-bar-item w3-button" value="#{bundle.SearchProjects}" action="#{webUserController.searchProjects()}"></h:commandLink>
+                                </div>
+                            </div>
                         </h:panelGroup>
 
 
 
                         <h:panelGroup rendered="#{webUserController.loggedUser.systemAdministrator}" >
-                            <li>
-                                <h:commandLink  value="#{bundle.SystemManagement}" action="/system_management"></h:commandLink>
-                            </li>
-                        </h:panelGroup>
-
-                        <h:panelGroup rendered="#{webUserController.loggedUser ne null}" >
-                            <li>
-                                <h:commandLink  class="spacer1x boldedText" value="#{bundle.ChangePassword}" action="#{webUserController.toChangeMyPassword()}"></h:commandLink>
-                            </li>
-                            <li>
-                                <h:commandLink  class="spacer1x boldedText" value="#{bundle.ChangeMyDetails}" action="#{webUserController.toChangeMyDetails()}"></h:commandLink>
-                            </li>
-                            <li>
-                                <h:commandLink  value="#{bundle.SignOut}" action="#{webUserController.logOut()}"></h:commandLink>
-                            </li>
+                            <h:commandLink  class="w3-bar-item w3-button" value="#{bundle.SystemManagement}" action="/system_management"></h:commandLink>
                         </h:panelGroup>
 
                         <h:panelGroup rendered="#{webUserController.loggedUser eq null}" >
-                            <li>
-                                <h:commandLink class="nonUnderline"  value="#{bundle.Help}" action="#{webUserController.logOut()}"></h:commandLink>
-                            </li>
-                            <li>
-                                <h:commandLink class="nonUnderline" value="#{bundle.SingIn}" action="#{webUserController.toLogin()}"></h:commandLink>
-                            </li>
-                            <li>
-                                <h:commandLink class="nonUnderline"  value="#{bundle.SingUp}" action="#{webUserController.prepareRegisterAsClient()}"></h:commandLink>
-                            </li>
+                            <h:commandLink class="w3-bar-item w3-button"  value="#{bundle.Help}" action="#{webUserController.logOut()}"></h:commandLink>
+                            <h:commandLink class="w3-bar-item w3-button" value="#{bundle.SingIn}" action="#{webUserController.toLogin()}"></h:commandLink>
+                            <h:commandLink class="w3-bar-item w3-button"  value="#{bundle.SingUp}" action="#{webUserController.prepareRegisterAsClient()}"></h:commandLink>
                         </h:panelGroup>
-                    </ul>
+
+
+                        <h:panelGroup rendered="#{webUserController.loggedUser ne null}" >
+                            <div class="w3-dropdown-hover">
+                                <button class="w3-button">#{bundle.Settings}</button>
+                                <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                                    <h:commandLink class="w3-bar-item w3-button"  value="#{bundle.ChangePassword}" action="#{webUserController.toChangeMyPassword()}"></h:commandLink>
+                                    <h:commandLink class="w3-bar-item w3-button"  value="#{bundle.ChangeMyDetails}" action="#{webUserController.toChangeMyDetails()}"></h:commandLink>
+                                </div>
+                            </div>
+                            <h:commandLink class="w3-bar-item w3-button"  action="#{webUserController.logOut()}"></h:commandLink>
+                        </h:panelGroup>
+
+                    </div>
+
                 </h:form>
             </div>
 
