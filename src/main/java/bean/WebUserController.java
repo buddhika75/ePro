@@ -695,7 +695,8 @@ public class WebUserController implements Serializable {
             JsfUtil.addErrorMessage("No Logged User");
             return "";
         }
-        if(!loggedUser.isInstitutionUser() && !loggedUser.isInstitutionAdministrator()){
+        if(!loggedUser.isInstitutionUser() && !loggedUser.isInstitutionAdministrator() && !loggedUser.isSystemAdministrator()
+                ){
             JsfUtil.addErrorMessage("Your are NOT Authrerized");
             return "";
         }

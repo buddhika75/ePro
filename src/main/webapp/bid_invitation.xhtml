@@ -23,32 +23,57 @@
 
                         <p:panel header="Bid Invitation" >
                             <p:panelGrid  >
+                                
+                                 <p:row >
+
+                                    <p:column >
+                                        <h:outputLabel value="Procurement Entity"  />
+                                    </p:column>
+
+                                    <p:column >
+                                        <p:autoComplete id="acPe" value="#{webUserController.currentProject.category}"
+                                                        completeMethod="#{itemController.completeProcurementEntities}" 
+                                                        var="pe" itemLabel="#{pe.name}" forceSelection="true"
+                                                        itemValue="#{pe}">
+                                        </p:autoComplete>
+                                    </p:column>
+                                </p:row>
+                                
+                                
                                 <p:row >
-                                    
+
                                     <p:column >
                                         <h:outputLabel value="Category"  />
                                     </p:column>
-                                    
-                                     <p:column >
-                                         <p:autoComplete value="#{webUserController.currentProject.ca}" >
-                                         
-                                         </p:autoComplete>
-                                         
-                                         
+
+                                    <p:column >
+                                        <p:autoComplete id="acCat" value="#{webUserController.currentProject.category}"
+                                                        completeMethod="#{itemController.completeItems}" 
+                                                        var="c" itemLabel="#{c.name}" forceSelection="true"
+                                                        itemValue="#{c}">
+                                            <p:ajax event="itemSelect" process="acCat" update="cmbSc" >
+                                            </p:ajax>                                        
+                                        </p:autoComplete>
                                     </p:column>
-                                    
-                                    
-                                    
-                                    
                                 </p:row>
-                                
+                                <p:row >
+                                    <h:outputLabel value="Sub Category"  />
+                                </p:row>
+                                <p:row >
+                                    <p:selectOneMenu  id="cmbSc" value="#{webUserController.currentProject.subCategory}" >
+                                        <f:selectItem itemLabel="Select" ></f:selectItem>
+                                        <f:selectItems value="#{itemController.itemsOfACategory(webUserController.currentProject.category)}" >
+                                        </f:selectItems>
+                                    </p:selectOneMenu>
+
+                                </p:row>
                             </p:panelGrid>
-                            
-                            
-                            
+
+
+
                         </p:panel>
 
-                        <p:panelGrid columns="2" styleClass="alignTop" style="vertical-align: top;">
+<!--                        <p:panelGrid columns="2" styleClass="alignTop" style="vertical-align: top;">
 
                             <p:panelGrid columns="3" styleClass="alignTop" >
 
@@ -419,7 +444,7 @@
 
 
                                 <h:commandLink 
-                                               class="w3-btn w3-blue w3-margin  btn350">
+                                    class="w3-btn w3-blue w3-margin  btn350">
                                     <p:printer target="details" ></p:printer>
                                     <div>
                                         <i class='fa fa-print' style='float: left; font-size:24px;color:green;'></i>
@@ -595,7 +620,7 @@
                             </p:dialog>
 
                         </p:panelGrid>
-
+-->
 
 
 

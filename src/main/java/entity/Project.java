@@ -38,6 +38,10 @@ public class Project implements Serializable {
     @ManyToOne
     Item category;
     
+    
+    @ManyToOne
+    Item procurementEntity;
+    
     @ManyToOne
     Item subCategory;
 
@@ -143,6 +147,32 @@ public class Project implements Serializable {
         return "File No " + fileNumber + " ";
     }
 
+    public Item getCategory() {
+        return category;
+    }
+
+    public void setCategory(Item category) {
+        this.category = category;
+    }
+
+    public Item getSubCategory() {
+        return subCategory;
+    }
+
+    public void setSubCategory(Item subCategory) {
+        this.subCategory = subCategory;
+    }
+
+    public Double getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Double quantity) {
+        this.quantity = quantity;
+    }
+
+    
+    
     public Project getParentProject() {
         return parentProject;
     }

@@ -80,7 +80,7 @@ public class ItemController implements Serializable {
         persist(JsfUtil.PersistAction.DELETE, "Deleted");
         if (!JsfUtil.isValidationFailed()) {
             selected = null; // Remove selection
-            items = null;  
+            items = null;
             sourcesOfFunds = null;
             costUnits = null;
             sectors = null;
@@ -97,19 +97,46 @@ public class ItemController implements Serializable {
         m.put("t", type);
         return getFacade().findBySQL(j, m);
     }
-    
-    
-     public List<Item> completeItems(String qry) {
+
+    public List<Item> completeItems(ItemType it, String qry) {
         String j;
         j = "select i from Item i "
-                + " where lower(i.name) like :t "
-                + " order by i.name";
+                + " where lower(i.name) like :n ";
         Map m = new HashMap();
-        m.put("t", "%" + qry.toLowerCase() + "%");
+        if(it!=null){
+            j += " and i.itemType=:t ";
+            m.put("t", it);
+        }
+        
+        j += " order by i.name";
+        
+        m.put("n", "%" + qry.toLowerCase() + "%");
+        return getFacade().findBySQL(j, m);
+    }
+    
+    public List<Item> itemsOfACategory(Item p) {
+        String j;
+        j = "select i from Item i "
+                + " where i.parent = :p ";
+        Map m = new HashMap();
+        j += " order by i.name";
+        m.put("p", p);
         return getFacade().findBySQL(j, m);
     }
     
     
+
+    public List<Item> completeItems(String qry) {
+        return completeItems(null, qry);
+    }
+    
+    public List<Item> completeCategories(String qry) {
+        return completeItems(ItemType.Category, qry);
+    }
+    
+    public List<Item> completeProcurementEntities(String qry) {
+        return completeItems(ItemType.Procurement_Entity, qry);
+    }
 
     public List<Item> getItems() {
         if (items == null) {
@@ -149,28 +176,27 @@ public class ItemController implements Serializable {
     public Item getItem(java.lang.Long id) {
         return getFacade().find(id);
     }
-    
-    
-    public Item getItem(String name, ItemType type, boolean createNew){
-         String j;
+
+    public Item getItem(String name, ItemType type, boolean createNew) {
+        String j;
         Map m = new HashMap();
         j = "select a "
                 + " from Item a "
                 + " where (upper(a.name) =:n)  ";
-        if(type!=null){
-            j+= " and a.type=:t ";
+        if (type != null) {
+            j += " and a.type=:t ";
             m.put("t", type);
         }
         m.put("n", name.toUpperCase());
         Item ti = getFacade().findFirstBySQL(j, m);
-        if(createNew==true && ti==null){
+        if (createNew == true && ti == null) {
             ti = new Item();
             ti.setName(name);
             ti.setCreatedAt(new Date());
             ti.setType(type);
             getFacade().create(ti);
         }
-        return ti ;
+        return ti;
     }
 
     public List<Item> getItemsAvailableSelectMany() {
@@ -181,10 +207,8 @@ public class ItemController implements Serializable {
         return getFacade().findAll();
     }
 
-    
-
     public List<Item> getCostUnits() {
-        if(costUnits==null){
+        if (costUnits == null) {
             costUnits = getItems(ItemType.Cost_Unit);
         }
         return costUnits;
@@ -194,8 +218,6 @@ public class ItemController implements Serializable {
         this.costUnits = costUnits;
     }
 
-   
-
     public ItemFacade getEjbFacade() {
         return ejbFacade;
     }
@@ -204,11 +226,6 @@ public class ItemController implements Serializable {
         this.ejbFacade = ejbFacade;
     }
 
-    
-    
-    
-    
-    
     @FacesConverter(forClass = Item.class)
     public static class ItemControllerConverter implements Converter {
 

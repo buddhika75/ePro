@@ -32,6 +32,8 @@ public class Institution implements Serializable {
     private InstitutionType institutionType;
 
     private String name;
+    private String sname;
+    private String tname;
     private String code;
     private String address;
     private String fax;
@@ -59,6 +61,9 @@ public class Institution implements Serializable {
     private Date retiredAt;
     private String retireComments;
 
+    
+    
+    
 
     public Long getId() {
         return id;
@@ -245,6 +250,22 @@ public class Institution implements Serializable {
             return "";
         }
         return name.substring(name.lastIndexOf(" ") + 1);
+    }
+
+    public String getSname() {
+        return sname;
+    }
+
+    public void setSname(String sname) {
+        this.sname = sname;
+    }
+
+    public String getTname() {
+        return tname;
+    }
+
+    public void setTname(String tname) {
+        this.tname = tname;
     }
 
 }
