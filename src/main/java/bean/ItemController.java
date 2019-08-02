@@ -22,7 +22,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-@Named("itemController")
+@Named
 @SessionScoped
 public class ItemController implements Serializable {
 
@@ -97,6 +97,19 @@ public class ItemController implements Serializable {
         m.put("t", type);
         return getFacade().findBySQL(j, m);
     }
+    
+    
+     public List<Item> completeItems(String qry) {
+        String j;
+        j = "select i from Item i "
+                + " where lower(i.name) like :t "
+                + " order by i.name";
+        Map m = new HashMap();
+        m.put("t", "%" + qry.toLowerCase() + "%");
+        return getFacade().findBySQL(j, m);
+    }
+    
+    
 
     public List<Item> getItems() {
         if (items == null) {

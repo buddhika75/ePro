@@ -13,15 +13,19 @@
             <h:form id="ItemCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{itemController.selected != null}">
-                        
+
                         <p:outputLabel value="Name" for="name" />
                         <p:inputText id="name" value="#{itemController.selected.name}" title="Name" />
-                        
+
                         <p:outputLabel value="Name in Sinhala" for="sname" />
                         <p:inputText id="sname" value="#{itemController.selected.sname}" title="Name in Sinhala" />
-                        
+
                         <p:outputLabel value="Name in Tamil" for="tname" />
                         <p:inputText id="tname" value="#{itemController.selected.tname}" title="Name in Tamil" />
+
+                        <p:outputLabel value="Parent Item" for="pi" />
+                        <p:autoComplete id="pi" completeMethod="#{itemController.completeItems}" value="#{itemController.selected.parentItem}" var="i" itemLabel="#{i.name}" itemValue="#{i}" ></p:autoComplete>
+
 
                         <p:outputLabel value="Type" for="type" />
                         <h:selectOneMenu id="type" value="#{itemController.selected.type}" >

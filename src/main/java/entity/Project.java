@@ -1,7 +1,6 @@
 package entity;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -16,7 +15,6 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
-import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
@@ -36,6 +34,12 @@ public class Project implements Serializable {
 
     @ManyToOne
     private Area province;
+    
+    @ManyToOne
+    Item category;
+    
+    @ManyToOne
+    Item subCategory;
 
     @ManyToOne
     private Project parentProject;
@@ -243,30 +247,7 @@ public class Project implements Serializable {
         this.fileNumber = fileNumber;
     }
 
-    public Area getDistrict() {
-        return district;
-    }
-
-    public void setDistrict(Area district) {
-        this.district = district;
-    }
-
-    public Institution getProjectLocation() {
-        return projectLocation;
-    }
-
-    public void setProjectLocation(Institution projectLocation) {
-        this.projectLocation = projectLocation;
-    }
-
-    public List<ProjectInstitution> getProjectLocations() {
-        return projectLocations;
-    }
-
-    public void setProjectLocations(List<ProjectInstitution> projectLocations) {
-        this.projectLocations = projectLocations;
-    }
-
+    
     public String getTitle() {
         return title;
     }

@@ -53,10 +53,10 @@
                             <div class="w3-dropdown-hover">
                                 <button class="w3-button">#{bundle.InvitingBids}</button>
                                 <div class="w3-dropdown-content w3-bar-block w3-card-4">
-                                   
-                                    <h:commandLink disabled="#{!webUserController.canAddProcurement}"
-                                            class="w3-bar-item w3-button" value="#{bundle.AddNewBidInvitation}" action="#{webUserController.addNewBidInvitation()}"></h:commandLink>
-                                   
+
+                                    <h:commandLink  
+                                        class="w3-bar-item w3-button" value="#{bundle.AddNewBidInvitation}" action="#{webUserController.addNewBidInvitation()}"></h:commandLink>
+
                                     <h:commandLink  class="w3-bar-item w3-button" value="#{bundle.ListProjects}" action="#{webUserController.tolistProjects()}"></h:commandLink>
                                     <h:commandLink  class="w3-bar-item w3-button" value="#{bundle.SearchProjects}" action="#{webUserController.searchProjects()}"></h:commandLink>
                                 </div>
@@ -164,32 +164,39 @@
             <div class="footer w3-amber">
                 <p>
                     <ui:insert name="bottom">
-                        <table style="width: 98%; margin: auto;">
-                            <tr>
-                                <td>
-                                    &copy; #{bundle.Hiu}, 2019
-                                </td>
-                                <td>
 
-                                </td>
-                                <td>
+                        <h:form>
 
-                                </td>
-                                <td>
-                                    <h:panelGroup rendered="#{webUserController.loggedUser ne null and false}" >
-                                        <h:outputLabel value="Language"  />
-                                        <h:selectOneMenu value="#{webUserController.loggedUser.defLocale}" >
-                                            <f:selectItem itemLabel="Sinhala" itemValue="si" ></f:selectItem>
-                                            <f:selectItem itemLabel="Tamil" itemValue="ta" ></f:selectItem>
-                                            <f:selectItem itemLabel="English" itemValue="en" ></f:selectItem>
-                                            <f:ajax execute="@this" render="@all" listener="#{webUserController.updateLoggedUser()}" ></f:ajax>
-                                        </h:selectOneMenu>
-                                    </h:panelGroup>
-                                </td>
-                            </tr>
-                        </table>
+                            <table style="width: 98%; margin: auto;">
+                                <tr>
+                                    <td>
+                                        &copy; #{bundle.Hiu}, 2019
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td>
+                                        <h:panelGroup rendered="#{webUserController.loggedUser ne null}" >
+                                            <h:outputLabel value="Language"  />
+                                            <h:selectOneMenu value="#{webUserController.loggedUser.defLocale}" >
+                                                <f:selectItem itemLabel="Sinhala" itemValue="si" ></f:selectItem>
+                                                <f:selectItem itemLabel="Tamil" itemValue="ta" ></f:selectItem>
+                                                <f:selectItem itemLabel="English" itemValue="en" ></f:selectItem>
+                                                <f:ajax execute="@this" render="@all" listener="#{webUserController.updateLoggedUser()}" ></f:ajax>
+                                            </h:selectOneMenu>
+                                        </h:panelGroup>
+                                    </td>
+                                    <td>
+                                        <p:commandLink  rendered="#{webUserController.loggedUser ne null}" ajax="false" value="Logout" action="#{webUserController.logOut()}" ></p:commandLink>
+                                    </td>
+                                </tr>
+                            </table>
 
 
+                        </h:form>
                     </ui:insert>
                 </p>
             </div>

@@ -54,6 +54,15 @@
                                 </f:facet>
                                 <h:outputText value="#{item.tname}"/>
                             </p:column>
+                             <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Parent"/>
+                                </f:facet>
+                                 <h:outputText value="#{item.parentItem.name}"/>
+                            </p:column>
+                            
+                            
+                            
                             <f:facet name="footer">
                                 <p:commandButton id="createButton" icon="ui-icon-plus"   value="Create" actionListener="#{itemController.prepareCreate}" update=":ItemCreateForm" oncomplete="PF('ItemCreateDialog').show()"/>
                                 <p:commandButton id="viewButton"   icon="ui-icon-search" value="View" update=":ItemViewForm" oncomplete="PF('ItemViewDialog').show()" disabled="#{empty itemController.selected}"/>

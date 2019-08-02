@@ -977,7 +977,7 @@ public class WebUserController implements Serializable {
             }
         }
         JsfUtil.addSuccessMessage("Successfully Logged");
-        return "index";
+        return "/index";
     }
 
     public String loginForMobile() {
@@ -1120,8 +1120,7 @@ public class WebUserController implements Serializable {
 
                 areaDistrict = areaController.getArea(strDistrict, AreaType.District, true, areaProvince);
 
-                np.setProvince(areaProvince);
-                np.setDistrict(areaDistrict);
+                
 
                 cell = sheet.getCell(2, i);
                 strFileNumber = cell.getContents();
@@ -1130,7 +1129,7 @@ public class WebUserController implements Serializable {
                 cell = sheet.getCell(4, i);
                 strLocation = cell.getContents();
                 insLocation = institutionController.getInstitution(strLocation, InstitutionType.Other, true);
-                np.setProjectLocation(insLocation);
+               
 
                 cell = sheet.getCell(5, i);
                 strTile = cell.getContents();
@@ -1163,22 +1162,7 @@ public class WebUserController implements Serializable {
                     getProjectAreaFacade().create(pp);
                     np.getProjectProvinces().add(pp);
                 }
-                if (np.getDistrict() != null) {
-                    ProjectDistrict pp = new ProjectDistrict();
-                    pp.setProject(np);
-                    pp.setArea(np.getDistrict());
-                    getProjectAreaFacade().create(pp);
-                    np.getProjectDistricts().add(pp);
-                }
-                if (np.getProjectLocation() != null) {
-                    ProjectInstitution pp = new ProjectInstitution();
-                    pp.setProject(np);
-                    pp.setInstitution(np.getProjectLocation());
-                    getProjectInstitutionFacade().create(pp);
-                    np.getProjectLocations().add(pp);
-                }
-               
-
+                
                 getProjectFacade().edit(np);
 
             }

@@ -16,4 +16,5 @@ public enum ItemType {
     Bidding_Type,
     Keyword,
     Procurement_Entity,
+    Category,
 }

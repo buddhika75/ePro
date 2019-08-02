@@ -36,6 +36,10 @@ public class Item implements Serializable {
     private String sname;
     private String tname;
     
+    @ManyToOne
+    private Item parentItem;
+    
+    
     
      @ManyToOne
     private WebUser creater;
@@ -53,6 +57,7 @@ public class Item implements Serializable {
     private Date retiredAt;
     private String retireComments;
 
+    
     
     
     
@@ -187,6 +192,14 @@ public class Item implements Serializable {
 
     public void setTname(String tname) {
         this.tname = tname;
+    }
+
+    public Item getParentItem() {
+        return parentItem;
+    }
+
+    public void setParentItem(Item parentItem) {
+        this.parentItem = parentItem;
     }
 
 }
