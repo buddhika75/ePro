@@ -104,7 +104,7 @@ public class ItemController implements Serializable {
                 + " where lower(i.name) like :n ";
         Map m = new HashMap();
         if(it!=null){
-            j += " and i.itemType=:t ";
+            j += " and i.type=:t ";
             m.put("t", it);
         }
         
@@ -117,7 +117,7 @@ public class ItemController implements Serializable {
     public List<Item> itemsOfACategory(Item p) {
         String j;
         j = "select i from Item i "
-                + " where i.parent = :p ";
+                + " where i.parentItem = :p ";
         Map m = new HashMap();
         j += " order by i.name";
         m.put("p", p);

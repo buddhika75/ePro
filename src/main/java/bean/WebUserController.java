@@ -20,6 +20,7 @@ import entity.Upload;
 import entity.UploadType;
 import entity.WebUserRole;
 import facade.InstitutionFacade;
+import facade.ItemFacade;
 import facade.ProjectAreaFacade;
 import facade.ProjectFacade;
 import facade.ProjectInstitutionFacade;
@@ -86,6 +87,8 @@ public class WebUserController implements Serializable {
     private ProjectInstitutionFacade projectInstitutionFacade;
     @EJB
     private ProjectSourceOfFundFacade projectSourceOfFundFacade;
+    @EJB
+    ItemFacade itemFacade;
     /*
     Controllers
      */
@@ -605,6 +608,14 @@ public class WebUserController implements Serializable {
         return "/project_client_view_after_submission";
     }
 
+    public List<Item> getCategoriesOfLastHunderedBidInvitations(){
+        String j = "select p.category from Project p "
+                + " where p.projectType=:pt ";
+        Map m = new HashMap();
+        m.put("pt", ProjectType.Bid_Invitation);
+        return itemFacade.findBySQL(j, m, 10);
+    }
+    
     public void markLocationOnMap() {
         emptyModel = new DefaultMapModel();
         if (current == null) {

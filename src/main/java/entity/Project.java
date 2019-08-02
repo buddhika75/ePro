@@ -362,6 +362,16 @@ public class Project implements Serializable {
         return lastEditAt;
     }
 
+    public Item getProcurementEntity() {
+        return procurementEntity;
+    }
+
+    public void setProcurementEntity(Item procurementEntity) {
+        this.procurementEntity = procurementEntity;
+    }
+
+    
+    
     public void setLastEditAt(Date lastEditAt) {
         this.lastEditAt = lastEditAt;
     }

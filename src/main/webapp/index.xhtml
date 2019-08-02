@@ -16,7 +16,16 @@
                 <div class="w3-row" style="height: 70vh;">
                     <h:form>
 
-
+                        <div class="s12 m6 l3" >
+                            
+                            <ui:repeat value="#{webUserController.categoriesOfLastHunderedBidInvitations}"
+                                       var="c" >
+                            
+                                <h:outputLabel value="#{c.name}" ></h:outputLabel>
+                            
+                            </ui:repeat>
+                            
+                        </div>
 
 
 
