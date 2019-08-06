@@ -16,15 +16,35 @@
                 <div class="w3-row" style="height: 70vh;">
                     <h:form>
 
+
                         <div class="s12 m6 l3" >
-                            
-                            <ui:repeat value="#{webUserController.categoriesOfLastHunderedBidInvitations}"
+
+                            <ui:repeat value="#{webUserController.pcs}"
                                        var="c" >
-                            
-                                <h:outputLabel value="#{c.name}" ></h:outputLabel>
-                            
+                                <div style="width: 100%; padding: 2%;">
+                                    <div style="float: left;clear: left;">
+                                        <h:outputLabel value="#{c.category.name}" ></h:outputLabel>
+                                    </div>
+                                    <div style="width: 100%; padding: 2%;clear: right;">
+                                        <ui:repeat value="#{c.projectCategorieses}" var="sc" >
+                                            <div style="float: left;clear: left;">
+                                                <h:outputLabel value="#{sc.category.name}" ></h:outputLabel>
+                                            </div>
+                                            <div style="width: 100%; padding: 2%;clear: right;">
+                                                <ui:repeat value="#{c.projectCategorieses}" var="sc" >
+                                                    <div style="float: left;clear: left;">
+                                                        <h:outputLabel value="#{sc.category.name}" ></h:outputLabel>
+                                                    </div>
+                                                    <div style="width: 100%; padding: 2%;clear: right;">
+
+                                                    </div>
+                                                </ui:repeat>
+                                            </div>
+                                        </ui:repeat>
+                                    </div>
+                                </div>
                             </ui:repeat>
-                            
+
                         </div>
 
 

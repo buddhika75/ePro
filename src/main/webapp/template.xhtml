@@ -19,13 +19,18 @@
               integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' 
               crossorigin='anonymous'></link>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
+        <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css"/>
+        <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        <style>
+            html, body, h1, h2, h3, h4, h5 {font-family: "Poppins", sans-serif}
+        </style>
         <h:outputStylesheet library="css" name="tem1.css"/>
         <title>Online e-Procurement System</title>
-        <h:outputStylesheet library="css" name="tem1.css" ></h:outputStylesheet>
-
     </h:head>
 
-    <h:body class="w3-theme-l5">
+    <h:body class="w3-theme-l5" style="">
 
         <f:view locale="#{webUserController.locale}" >
 
@@ -34,10 +39,10 @@
 
 
 
-            <div class="w3-row w3-center w3-amber">
-                <h3 class="w3-opacity">
-                    #{bundle.Title}
-                </h3>
+            <div class="w3-row w3-center  w3-blue">
+                <h1>
+                   #{bundle.Title} 
+                </h1>
             </div>
 
 

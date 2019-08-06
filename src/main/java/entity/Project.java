@@ -34,14 +34,13 @@ public class Project implements Serializable {
 
     @ManyToOne
     private Area province;
-    
+
     @ManyToOne
     Item category;
-    
-    
+
     @ManyToOne
     Item procurementEntity;
-    
+
     @ManyToOne
     Item subCategory;
 
@@ -71,26 +70,20 @@ public class Project implements Serializable {
     private String description;
 
     private Double allocation;
-    
+
     @ManyToOne
     private Item allocationUnit;
-    
-    Double quantity;
 
-    
+    Double quantity;
 
     @Lob
     private String remarks;
 
     @ManyToOne
     private Item biddingType;
-    
-    
 
     @OneToMany
     private List<Item> keywords;
-    
-    
 
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date bidOpeningAt;
@@ -121,6 +114,24 @@ public class Project implements Serializable {
     private Date retiredAt;
     @Lob
     private String retireComments;
+
+    //Created Properties
+    private boolean approvedForBidInvitation;
+    @ManyToOne
+    private WebUser approvedForBidInvitationBy;
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    private Date approvedForBidInvitationAt;
+    @Lob
+    private String approvedForBidInvitationComments;
+
+    //Created Properties
+    private boolean rejectedFromBidInvitation;
+    @ManyToOne
+    private WebUser rejectedFromBidInvitationBy;
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    private Date rejectedFromBidInvitationAt;
+    @Lob
+    private String rejectedFromBidInvitationComments;
 
     @Override
     public int hashCode() {
@@ -171,8 +182,6 @@ public class Project implements Serializable {
         this.quantity = quantity;
     }
 
-    
-    
     public Project getParentProject() {
         return parentProject;
     }
@@ -277,7 +286,6 @@ public class Project implements Serializable {
         this.fileNumber = fileNumber;
     }
 
-    
     public String getTitle() {
         return title;
     }
@@ -370,8 +378,6 @@ public class Project implements Serializable {
         this.procurementEntity = procurementEntity;
     }
 
-    
-    
     public void setLastEditAt(Date lastEditAt) {
         this.lastEditAt = lastEditAt;
     }
@@ -408,7 +414,70 @@ public class Project implements Serializable {
         this.retireComments = retireComments;
     }
 
+    public WebUser getApprovedForBidInvitationBy() {
+        return approvedForBidInvitationBy;
+    }
 
+    public void setApprovedForBidInvitationBy(WebUser approvedForBidInvitationBy) {
+        this.approvedForBidInvitationBy = approvedForBidInvitationBy;
+    }
 
+    public Date getApprovedForBidInvitationAt() {
+        return approvedForBidInvitationAt;
+    }
+
+    public void setApprovedForBidInvitationAt(Date approvedForBidInvitationAt) {
+        this.approvedForBidInvitationAt = approvedForBidInvitationAt;
+    }
+
+    public String getApprovedForBidInvitationComments() {
+        return approvedForBidInvitationComments;
+    }
+
+    public void setApprovedForBidInvitationComments(String approvedForBidInvitationComments) {
+        this.approvedForBidInvitationComments = approvedForBidInvitationComments;
+    }
+
+    public boolean isApprovedForBidInvitation() {
+        return approvedForBidInvitation;
+    }
+
+    public void setApprovedForBidInvitation(boolean approvedForBidInvitation) {
+        this.approvedForBidInvitation = approvedForBidInvitation;
+    }
+
+    public boolean isRejectedFromBidInvitation() {
+        return rejectedFromBidInvitation;
+    }
+
+    public void setRejectedFromBidInvitation(boolean rejectedFromBidInvitation) {
+        this.rejectedFromBidInvitation = rejectedFromBidInvitation;
+    }
+
+    public WebUser getRejectedFromBidInvitationBy() {
+        return rejectedFromBidInvitationBy;
+    }
+
+    public void setRejectedFromBidInvitationBy(WebUser rejectedFromBidInvitationBy) {
+        this.rejectedFromBidInvitationBy = rejectedFromBidInvitationBy;
+    }
+
+    public Date getRejectedFromBidInvitationAt() {
+        return rejectedFromBidInvitationAt;
+    }
+
+    public void setRejectedFromBidInvitationAt(Date rejectedFromBidInvitationAt) {
+        this.rejectedFromBidInvitationAt = rejectedFromBidInvitationAt;
+    }
+
+    public String getRejectedFromBidInvitationComments() {
+        return rejectedFromBidInvitationComments;
+    }
+
+    public void setRejectedFromBidInvitationComments(String rejectedFromBidInvitationComments) {
+        this.rejectedFromBidInvitationComments = rejectedFromBidInvitationComments;
+    }
+
+    
 
 }

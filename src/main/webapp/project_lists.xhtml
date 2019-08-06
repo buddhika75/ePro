@@ -24,7 +24,7 @@
                 <table >
                     <tr>
                         <td colspan="2">
-                            <h1>List Proposals</h1>
+                            <h1>List Procurements</h1>
                         </td>
                     </tr>
                     <tr>
@@ -35,53 +35,44 @@
                                 <table class="w3-table" >
                                     <tr>
                                         <td>
-                                            <h:commandButton class="w3-btn w3-yellow btn350"  action="#{webUserController.listAllProjects()}" 
-                                                             value="List All Projects" ></h:commandButton>
+                                            <h:commandButton class="w3-btn w3-yellow btn350"  action="#{webUserController.listAllProcurements()}" 
+                                                             value="List All Procurements" ></h:commandButton>
 
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <h:commandButton class="w3-btn w3-yellow btn350"  action="#{webUserController.listProjectsAwaitingPecApproval()}" 
-                                                             value="List Projects waiting PEC Approval" ></h:commandButton>
+                                            <h:commandButton class="w3-btn w3-yellow btn350"  action="#{webUserController.listProjectsAwaitingApprovalForBidInvitation()}" 
+                                                             value="List Procurements waiting Approval for Bid Invitation" ></h:commandButton>
 
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <h:commandButton class="w3-btn w3-yellow btn350" action="#{webUserController.listProjectsPecRejected()}" 
-                                                             value="List PEC Rejected Projects" ></h:commandButton>
+                                            <h:commandButton class="w3-btn w3-yellow btn350" action="#{webUserController.listProjectsBidInvitationRejected()}" 
+                                                             value="List Procurements Rejected without Bid Invitation" ></h:commandButton>
 
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <h:commandButton class="w3-btn w3-yellow btn350" action="#{webUserController.listProjectsAwaitingDnpSubmission()}" 
-                                                             value="List Projects Awaiting DNP Submission" ></h:commandButton>
+                                            <h:commandButton class="w3-btn w3-yellow btn350" action="#{webUserController.listProjectsAwaitingBidInvitation()}" 
+                                                             value="List Procurements Bid Invitation" ></h:commandButton>
 
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <h:commandButton class="w3-btn w3-yellow btn350" action="#{webUserController.listProjectsAwaitingDnpApproval()}" 
-                                                             value="List Projects awaiting DNP Approval" ></h:commandButton>
+                                            <h:commandButton class="w3-btn w3-yellow btn350" action="#{webUserController.listProjectsOpenForBids()}" 
+                                                             value="List Procurements Open for Bids" ></h:commandButton>
 
                                         </td>
                                     </tr>
 
                                     <tr>
                                         <td>
-                                            <h:commandButton class="w3-btn w3-yellow btn350" action="#{webUserController.listProjectsDnpRejected()}" 
-                                                             value="List DNP rejected projects" ></h:commandButton>
-
-                                        </td>
-                                    </tr>
-
-
-                                    <tr>
-                                        <td>
-                                            <h:commandButton class="w3-btn w3-yellow btn350" action="#{webUserController.listProjectsAwaitingCabinetSubmission()}" 
-                                                             value="List Projects awaiting Cabinet Submission" ></h:commandButton>
+                                            <h:commandButton class="w3-btn w3-yellow btn350" action="#{webUserController.listProcurementsDnpRejected()}" 
+                                                             value="List Procurements with closed bids" ></h:commandButton>
 
                                         </td>
                                     </tr>
@@ -89,16 +80,8 @@
 
                                     <tr>
                                         <td>
-                                            <h:commandButton class="w3-btn w3-yellow btn350" action="#{webUserController.listProjectsAwaitingCabinetApproval()}" 
-                                                             value="List Projects awaiting Cabinet Approval" ></h:commandButton>
-
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-                                            <h:commandButton class="w3-btn w3-yellow btn350" action="#{webUserController.listProjectsCabinetApproved()}" 
-                                                             value="List Cabinet approved projects to start" ></h:commandButton>
+                                            <h:commandButton class="w3-btn w3-yellow btn350" action="#{webUserController.listProcurementsAwaitingCabinetSubmission()}" 
+                                                             value="List Procurements awaiting to Handover to TEC" ></h:commandButton>
 
                                         </td>
                                     </tr>
@@ -106,8 +89,16 @@
 
                                     <tr>
                                         <td>
-                                            <h:commandButton class="w3-btn w3-yellow btn350" action="#{webUserController.listProjectsOngoing()}" 
-                                                             value="List ongoing projects" ></h:commandButton>
+                                            <h:commandButton class="w3-btn w3-yellow btn350" action="#{webUserController.listProcurementsAwaitingCabinetApproval()}" 
+                                                             value="List Procurements awaiting TEC" ></h:commandButton>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <h:commandButton class="w3-btn w3-yellow btn350" action="#{webUserController.listProcurementsCabinetApproved()}" 
+                                                             value="List Procurements awating Tender Board Submission" ></h:commandButton>
 
                                         </td>
                                     </tr>
@@ -115,8 +106,17 @@
 
                                     <tr>
                                         <td>
-                                            <h:commandButton class="w3-btn w3-yellow btn350" action="#{webUserController.listProjectsCompleted()}" 
-                                                             value="List completed" ></h:commandButton>
+                                            <h:commandButton class="w3-btn w3-yellow btn350" action="#{webUserController.listProcurementsOngoing()}" 
+                                                             value="List Procurements in Tender Board" ></h:commandButton>
+
+                                        </td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td>
+                                            <h:commandButton class="w3-btn w3-yellow btn350" action="#{webUserController.listProcurementsCompleted()}" 
+                                                             value="List Procurements Tender Awarded" ></h:commandButton>
 
                                         </td>
                                     </tr>

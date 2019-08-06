@@ -21,6 +21,9 @@ import facade.util.JsfUtil.PersistAction;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import javax.annotation.PostConstruct;
+import org.primefaces.model.DefaultTreeNode;
+import org.primefaces.model.TreeNode;
 
 @Named
 @SessionScoped
@@ -34,6 +37,29 @@ public class ItemController implements Serializable {
     private List<Item> costUnits = null;
     private List<Item> sourcesOfFunds = null;
 
+    private TreeNode root;
+
+    @PostConstruct
+    public void init() {
+        root = new DefaultTreeNode("Root", null);
+
+        List<Item> rootItems = completeItems(ItemType.Category, selected);
+        for (Item ri : rootItems) {
+            TreeNode node1 = new DefaultTreeNode(ri.getName(), root);
+            List<Item> sc = completeItems(ItemType.Category, ri);
+            for (Item sci : sc) {
+                TreeNode node2 = new DefaultTreeNode(sci.getName(), node1);
+                node1.getChildren().add(node2);
+            }
+
+        }
+
+    }
+    
+    
+
+    
+    
     public ItemController() {
     }
 
@@ -103,17 +129,32 @@ public class ItemController implements Serializable {
         j = "select i from Item i "
                 + " where lower(i.name) like :n ";
         Map m = new HashMap();
-        if(it!=null){
+        if (it != null) {
             j += " and i.type=:t ";
             m.put("t", it);
         }
-        
+
         j += " order by i.name";
-        
+
         m.put("n", "%" + qry.toLowerCase() + "%");
         return getFacade().findBySQL(j, m);
     }
-    
+
+    public List<Item> completeItems(ItemType it, Item parent) {
+        String j;
+        j = "select i from Item i where i.type = :it ";
+        Map m = new HashMap();
+        m.put("it", it);
+        if (parent == null) {
+            j += " and i.parentItem is null ";
+        } else {
+            j += " and i.parentItem = :pi ";
+            m.put("pi", parent);
+        }
+        j += " order by i.name";
+        return getFacade().findBySQL(j, m);
+    }
+
     public List<Item> itemsOfACategory(Item p) {
         String j;
         j = "select i from Item i "
@@ -123,17 +164,15 @@ public class ItemController implements Serializable {
         m.put("p", p);
         return getFacade().findBySQL(j, m);
     }
-    
-    
 
     public List<Item> completeItems(String qry) {
         return completeItems(null, qry);
     }
-    
+
     public List<Item> completeCategories(String qry) {
         return completeItems(ItemType.Category, qry);
     }
-    
+
     public List<Item> completeProcurementEntities(String qry) {
         return completeItems(ItemType.Procurement_Entity, qry);
     }
@@ -224,6 +263,30 @@ public class ItemController implements Serializable {
 
     public void setEjbFacade(ItemFacade ejbFacade) {
         this.ejbFacade = ejbFacade;
+    }
+
+    public TreeNode getRoot() {
+        return root;
+    }
+
+    public void setRoot(TreeNode root) {
+        this.root = root;
+    }
+
+    public List<Item> getSectors() {
+        return sectors;
+    }
+
+    public void setSectors(List<Item> sectors) {
+        this.sectors = sectors;
+    }
+
+    public List<Item> getSourcesOfFunds() {
+        return sourcesOfFunds;
+    }
+
+    public void setSourcesOfFunds(List<Item> sourcesOfFunds) {
+        this.sourcesOfFunds = sourcesOfFunds;
     }
 
     @FacesConverter(forClass = Item.class)

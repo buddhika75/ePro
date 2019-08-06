@@ -88,7 +88,7 @@ public class WebUserController implements Serializable {
     @EJB
     private ProjectSourceOfFundFacade projectSourceOfFundFacade;
     @EJB
-    ItemFacade itemFacade;
+    private ItemFacade itemFacade;
     /*
     Controllers
      */
@@ -104,6 +104,7 @@ public class WebUserController implements Serializable {
     /*
     Variables
      */
+    private List<ProjectSuperCategory> pcs = null;
     private List<WebUser> items = null;
     private List<Upload> currentProjectUploads;
     private List<Upload> clientUploads;
@@ -176,19 +177,22 @@ public class WebUserController implements Serializable {
     public void init() {
         emptyModel = new DefaultMapModel();
     }
-    
-    
-    public boolean canAddProcurement(){
-        if(loggedUser==null) return false;
-        if(loggedUser.isInstitutionUser()||loggedUser.isInstitutionAdministrator()){
+
+    public boolean canAddProcurement() {
+        if (loggedUser == null) {
+            return false;
+        }
+        if (loggedUser.isInstitutionUser() || loggedUser.isInstitutionAdministrator()) {
             return true;
         }
         return false;
     }
-    
-    public boolean canApproveProcurement(){
-        if(loggedUser==null) return false;
-        if(loggedUser.isInstitutionAdministrator()){
+
+    public boolean canApproveProcurement() {
+        if (loggedUser == null) {
+            return false;
+        }
+        if (loggedUser.isInstitutionAdministrator()) {
             return true;
         }
         return false;
@@ -217,95 +221,89 @@ public class WebUserController implements Serializable {
                 projectStageWorkingOnCommentTitle = "PEC Rejection Comments";
                 projectStageWorkingOnPeriodTitle = null;
                 break;
-            
-                
+
             case Awaiting_Cabinet_Approval:
                 projectStageWorkingOnButtonTitle = "Mark as Cabinet Approved";
                 projectStageWorkingOnDateTitle = "Cabinet Approved Date";
                 projectStageWorkingOnCommentTitle = "Cabinet Approval Comments";
                 projectStageWorkingOnPeriodTitle = null;
                 break;
-                
-                
+
             case Awaiting_Cabinet_Submission:
                 projectStageWorkingOnButtonTitle = "Mark as Submitted to Cabinet";
                 projectStageWorkingOnDateTitle = "Cabinet Submitted Date";
                 projectStageWorkingOnCommentTitle = "Cabinet Submitted Date";
                 projectStageWorkingOnPeriodTitle = null;
                 break;
-                
-                
-            case Awaiting_DNP_Approval:
+
+            case Bids_Open:
                 projectStageWorkingOnButtonTitle = "Mark as Recommended by NDP";
                 projectStageWorkingOnDateTitle = "NDP Recommended Date";
                 projectStageWorkingOnCommentTitle = "NDP Recommendation";
                 projectStageWorkingOnPeriodTitle = null;
                 break;
-                
-                
-            case Awaiting_DNP_Submission:
+
+            case Approved_Bid_Invitation:
                 projectStageWorkingOnButtonTitle = "Mark as Submitted to NDP";
                 projectStageWorkingOnDateTitle = "NDP Submission Date";
                 projectStageWorkingOnCommentTitle = "NDP Submission Comments";
                 projectStageWorkingOnPeriodTitle = null;
                 break;
-                
+
             case Cabinet_Approved:
                 projectStageWorkingOnButtonTitle = "Mark as Cabinet Approved";
                 projectStageWorkingOnDateTitle = "Cabinet Approved Date";
                 projectStageWorkingOnCommentTitle = "Cabinet Approval Comments";
                 projectStageWorkingOnPeriodTitle = null;
                 break;
-                
-                
+
             case Cabinet_Rejected:
                 projectStageWorkingOnButtonTitle = "Mark as Rejected by Cabinet";
                 projectStageWorkingOnDateTitle = "Rejected on";
                 projectStageWorkingOnCommentTitle = "Rejection Comment";
                 projectStageWorkingOnPeriodTitle = null;
                 break;
-                
+
             case Completed:
                 projectStageWorkingOnButtonTitle = "Mark as Completed";
                 projectStageWorkingOnDateTitle = "Compelted Date";
                 projectStageWorkingOnCommentTitle = "Comments";
                 projectStageWorkingOnPeriodTitle = null;
                 break;
-                
+
             case DNP_Rejected:
                 projectStageWorkingOnButtonTitle = "Mark as Rejected by NDP";
                 projectStageWorkingOnDateTitle = "NDP Rejection Date";
                 projectStageWorkingOnCommentTitle = "Comments";
                 projectStageWorkingOnPeriodTitle = null;
                 break;
-                
-            case DNP_Revision:
+
+            case Bids_Closed:
                 projectStageWorkingOnButtonTitle = "Mark as Under NDP Revision";
                 projectStageWorkingOnDateTitle = "Date";
                 projectStageWorkingOnCommentTitle = "Comments";
                 projectStageWorkingOnPeriodTitle = null;
                 break;
-                
+
             case Funds_Allocated:
                 projectStageWorkingOnButtonTitle = "Mark as Funds Allocated";
                 projectStageWorkingOnDateTitle = "Funds Allocated Date";
                 projectStageWorkingOnCommentTitle = "Comments";
                 projectStageWorkingOnPeriodTitle = null;
                 break;
-                
+
             case Incomplete_Bid_Invitation:
-                
+
             case Ongoing:
                 projectStageWorkingOnButtonTitle = "Mark as Ongoing";
                 projectStageWorkingOnDateTitle = "Started Date";
                 projectStageWorkingOnCommentTitle = "Comments";
                 projectStageWorkingOnPeriodTitle = null;
                 break;
-                
+
         }
     }
 
-    
     public String toChangeMyDetails() {
         if (loggedUser == null) {
             return "";
@@ -340,19 +338,17 @@ public class WebUserController implements Serializable {
         }
     }
 
-    
-
     public String listProjectsToSubmitBids() {
         listProjectsToSubmitBids(getLoggedUser().getInstitution());
         return "/list_for_providers";
     }
 
     public void listProjectsToSubmitBids(Institution provider) {
-        List<Project> ps = listProjects(ProjectStageType.Awaiting_DNP_Approval);
+        List<Project> ps = listProjects(ProjectStageType.Bids_Open);
         listOfProjects = new ArrayList<>();
     }
 
-    public String listAllProjects() {
+    public String listAllProcurements() {
         allIslandProjects = false;
         listOfProjects = listProjects();
         return "/project_lists";
@@ -364,23 +360,23 @@ public class WebUserController implements Serializable {
         return "/project_lists";
     }
 
-    public String listProjectsAwaitingPecApproval() {
+    public String listProjectsAwaitingApprovalForBidInvitation() {
         listOfProjects = listProjects(ProjectStageType.Awaiting_Bid_Invitation_Approval);
         return "/project_lists";
     }
 
-    public String listProjectsPecRejected() {
+    public String listProjectsBidInvitationRejected() {
         listOfProjects = listProjects(ProjectStageType.Bid_Invitation_Rejected);
         return "/project_lists";
     }
 
-    public String listProjectsAwaitingDnpSubmission() {
-        listOfProjects = listProjects(ProjectStageType.Awaiting_DNP_Submission);
+    public String listProjectsAwaitingBidInvitation() {
+        listOfProjects = listProjects(ProjectStageType.Approved_Bid_Invitation);
         return "/project_lists";
     }
 
-    public String listProjectsAwaitingDnpApproval() {
-        listOfProjects = listProjects(ProjectStageType.Awaiting_DNP_Approval);
+    public String listProjectsOpenForBids() {
+        listOfProjects = listProjects(ProjectStageType.Bids_Open);
         return "/project_lists";
     }
 
@@ -608,14 +604,14 @@ public class WebUserController implements Serializable {
         return "/project_client_view_after_submission";
     }
 
-    public List<Item> getCategoriesOfLastHunderedBidInvitations(){
+    public List<Item> getCategoriesOfLastHunderedBidInvitations() {
         String j = "select p.category from Project p "
                 + " where p.projectType=:pt ";
         Map m = new HashMap();
         m.put("pt", ProjectType.Bid_Invitation);
         return itemFacade.findBySQL(j, m, 10);
     }
-    
+
     public void markLocationOnMap() {
         emptyModel = new DefaultMapModel();
         if (current == null) {
@@ -702,20 +698,19 @@ public class WebUserController implements Serializable {
     }
 
     public String addNewBidInvitation() {
-        if(loggedUser==null){
+        if (loggedUser == null) {
             JsfUtil.addErrorMessage("No Logged User");
             return "";
         }
-        if(!loggedUser.isInstitutionUser() && !loggedUser.isInstitutionAdministrator() && !loggedUser.isSystemAdministrator()
-                ){
+        if (!loggedUser.isInstitutionUser() && !loggedUser.isInstitutionAdministrator() && !loggedUser.isSystemAdministrator()) {
             JsfUtil.addErrorMessage("Your are NOT Authrerized");
             return "";
         }
-        if(loggedUser.getInstitution()==null){
+        if (loggedUser.getInstitution() == null) {
             JsfUtil.addErrorMessage("Your are NOT attached to any institution");
             return "";
         }
-        
+
         currentProject = new Project();
         currentProject.setInstitution(loggedUser.getInstitution());
         currentProject.setProjectType(ProjectType.Bid_Invitation);
@@ -747,8 +742,7 @@ public class WebUserController implements Serializable {
         }
 
     }
-    
-    
+
     public String deleteProject() {
         if (currentProject == null) {
             JsfUtil.addErrorMessage("Nothing to Delete");
@@ -804,11 +798,6 @@ public class WebUserController implements Serializable {
         return "";
     }
 
-
-    
-    
-
-    
     /**
      *
      *
@@ -823,13 +812,6 @@ public class WebUserController implements Serializable {
      *
      *
      */
-    
-     
-    
-    
-    
-    
-
     /**
      *
      *
@@ -1132,8 +1114,6 @@ public class WebUserController implements Serializable {
 
                 areaDistrict = areaController.getArea(strDistrict, AreaType.District, true, areaProvince);
 
-                
-
                 cell = sheet.getCell(2, i);
                 strFileNumber = cell.getContents();
                 np.setFileNumber(strFileNumber);
@@ -1141,7 +1121,6 @@ public class WebUserController implements Serializable {
                 cell = sheet.getCell(4, i);
                 strLocation = cell.getContents();
                 insLocation = institutionController.getInstitution(strLocation, InstitutionType.Other, true);
-               
 
                 cell = sheet.getCell(5, i);
                 strTile = cell.getContents();
@@ -1162,7 +1141,6 @@ public class WebUserController implements Serializable {
 
                 cell = sheet.getCell(8, i);
                 strFundSource = cell.getContents();
-                
 
                 getProjectFacade().create(np);
                 System.out.println("Added SUccessfully = " + i);
@@ -1174,7 +1152,7 @@ public class WebUserController implements Serializable {
                     getProjectAreaFacade().create(pp);
                     np.getProjectProvinces().add(pp);
                 }
-                
+
                 getProjectFacade().edit(np);
 
             }
@@ -1574,7 +1552,7 @@ public class WebUserController implements Serializable {
         if (ps.isEmpty()) {
             districtsAvailableForSelection = new ArrayList<>();
         } else {
-           
+
         }
 
         return districtsAvailableForSelection;
@@ -1854,6 +1832,89 @@ public class WebUserController implements Serializable {
     public String getProjectStageWorkingOnPeriodTitle() {
         createProjectStageTitles();
         return projectStageWorkingOnPeriodTitle;
+    }
+
+    public ItemFacade getItemFacade() {
+        return itemFacade;
+    }
+
+    public void setItemFacade(ItemFacade itemFacade) {
+        this.itemFacade = itemFacade;
+    }
+
+    public List<ProjectSuperCategory> getPcs() {
+        if (pcs == null) {
+            pcs = generatePcs();
+        }
+        return pcs;
+    }
+
+    public void setPcs(List<ProjectSuperCategory> pcs) {
+        this.pcs = pcs;
+    }
+    
+    
+    public void approveBidInvitation(){
+        if(currentProject==null){
+            JsfUtil.addErrorMessage("Project ?");
+            return ;
+        }
+        currentProject.setCurrentStageType(ProjectStageType.Approved_Bid_Invitation);
+        currentProject.setApprovedForBidInvitation(true);
+        currentProject.setApprovedForBidInvitationAt(new Date());
+        currentProject.setApprovedForBidInvitationBy(loggedUser);
+        currentProject.setApprovedForBidInvitationComments(comments);
+    }
+    
+    public void rejectFromBidInvitation(){
+        if(currentProject==null){
+            JsfUtil.addErrorMessage("Project ?");
+            return ;
+        }
+        currentProject.setCurrentStageType(ProjectStageType.Bid_Invitation_Rejected);
+        currentProject.setRejectedFromBidInvitation(true);
+        currentProject.setRejectedFromBidInvitationAt(new Date());
+        currentProject.setRejectedFromBidInvitationBy(loggedUser);
+        currentProject.setRejectedFromBidInvitationComments(comments);
+    }
+
+    private List<ProjectSuperCategory> generatePcs() {
+        List<Project> tps = listProjects(ProjectStageType.Approved_Bid_Invitation);
+        List<ProjectSuperCategory> tpcs = new ArrayList<>();
+        for (Project p : tps) {
+            boolean catFound = false;
+            boolean scFound = false;
+            for (ProjectSuperCategory r : tpcs) {
+                if (p.getCategory() == null || p.getCategory().getParentItem() == null) {
+                    continue;
+                }
+                if (r.getCategory().equals(p.getCategory().getParentItem())) {
+                    catFound = true;
+                    for (ProjectCategory sc : r.getProjectCategorieses()) {
+                        if (sc.getCategory().equals(p.getCategory())) {
+                            scFound = true;
+                            sc.getProjects().add(p);
+                        }
+                    }
+                    if (!scFound) {
+                        ProjectCategory sc = new ProjectCategory();
+                        sc.getProjects().add(p);
+                        sc.setCategory(sc.getCategory());
+                        r.getProjectCategorieses().add(sc);
+                    }
+                }
+
+            }
+            ProjectSuperCategory r = new ProjectSuperCategory();
+            r.setCategory(p.getCategory().getParentItem());
+            ProjectCategory sc = new ProjectCategory();
+            sc.getProjects().add(p);
+            sc.setCategory(sc.getCategory());
+            r.getProjectCategorieses().add(sc);
+            tpcs.add(r);
+
+        }
+        return tpcs;//To change body of generated methods, choose Tools | Templates.
     }
 
     /**
