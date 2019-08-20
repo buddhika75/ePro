@@ -104,7 +104,7 @@ public class WebUserController implements Serializable {
     /*
     Variables
      */
-    private List<ProjectSuperCategory> pcs = null;
+    private List<ProjectCategory> pcs = null;
     private List<WebUser> items = null;
     private List<Upload> currentProjectUploads;
     private List<Upload> clientUploads;
@@ -351,7 +351,12 @@ public class WebUserController implements Serializable {
     public String listAllProcurements() {
         allIslandProjects = false;
         listOfProjects = listProjects();
-        return "/project_lists";
+        return "/list_all";
+    }
+
+    public String toListBidInvitationsAwaitingApproval() {
+        listOfProjects = listProjects(ProjectStageType.Awaiting_Bid_Invitation_Approval);
+        return "/list_awaiting_bid_invitation_approval";
     }
 
     public String tolistProjects() {
@@ -1842,34 +1847,35 @@ public class WebUserController implements Serializable {
         this.itemFacade = itemFacade;
     }
 
-    public List<ProjectSuperCategory> getPcs() {
+    public List<ProjectCategory> getPcs() {
         if (pcs == null) {
             pcs = generatePcs();
         }
         return pcs;
     }
 
-    public void setPcs(List<ProjectSuperCategory> pcs) {
+    public void setPcs(List<ProjectCategory> pcs) {
         this.pcs = pcs;
     }
-    
-    
-    public void approveBidInvitation(){
-        if(currentProject==null){
+
+    public void approveBidInvitation() {
+        if (currentProject == null) {
             JsfUtil.addErrorMessage("Project ?");
-            return ;
+            return;
         }
         currentProject.setCurrentStageType(ProjectStageType.Approved_Bid_Invitation);
         currentProject.setApprovedForBidInvitation(true);
         currentProject.setApprovedForBidInvitationAt(new Date());
         currentProject.setApprovedForBidInvitationBy(loggedUser);
         currentProject.setApprovedForBidInvitationComments(comments);
+        getProjectFacade().edit(currentProject);
+        pcs = null;
     }
-    
-    public void rejectFromBidInvitation(){
-        if(currentProject==null){
+
+    public void rejectFromBidInvitation() {
+        if (currentProject == null) {
             JsfUtil.addErrorMessage("Project ?");
-            return ;
+            return;
         }
         currentProject.setCurrentStageType(ProjectStageType.Bid_Invitation_Rejected);
         currentProject.setRejectedFromBidInvitation(true);
@@ -1878,40 +1884,52 @@ public class WebUserController implements Serializable {
         currentProject.setRejectedFromBidInvitationComments(comments);
     }
 
-    private List<ProjectSuperCategory> generatePcs() {
+    private List<ProjectCategory> generatePcs() {
+        System.out.println("generatePcs");
         List<Project> tps = listProjects(ProjectStageType.Approved_Bid_Invitation);
-        List<ProjectSuperCategory> tpcs = new ArrayList<>();
+        List<ProjectCategory> tpcs = new ArrayList<>();
         for (Project p : tps) {
+            System.out.println("p = " + p.getTitle());
             boolean catFound = false;
             boolean scFound = false;
-            for (ProjectSuperCategory r : tpcs) {
-                if (p.getCategory() == null || p.getCategory().getParentItem() == null) {
+
+            for (ProjectCategory r : tpcs) {
+                
+                if (r.getCategory() == null || p.getCategory() == null) {
+                    System.out.println("r.getCategory() = " + r.getCategory());
+                    System.out.println("p.getCategory() = " + p.getCategory());
+                    System.out.println("null");
                     continue;
                 }
-                if (r.getCategory().equals(p.getCategory().getParentItem())) {
+                if (r.getCategory().equals(p.getCategory())) {
                     catFound = true;
-                    for (ProjectCategory sc : r.getProjectCategorieses()) {
-                        if (sc.getCategory().equals(p.getCategory())) {
+                    System.out.println("cat found");
+                    for (ProjectSubCategory sc : r.getProjectSubcategories()) {
+                        if (sc.getSubCategory().equals(p.getSubCategory())) {
                             scFound = true;
+                            System.out.println("sc found");
                             sc.getProjects().add(p);
                         }
                     }
                     if (!scFound) {
-                        ProjectCategory sc = new ProjectCategory();
+                        System.out.println("adding sc");
+                        ProjectSubCategory sc = new ProjectSubCategory();
                         sc.getProjects().add(p);
-                        sc.setCategory(sc.getCategory());
-                        r.getProjectCategorieses().add(sc);
+                        sc.setSubCategory(p.getSubCategory());
+                        r.getProjectSubcategories().add(sc);
                     }
                 }
-
             }
-            ProjectSuperCategory r = new ProjectSuperCategory();
-            r.setCategory(p.getCategory().getParentItem());
-            ProjectCategory sc = new ProjectCategory();
-            sc.getProjects().add(p);
-            sc.setCategory(sc.getCategory());
-            r.getProjectCategorieses().add(sc);
-            tpcs.add(r);
+            if (!catFound) {
+                System.out.println("adding cat");
+                ProjectCategory r = new ProjectCategory();
+                r.setCategory(p.getCategory());
+                ProjectSubCategory sc = new ProjectSubCategory();
+                sc.getProjects().add(p);
+                sc.setSubCategory(p.getSubCategory());
+                r.getProjectSubcategories().add(sc);
+                tpcs.add(r);
+            }
 
         }
         return tpcs;//To change body of generated methods, choose Tools | Templates.

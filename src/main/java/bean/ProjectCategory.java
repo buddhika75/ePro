@@ -6,7 +6,6 @@
 package bean;
 
 import entity.Item;
-import entity.Project;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,8 +14,8 @@ import java.util.List;
  * @author ariyaratne_mhb2017
  */
 public class ProjectCategory {
-    private Item category;
-    private List<Project> projects;
+    Item category;
+    List<ProjectSubCategory> projectSubcategories;
 
     public Item getCategory() {
         return category;
@@ -26,18 +25,16 @@ public class ProjectCategory {
         this.category = category;
     }
 
-    public List<Project> getProjects() {
-        if(projects==null){
-            projects = new ArrayList<>();
+    public List<ProjectSubCategory> getProjectSubcategories() {
+        if(projectSubcategories==null){
+            projectSubcategories = new ArrayList<>();
         }
-        return projects;
+        return projectSubcategories;
     }
 
-    public void setProjects(List<Project> projects) {
-        this.projects = projects;
+    public void setProjectSubcategories(List<ProjectSubCategory> projectSubcategories) {
+        this.projectSubcategories = projectSubcategories;
     }
-    
-    
     
     
 }

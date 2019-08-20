@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+
+    <h:head>
+        <h:outputStylesheet library="css" name="tem1.css" ></h:outputStylesheet>
+
+    </h:head>
+
+    <h:body>
+
+        <ui:composition template="./template.xhtml">
+            <ui:define name="content">
+                <div class="w3-row w3-padding" >
+
+
+                    <h:form >
+
+                        <div class="w3-container w3-card-4 w3-padding w3-margin" >
+                            <header class='w3-padding w3-margin' >
+                                <h1>
+                                    #{webUserController.currentProject.title}
+                                </h1>   
+                            </header>
+
+                            <div class="w3-container w3-padding w3-margin">
+                                <table class="w3-table w3-striped w3-border"> 
+                                    <tr>
+                                        <td>
+                                            Title
+                                        </td><td>
+                                            #{webUserController.currentProject.title}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Institution
+                                        </td><td>
+                                            #{webUserController.currentProject.institution.name}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Details
+                                        </td><td>
+                                            #{webUserController.currentProject.description}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Bid Opening
+                                        </td><td>
+                                            <h:outputLabel value="#{webUserController.currentProject.bidOpeningAt}">
+                                                <f:convertDateTime pattern="dd MMMM yyyy hh:mm a" ></f:convertDateTime>
+                                            </h:outputLabel>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Bid Closing
+                                        </td><td>
+                                            <h:outputLabel value="#{webUserController.currentProject.bidClosingAt}">
+                                                <f:convertDateTime pattern="dd MMMM yyyy hh:mm a" ></f:convertDateTime>
+                                            </h:outputLabel>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+
+
+                        </div>
+
+
+
+                    </h:form>
+                </div>
+
+                <div style="height: 100px;">
+                </div>
+
+
+            </ui:define>
+
+        </ui:composition>
+
+
+    </h:body>
+
+
+
+
+
+
+</html>

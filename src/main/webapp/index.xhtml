@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:body>
 
@@ -15,38 +16,59 @@
 
                 <div class="w3-row" style="height: 70vh;">
                     <h:form>
+                        <div class="w3-col s12 m6 l3" >
 
 
-                        <div class="s12 m6 l3" >
+                            <div class="w3-card w3-red">                                        
 
-                            <ui:repeat value="#{webUserController.pcs}"
-                                       var="c" >
-                                <div style="width: 100%; padding: 2%;">
-                                    <div style="float: left;clear: left;">
-                                        <h:outputLabel value="#{c.category.name}" ></h:outputLabel>
+
+                                <header class="w3-container w3-blue">
+                                    Open Bid Invitations
+                                </header>
+                                
+                                <ui:repeat value="#{webUserController.pcs}"
+                                           var="c" >
+
+                                    <div style="float: left; clear: left; width: 100%; " class="w3-blue w3-padding" >
+                                        #{c.category.name}
                                     </div>
-                                    <div style="width: 100%; padding: 2%;clear: right;">
-                                        <ui:repeat value="#{c.projectCategorieses}" var="sc" >
-                                            <div style="float: left;clear: left;">
-                                                <h:outputLabel value="#{sc.category.name}" ></h:outputLabel>
-                                            </div>
-                                            <div style="width: 100%; padding: 2%;clear: right;">
-                                                <ui:repeat value="#{c.projectCategorieses}" var="sc" >
-                                                    <div style="float: left;clear: left;">
-                                                        <h:outputLabel value="#{sc.category.name}" ></h:outputLabel>
-                                                    </div>
-                                                    <div style="width: 100%; padding: 2%;clear: right;">
 
+                                    <div style="float: left; clear: left; width: 100%; " >
+                                        <ui:repeat value="#{c.projectSubcategories}" var="sc" >
+                                            <div  style="float: left; clear: left; height: 100%;  width: 100%; padding-left: 15%; " class="w3-aqua ">
+                                                #{sc.subCategory.name}
+                                            </div>
+
+                                            <div   style="float: left; clear: left; height: 100%; width: 100%;" >
+                                                <ui:repeat value="#{sc.projects}" var="p" >
+                                                    <div style="clear: left; width: 100%; padding: 2%; padding-left: 30%; " class="w3-light-blue">
+                                                        <p:commandLink value="#{p.title}" action="/bid_invitation_bidder_view" ajax="false" >
+                                                            <f:setPropertyActionListener value="#{p}" target="#{webUserController.currentProject}" ></f:setPropertyActionListener>
+                                                        </p:commandLink>
+                                                        
                                                     </div>
                                                 </ui:repeat>
+
                                             </div>
+
+
                                         </ui:repeat>
+
                                     </div>
-                                </div>
-                            </ui:repeat>
+
+
+
+
+
+                                </ui:repeat>
+
+                            </div>
 
                         </div>
 
+                        <div class="w3-col s12 m6 l3" >
+
+                        </div>
 
 
 
