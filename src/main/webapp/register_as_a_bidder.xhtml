@@ -28,7 +28,8 @@
                     <tr>
                         <td  colspan="2" valign="top"  >
                             <h:form>
-                                <p:panelGrid class="w3-table w3-border" columns="2" columnClasses="alignLeft alignLeft" style="margin: auto;">
+                                <p:panelGrid class="w3-table w3-border" columns="1" 
+                                             columnClasses="alignLeft alignLeft" style="margin: auto;">
 
                                     <f:facet class="redTable" name="header" >
                                         Register as a Bidder
@@ -74,16 +75,16 @@
                                                          required="true"
                                                          requiredMessage="Please enter the name of the institution">
                                             </h:inputText>
+
+                                            <h:outputLabel value="#{bundle.EditWebUserLabel_email}" for="iemail" />
+                                            <h:inputText id="iemail" value="#{webUserController.selected.email}" title="#{bundle.EditWebUserTitle_email}" />
+                                            <h:outputLabel value="#{bundle.EditWebUserLabel_telNo}" for="itelNo" />
+                                            <h:inputText id="itelNo" value="#{webUserController.selected.telNo}" title="#{bundle.EditWebUserTitle_telNo}" />
                                             <h:outputLabel value="Your Address" for="address" />
                                             <h:inputTextarea id="address" 
                                                              value="#{webUserController.selected.webUserPerson.address}" 
                                                              title="#{bundle.EditWebUserTitle_webUserPerson}" >
                                             </h:inputTextarea >
-                                            <h:outputLabel value="#{bundle.EditWebUserLabel_email}" for="iemail" />
-                                            <h:inputText id="iemail" value="#{webUserController.selected.email}" title="#{bundle.EditWebUserTitle_email}" />
-                                            <h:outputLabel value="#{bundle.EditWebUserLabel_telNo}" for="itelNo" />
-                                            <h:inputText id="itelNo" value="#{webUserController.selected.telNo}" title="#{bundle.EditWebUserTitle_telNo}" />
-
                                         </p:panelGrid>
                                     </p:panel>
 
@@ -93,7 +94,7 @@
 
                                     <p:spacer></p:spacer>
                                     <p:commandButton class="w3-button w3-block w3-teal" ajax="false" 
-                                                     action="#{webUserController.registerUser()}" 
+                                                     action="#{webUserController.registerBidder()}" 
                                                      value="Next" ></p:commandButton>
 
                                 </p:panelGrid>

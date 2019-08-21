@@ -184,7 +184,7 @@ public class WebUserController implements Serializable {
         Institution ti = new Institution();
         ti.setInstitutionType(InstitutionType.Supplier);
         current.setWebUserRole(WebUserRole.Supplier);
-        current.setInstitution(institution);
+        current.setInstitution(ti);
         return "register_as_a_bidder";
     }
 
@@ -958,6 +958,39 @@ public class WebUserController implements Serializable {
 
         setLoggedUser(current);
         JsfUtil.addSuccessMessage("Your Details Added as an institution user. Please contact us for changes");
+        return "/index";
+    }
+
+    public String registerBidder() {
+        if (current == null) {
+            JsfUtil.addErrorMessage("Error. No Web User. Please retry.");
+            return "";
+        }
+        if (!current.getWebUserPassword().equals(password)) {
+            JsfUtil.addErrorMessage("Passwords are not matching. Please retry.");
+            return "";
+        }
+        if (current.getInstitution() == null) {
+            JsfUtil.addErrorMessage("Error. No Institution. Please retry.");
+            return "";
+        }
+        if (current.getInstitution().getId() == null) {
+            getInstitutionFacade().create(current.getInstitution());
+        } else {
+            getInstitutionFacade().edit(current.getInstitution());
+        }
+
+        current.setWebUserRole(WebUserRole.Supplier);
+        try {
+            getFacade().create(current);
+        } catch (Exception e) {
+            System.out.println("e = " + e);
+            JsfUtil.addErrorMessage("Username already taken. Please enter a different username");
+            return "";
+        }
+
+        setLoggedUser(current);
+        JsfUtil.addSuccessMessage("You are registered as a supplier.");
         return "/index";
     }
 

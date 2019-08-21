@@ -130,7 +130,7 @@
                         <h:panelGroup rendered="#{webUserController.loggedUser eq null}" >
                             <h:commandLink class="w3-bar-item w3-button"  value="#{bundle.Help}" action="#{webUserController.logOut()}"></h:commandLink>
                             <h:commandLink class="w3-bar-item w3-button" value="#{bundle.SingIn}" action="#{webUserController.toLogin()}"></h:commandLink>
-                            <h:commandLink class="w3-bar-item w3-button"  value="#{bundle.SingUp}" action="#{webUserController.prepareRegisterAsClient()}"></h:commandLink>
+                            <h:commandLink class="w3-bar-item w3-button"  value="#{bundle.SingUp}" action="#{webUserController.toRegisterAsASupplier()}"></h:commandLink>
                         </h:panelGroup>
 
 
