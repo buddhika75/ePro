@@ -138,6 +138,7 @@ public class WebUserController implements Serializable {
     private Project currentProject;
     private Upload currentUpload;
     private Institution institution;
+    String institutionName;
 
     private WebUser loggedUser;
     private String userName;
@@ -176,6 +177,15 @@ public class WebUserController implements Serializable {
     @PostConstruct
     public void init() {
         emptyModel = new DefaultMapModel();
+    }
+
+    public String toRegisterAsASupplier() {
+        current = new WebUser();
+        Institution ti = new Institution();
+        ti.setInstitutionType(InstitutionType.Supplier);
+        current.setWebUserRole(WebUserRole.Supplier);
+        current.setInstitution(institution);
+        return "register_as_a_bidder";
     }
 
     public boolean canAddProcurement() {
@@ -1894,7 +1904,7 @@ public class WebUserController implements Serializable {
             boolean scFound = false;
 
             for (ProjectCategory r : tpcs) {
-                
+
                 if (r.getCategory() == null || p.getCategory() == null) {
                     System.out.println("r.getCategory() = " + r.getCategory());
                     System.out.println("p.getCategory() = " + p.getCategory());

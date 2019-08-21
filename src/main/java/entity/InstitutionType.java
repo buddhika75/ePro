@@ -19,5 +19,6 @@ public enum InstitutionType {
     Stake_Holder,
     Partner,
     Private_Sector_Institute,
+    Supplier,
     Other,
 }

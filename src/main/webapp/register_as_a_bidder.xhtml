@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+
+    <h:head>
+        <h:outputStylesheet library="css" name="tem1.css" ></h:outputStylesheet>
+    </h:head>
+
+    <h:body>
+
+        <ui:composition template="./template.xhtml">
+
+            <ui:define name="content">
+
+
+                <table class="w3-centered" style=" margin: auto;" >
+                    <tr style="height: 50px;">
+                        <td colspan="2" >
+                            <h3>REGISTER AS A BIDDER</h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td  colspan="2" valign="top"  >
+                            <h:form>
+                                <p:panelGrid class="w3-table w3-border" columns="2" columnClasses="alignLeft alignLeft" style="margin: auto;">
+
+                                    <f:facet class="redTable" name="header" >
+                                        Register as a Bidder
+                                    </f:facet>
+
+                                    <p:panel header="Your Details" >
+                                        <p:panelGrid columns="2" >
+                                            <h:outputLabel value="Your Name" for="webUserPerson" />
+                                            <h:inputText id="webUserPerson" 
+                                                         value="#{webUserController.current.webUserPerson.name}" 
+                                                         title="#{bundle.EditWebUserTitle_webUserPerson}" 
+                                                         required="true"
+                                                         requiredMessage="Please enter your name">
+                                            </h:inputText>
+                                            <h:outputLabel value="Enter a Username" for="name" />
+                                            <h:inputText id="name" value="#{webUserController.current.name}" 
+                                                         title="#{bundle.EditWebUserTitle_name}" 
+                                                         required="true" 
+                                                         requiredMessage="#{bundle.EditWebUserRequiredMessage_name}"/>
+
+                                            <h:outputLabel value="Password" for="pwd" />
+                                            <h:inputSecret id="pwd" value="#{webUserController.current.webUserPassword}" 
+                                                           required="true"
+                                                           requiredMessage="Please enter a password"></h:inputSecret>
+
+
+                                            <h:outputLabel value="Re-enter Password" for="rpwd"  />
+                                            <h:inputSecret id="rpwd" value="#{webUserController.password}"
+                                                           required="true"
+                                                           requiredMessage="Please re-enter the password"></h:inputSecret>
+                                            <h:outputLabel value="#{bundle.EditWebUserLabel_email}" for="email" />
+                                            <h:inputText id="email" value="#{webUserController.selected.email}" title="#{bundle.EditWebUserTitle_email}" />
+                                            <h:outputLabel value="#{bundle.EditWebUserLabel_telNo}" for="telNo" />
+                                            <h:inputText id="telNo" value="#{webUserController.selected.telNo}" title="#{bundle.EditWebUserTitle_telNo}" />
+
+                                        </p:panelGrid>
+                                    </p:panel>
+                                    <p:panel header="Your Institution Details" >
+                                        <p:panelGrid columns="2" >
+                                            <h:outputLabel value="Name of your Institution" for="acIns" />
+                                            <h:inputText id="insName" 
+                                                         value="#{webUserController.current.institution.name}" 
+                                                         required="true"
+                                                         requiredMessage="Please enter the name of the institution">
+                                            </h:inputText>
+                                            <h:outputLabel value="Your Address" for="address" />
+                                            <h:inputTextarea id="address" 
+                                                             value="#{webUserController.selected.webUserPerson.address}" 
+                                                             title="#{bundle.EditWebUserTitle_webUserPerson}" >
+                                            </h:inputTextarea >
+                                            <h:outputLabel value="#{bundle.EditWebUserLabel_email}" for="iemail" />
+                                            <h:inputText id="iemail" value="#{webUserController.selected.email}" title="#{bundle.EditWebUserTitle_email}" />
+                                            <h:outputLabel value="#{bundle.EditWebUserLabel_telNo}" for="itelNo" />
+                                            <h:inputText id="itelNo" value="#{webUserController.selected.telNo}" title="#{bundle.EditWebUserTitle_telNo}" />
+
+                                        </p:panelGrid>
+                                    </p:panel>
+
+
+
+
+
+                                    <p:spacer></p:spacer>
+                                    <p:commandButton class="w3-button w3-block w3-teal" ajax="false" 
+                                                     action="#{webUserController.registerUser()}" 
+                                                     value="Next" ></p:commandButton>
+
+                                </p:panelGrid>
+
+                            </h:form>
+                        </td>
+
+                    </tr>
+                </table>
+
+
+
+
+            </ui:define>
+
+        </ui:composition>
+
+
+    </h:body>
+
+
+
+
+
+
+</html>

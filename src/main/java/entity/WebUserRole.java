@@ -12,5 +12,5 @@ public enum WebUserRole {
     Institution_Administrator,
     Authority_User,
     Authority_Admin,
-
+    Supplier,
 }
